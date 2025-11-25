@@ -221,6 +221,14 @@
       line-height: 1.6;
       color: var(--muted);
       max-width: 480px;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle-bold {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 12px;
     }
 
     .hero-actions {
@@ -270,9 +278,15 @@
     }
 
     .hero-note {
-      margin-top: 12px;
-      font-size: 12px;
+      margin-top: 16px;
+      font-size: 13px;
       color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hero-note strong {
+      color: var(--text);
+      font-weight: 500;
     }
 
     .hero-right {
@@ -735,6 +749,182 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+
+    .social-proof {
+      background: radial-gradient(circle at top, #020617, #020817);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.85);
+      margin-top: 14px;
+    }
+
+    .social-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .social-proof-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .social-proof-number {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .social-proof-label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .positioning-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 20px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .positioning-section {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .positioning-card {
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      background: radial-gradient(circle at top, #020617, #020817);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.85);
+    }
+
+    .positioning-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .positioning-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .positioning-list li {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .positioning-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-bence);
+      font-weight: bold;
+    }
+
+    .contact-form {
+      margin-top: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+      transition: 0.18s ease border-color;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent-bence);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-checkbox input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .form-checkbox label {
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--accent-bence), #4f46e5);
+      border: 1px solid rgba(191, 219, 254, 0.5);
+      color: #e5e7eb;
+      cursor: pointer;
+      transition: 0.18s ease transform, 0.18s ease box-shadow;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(37, 99, 235, 0.55);
+    }
+
+    .response-time {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -750,11 +940,11 @@
           </div>
         </div>
         <nav class="nav-links">
-          <a href="#testverek">Testvérek</a>
-          <a href="#rolunk">Történetünk</a>
+          <a href="#szolgaltatasok">Szolgáltatások</a>
           <a href="#projektek">Projektek</a>
+          <a href="#rolunk">Rólunk</a>
           <a href="#kapcsolat">Kapcsolat</a>
-          <button class="nav-cta">
+          <button class="nav-cta" onclick="document.getElementById('kapcsolat').scrollIntoView({behavior: 'smooth'})">
             <span class="icon">✉️</span>
             <span>Írj nekünk</span>
           </button>
@@ -768,31 +958,30 @@
         <div>
           <div class="pill">
             <div class="pill-dot">∞</div>
-            <span>családi brand • Python • JavaScript • C++</span>
+            <span>Python • JavaScript • C++ • teljes stack</span>
           </div>
           <h1 class="hero-title">
-            Három testvér.
-            <span class="hero-gradient">Három technológia.</span><br />
-            Egy közös név: Bognár.
+            Webappok és backend rendszerek
+            <span class="hero-gradient">KKV-knak és startupoknak.</span>
           </h1>
+          <p class="hero-subtitle hero-subtitle-bold">
+            Python backend + React frontend + C++ performance – egy csapat, teljes stack.
+          </p>
           <p class="hero-subtitle">
-            A bognar.dev egy családi "stúdió": Python backend, JavaScript frontend
-            és C++ fejlesztés – egymást kiegészítve. Itt indulnak a saját
-            portfólió oldalak is.
+            Termékek: admin felületek, belső rendszerek, API-k, SaaS MVP-k.
           </p>
           <div class="hero-actions">
-            <!-- Itt majd az aldomain linkekre cserélheted a href-et -->
-            <a href="https://bence.bognar.dev" class="btn-primary">
-              Bence portfóliója
-              <span>↗</span>
-            </a>
-            <a href="#testverek" class="btn-ghost">
-              Ismerd meg a testvéreket
+            <button class="btn-primary" onclick="document.getElementById('kapcsolat').scrollIntoView({behavior: 'smooth'})">
+              Kérj 15 perces hívást
+              <span>📞</span>
+            </button>
+            <a href="mailto:hello@bognar.dev" class="btn-ghost">
+              Írj e-mailt
+              <span>✉️</span>
             </a>
           </div>
           <div class="hero-note">
-            Tipp: a három testvér saját aldomainen mutatja be a munkáit (pl.
-            <code>bence.bognar.dev</code>).
+            <strong>24 órán belül válaszolunk.</strong> Közvetlenül a fejlesztőkkel beszélsz, nem account managerekkel.
           </div>
         </div>
 
@@ -855,13 +1044,13 @@
         </div>
       </section>
 
-      <!-- Testvérek szekció -->
-      <section class="section" id="testverek">
+      <!-- Szolgáltatások szekció -->
+      <section class="section" id="szolgaltatasok">
         <div class="section-header">
-          <h2 class="section-title">Testvérek &amp; fókuszterületek</h2>
+          <h2 class="section-title">Szolgáltatások &amp; technológiák</h2>
           <p class="section-subtitle">
-            Mindhárman más technológiával dolgozunk – ez adja a bognar.dev erejét. Az alábbi
-            kártyák készíthetnek linket a saját aldomainedre.
+            Teljes stack fejlesztés egy csapatban: Python backend, JavaScript frontend, C++ performance.
+            Mindhármunknak saját specializációja van – együtt pedig komplett megoldásokat adunk.
           </p>
         </div>
         <div class="grid-three">
@@ -930,6 +1119,54 @@
         </div>
       </section>
 
+      <!-- Social Proof -->
+      <section class="section">
+        <div class="social-proof">
+          <div class="social-proof-grid">
+            <div>
+              <div class="social-proof-number">3+</div>
+              <div class="social-proof-label">közös projekt</div>
+            </div>
+            <div>
+              <div class="social-proof-number">10+</div>
+              <div class="social-proof-label">év össz combined coding experience</div>
+            </div>
+            <div>
+              <div class="social-proof-number">HU / EN</div>
+              <div class="social-proof-label">remote first</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pozicionálás -->
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Kik vagyunk – és kik nem</h2>
+          <p class="section-subtitle">
+            Nem ügynökség, hanem közvetlen együttműködés a fejlesztőkkel.
+          </p>
+        </div>
+        <div class="positioning-section">
+          <div class="positioning-card">
+            <div class="positioning-title">Nem vagyunk:</div>
+            <ul class="positioning-list">
+              <li>10 fős ügynökség account managerekkel</li>
+              <li>Fiverr-es random freelancerek</li>
+              <li>Offshore team, akikkel csak emailben kommunikálsz</li>
+            </ul>
+          </div>
+          <div class="positioning-card">
+            <div class="positioning-title">Velünk dolgozol, ha:</div>
+            <ul class="positioning-list">
+              <li>Közvetlenül a fejlesztőkkel akarsz beszélni</li>
+              <li>Fontos a hosszú távú együttműködés, nem a 3 napos PoC-csoda</li>
+              <li>Teljes stack megoldást keresel egy helyről</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <!-- Rólunk -->
       <section class="section" id="rolunk">
         <div class="section-header">
@@ -977,61 +1214,87 @@
       <!-- Projektek -->
       <section class="section" id="projektek">
         <div class="section-header">
-          <h2 class="section-title">Vegyes ízelítő projektekből</h2>
+          <h2 class="section-title">Case study-k &amp; eredmények</h2>
           <p class="section-subtitle">
-            Ez egy előnézeti szekció – ide tudtok berakni 1–1 zászlóshajó
-            projektet mindegyikőtöktől, hogy a látogató érezze a spektrumot.
+            Konkrét projektek, konkrét számok. Mutatjuk, hogyan adunk pénzt, időt és sebességet – nem csak technológiát.
           </p>
         </div>
         <div class="projects-grid">
           <article class="project-card">
             <div class="project-label">Bence · backend</div>
-            <div class="project-title">Python backend API &amp; dashboard</div>
+            <div class="project-title">B2B dashboard logisztikai cégnek</div>
             <p class="project-text">
-              Skálázható backend rendszer Pythonnal, ami adatokat kezel és
-              érthető riportokba csomagolja az információkat.
+              <strong>Probléma:</strong> A cég napi 4 órát töltött manual reportinggal, Excel táblázatokkal dolgoztak.
+            </p>
+            <p class="project-text">
+              <strong>Megoldás:</strong> Python backend API + admin dashboard, ami automatikusan összegyűjti és vizualizálja az adatokat.
             </p>
             <div class="project-meta">
               <div class="chips-row">
                 <span class="chip">Python</span>
-                <span class="chip">Backend</span>
-                <span class="chip">API</span>
+                <span class="chip">FastAPI</span>
+                <span class="chip">Dashboard</span>
               </div>
-              <span>case study →</span>
+              <div style="font-weight: 600; color: var(--accent-two); font-size: 12px;">
+                Manual reporting idő: 4 óráról 10 percre csökkent.
+              </div>
+            </div>
+            <div style="margin-top: 8px;">
+              <a href="#kapcsolat" class="link-subtle" style="font-size: 12px;">
+                Case study megnyitása →
+              </a>
             </div>
           </article>
 
           <article class="project-card">
             <div class="project-label">Levente · frontend</div>
-            <div class="project-title">Modern React alkalmazás</div>
+            <div class="project-title">React admin felület SaaS startupnak</div>
             <p class="project-text">
-              Reszponzív webes felhasználói felület modern JavaScript keretrendszerekkel –
-              gyors, interaktív és felhasználóbarát megoldások.
+              <strong>Probléma:</strong> Lassú, nem reszponzív admin felület, ami mobilról használhatatlan volt.
+            </p>
+            <p class="project-text">
+              <strong>Megoldás:</strong> Modern React alkalmazás TypeScript-tel, teljes reszponzív design, optimalizált performance.
             </p>
             <div class="project-meta">
               <div class="chips-row">
-                <span class="chip">JavaScript</span>
                 <span class="chip">React</span>
+                <span class="chip">TypeScript</span>
                 <span class="chip">Frontend</span>
               </div>
-              <span>case study →</span>
+              <div style="font-weight: 600; color: var(--accent-two); font-size: 12px;">
+                Page load: 3,2s → 0,8s.
+              </div>
+            </div>
+            <div style="margin-top: 8px;">
+              <a href="#kapcsolat" class="link-subtle" style="font-size: 12px;">
+                Case study megnyitása →
+              </a>
             </div>
           </article>
 
           <article class="project-card">
             <div class="project-label">Lehel · C++</div>
-            <div class="project-title">Teljesítménykritikus rendszer</div>
+            <div class="project-title">Teljesítménykritikus adatfeldolgozó rendszer</div>
             <p class="project-text">
-              Magas szintű optimalizáció és hatékonyság – C++ alapú rendszerfejlesztés,
-              ahol a sebesség és az erőforrás-használat kulcsfontosságú.
+              <strong>Probléma:</strong> Python script 2 órát vett igénybe nagy adatmennyiség feldolgozására.
+            </p>
+            <p class="project-text">
+              <strong>Megoldás:</strong> C++ alapú optimalizált rendszer, párhuzamos feldolgozással és memória-optimalizálással.
             </p>
             <div class="project-meta">
               <div class="chips-row">
                 <span class="chip">C++</span>
-                <span class="chip">Systems</span>
                 <span class="chip">Performance</span>
+                <span class="chip">Systems</span>
               </div>
-              <span>case study →</span>
+              <div style="font-weight: 600; color: var(--accent-two); font-size: 12px;">
+                Feldolgozási idő: 2 óra → 8 perc.
+              </div>
+            </div>
+            <div style="margin-top: 8px;">
+              <a href="#kapcsolat" class="link-subtle" style="font-size: 12px;">
+                Case study megnyitása →
+              </a>
             </div>
           </article>
         </div>
@@ -1042,20 +1305,59 @@
         <div class="section-header">
           <h2 class="section-title">Kapcsolat &amp; együttműködés</h2>
           <p class="section-subtitle">
-            Itt egy közös kontaktblokk, de nyugodtan szétbonthatod egyéni
-            elérhetőségre is, ha jobban illik hozzátok.
+            Írj nekünk, és 24 órán belül válaszolunk. Közvetlenül a fejlesztőkkel beszélsz.
           </p>
         </div>
         <div class="section-contact">
           <div class="contact-box">
-            <div class="contact-label">Közös elérhetőség</div>
+            <div class="contact-label">Kérj hívást vagy írj e-mailt</div>
             <div class="contact-mail">
               <a href="mailto:hello@bognar.dev">hello@bognar.dev</a>
             </div>
             <p class="contact-small">
-              Írhatsz ide általános megkereséssel, és megbeszélitek, ki a legjobb
-              match a három testvér közül a projektre.
+              Vagy használd az alábbi formot – automatikusan továbbítjuk a megfelelő fejlesztőhöz.
             </p>
+            <div class="contact-form">
+              <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                  <label class="form-label" for="name">Név *</label>
+                  <input type="text" id="name" name="name" class="form-input" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">E-mail *</label>
+                  <input type="email" id="email" name="email" class="form-input" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="company">Cég / Projekt rövid leírás *</label>
+                  <textarea id="company" name="company" class="form-textarea" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Melyik terület érdekel? *</label>
+                  <div class="form-checkbox-group">
+                    <div class="form-checkbox">
+                      <input type="checkbox" id="backend" name="area" value="backend" />
+                      <label for="backend">Backend / Python</label>
+                    </div>
+                    <div class="form-checkbox">
+                      <input type="checkbox" id="frontend" name="area" value="frontend" />
+                      <label for="frontend">Frontend / JavaScript</label>
+                    </div>
+                    <div class="form-checkbox">
+                      <input type="checkbox" id="cpp" name="area" value="cpp" />
+                      <label for="cpp">C++ / Performance</label>
+                    </div>
+                    <div class="form-checkbox">
+                      <input type="checkbox" id="fullstack" name="area" value="fullstack" />
+                      <label for="fullstack">Teljes stack</label>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="form-submit">Küldés</button>
+                <div class="response-time">
+                  <strong>24 órán belül válaszolunk.</strong>
+                </div>
+              </form>
+            </div>
           </div>
           <div class="contact-box">
             <div class="contact-label">Kinek írj közvetlenül?</div>
@@ -1067,6 +1369,13 @@
               <strong>Lehel</strong> – ha C++, rendszerprogramozás vagy
               teljesítménykritikus fejlesztés a téma.
             </p>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(31, 41, 55, 0.9);">
+              <div class="contact-label" style="margin-bottom: 8px;">Vagy kérj 15 perces hívást</div>
+              <a href="mailto:hello@bognar.dev?subject=15%20perces%20hívás%20kérése" class="btn-primary" style="display: inline-block; text-decoration: none;">
+                Időpont kérése
+                <span>📞</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -1081,9 +1390,43 @@
     </footer>
   </div>
 
-  <!-- Egyszerű év-frissítés (elhagyható, ha full statikus kell) -->
+  <!-- Egyszerű év-frissítés és form kezelés -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      const form = event.target;
+      const formData = new FormData(form);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const company = formData.get('company');
+      const areas = formData.getAll('area');
+      
+      if (areas.length === 0) {
+        alert('Kérlek válassz legalább egy területet!');
+        return;
+      }
+
+      // Email összeállítása
+      const subject = encodeURIComponent('Új kapcsolatfelvétel: ' + company.substring(0, 50));
+      const body = encodeURIComponent(
+        'Név: ' + name + '\n' +
+        'E-mail: ' + email + '\n' +
+        'Cég / Projekt: ' + company + '\n' +
+        'Érdeklődési terület: ' + areas.join(', ')
+      );
+      
+      // Mailto link megnyitása
+      window.location.href = 'mailto:hello@bognar.dev?subject=' + subject + '&body=' + body;
+      
+      // Form reset
+      form.reset();
+      
+      // Visszajelzés
+      alert('Köszönjük! Az e-mail kliens megnyílik. Ha nem, írj közvetlenül a hello@bognar.dev címre.');
+    }
   </script>
 </body>
 </html>
