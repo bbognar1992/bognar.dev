@@ -1,0 +1,18 @@
+{
+  "name": "bognar.dev",
+  "version": "1.0.0",
+  "description": "Bognár testvérek közös portfólió oldala",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "bognar",
+    "software-engineers"
+  ],
+  "author": "Bognár testvérek",
+  "license": "MIT"
+}
+
