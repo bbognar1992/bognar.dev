@@ -8,20 +8,13 @@ function handleFormSubmit(event) {
   const name = formData.get('name');
   const email = formData.get('email');
   const company = formData.get('company');
-  const areas = formData.getAll('area');
-  
-  if (areas.length === 0) {
-    alert('Kérlek válassz legalább egy területet!');
-    return;
-  }
 
   // Email összeállítása
   const subject = encodeURIComponent('Új kapcsolatfelvétel: ' + company.substring(0, 50));
   const body = encodeURIComponent(
     'Név: ' + name + '\n' +
     'E-mail: ' + email + '\n' +
-    'Cég / Projekt: ' + company + '\n' +
-    'Érdeklődési terület: ' + areas.join(', ')
+    'Cég / Projekt: ' + company
   );
   
   // Mailto link megnyitása

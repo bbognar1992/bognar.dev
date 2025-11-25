@@ -855,16 +855,14 @@ a {
 .section-contact {
   margin-top: 16px;
   margin-bottom: 14px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 20px;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-@media (max-width: 880px) {
-  .section-contact {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.contact-box-centered {
+  max-width: 600px;
+  width: 100%;
 }
 
 .contact-box {
