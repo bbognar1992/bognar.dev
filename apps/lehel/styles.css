@@ -1,12 +1,14 @@
-/* Kisalföld újság stílusú álláshirdetés */
+/* Vadnyugati hős wanted poster stílus */
 :root {
-  --newspaper-cream: #faf8f3;
-  --newspaper-white: #ffffff;
-  --newspaper-black: #1a1a1a;
-  --newspaper-gray: #4a4a4a;
-  --newspaper-light-gray: #8a8a8a;
-  --newspaper-border: #d4d4d4;
-  --newspaper-red: #8b0000;
+  --western-brown: #8b4513;
+  --western-dark-brown: #654321;
+  --western-tan: #d2b48c;
+  --western-cream: #f5deb3;
+  --western-parchment: #faf0e6;
+  --western-red: #8b0000;
+  --western-gold: #daa520;
+  --western-black: #1a1a1a;
+  --western-gray: #696969;
   --spacing-xs: 8px;
   --spacing-sm: 16px;
   --spacing-md: 24px;
@@ -22,160 +24,196 @@
 }
 
 body {
-  font-family: 'Merriweather', 'Times New Roman', serif;
-  background: var(--newspaper-cream);
-  color: var(--newspaper-black);
+  font-family: 'IM Fell English', 'Times New Roman', serif;
+  background: linear-gradient(135deg, #d4a574 0%, #8b6f47 50%, #654321 100%);
+  background-attachment: fixed;
+  color: var(--western-black);
   line-height: 1.7;
-  font-size: 15px;
+  font-size: 16px;
   padding: var(--spacing-md);
+  min-height: 100vh;
+  position: relative;
 }
 
-.newspaper-container {
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wanted-container {
   max-width: var(--max-width);
   margin: 0 auto;
-  background: var(--newspaper-white);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background: var(--western-parchment);
+  box-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 100px rgba(139, 69, 19, 0.1);
   padding: var(--spacing-xl);
-  border: 2px solid var(--newspaper-black);
+  border: 8px double var(--western-dark-brown);
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Újság fejléc */
-.newspaper-header {
+.wanted-container::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid var(--western-brown);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+/* Wanted fejléc */
+.wanted-header {
   text-align: center;
-  border-bottom: 3px double var(--newspaper-black);
-  padding-bottom: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, var(--western-dark-brown) 0%, var(--western-brown) 100%);
+  border: 4px solid var(--western-black);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.newspaper-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 48px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  color: var(--newspaper-black);
-  text-transform: uppercase;
+.wanted-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--western-gold);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.2em;
   margin-bottom: var(--spacing-xs);
 }
 
-.newspaper-date {
-  font-size: 14px;
-  color: var(--newspaper-gray);
-  font-style: italic;
+.wanted-title {
+  font-family: 'Cinzel', serif;
+  font-size: 72px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: var(--western-red);
+  text-shadow: 
+    3px 3px 0px var(--western-black),
+    6px 6px 10px rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  margin: var(--spacing-sm) 0;
+  line-height: 1;
 }
 
-/* Szekció fejléc */
-.ad-section-header {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
-  padding-bottom: var(--spacing-sm);
-  border-bottom: 2px solid var(--newspaper-black);
-}
-
-.section-title-line {
-  flex: 1;
-  height: 1px;
-  background: var(--newspaper-black);
-}
-
-.section-title-text {
-  font-family: 'Playfair Display', serif;
+.wanted-subtitle {
+  font-family: 'IM Fell English', serif;
   font-size: 20px;
-  font-weight: 700;
+  color: var(--western-cream);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--newspaper-black);
-  white-space: nowrap;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* Álláshirdetés */
-.job-ad {
-  background: var(--newspaper-white);
-  border: 1px solid var(--newspaper-border);
-  padding: var(--spacing-lg);
-  margin-bottom: var(--spacing-lg);
-}
-
-.ad-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--newspaper-light-gray);
+.hero-name {
+  font-family: 'Cinzel', serif;
+  font-size: 42px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--western-dark-brown);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--spacing-md);
-  padding-bottom: var(--spacing-xs);
-  border-bottom: 1px dotted var(--newspaper-border);
+  letter-spacing: 0.1em;
+  margin: var(--spacing-lg) 0 var(--spacing-sm) 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-top: 3px double var(--western-brown);
+  border-bottom: 3px double var(--western-brown);
+  padding: var(--spacing-md) 0;
 }
 
-.ad-number,
-.ad-date {
-  font-family: 'Merriweather', serif;
-}
-
-.job-title {
-  font-family: 'Playfair Display', serif;
+.hero-title {
+  font-family: 'IM Fell English', serif;
   font-size: 24px;
   font-weight: 700;
+  text-align: center;
+  color: var(--western-brown);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--newspaper-black);
-  margin-bottom: var(--spacing-sm);
-  line-height: 1.3;
-  text-align: center;
-  padding: var(--spacing-sm) 0;
-  border-top: 2px solid var(--newspaper-black);
-  border-bottom: 2px solid var(--newspaper-black);
-}
-
-.candidate-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
-  color: var(--newspaper-black);
-  padding-bottom: var(--spacing-sm);
-  border-bottom: 1px solid var(--newspaper-border);
-}
-
-.ad-content {
-  margin-top: var(--spacing-md);
-}
-
-.ad-section {
   margin-bottom: var(--spacing-lg);
   padding-bottom: var(--spacing-md);
-  border-bottom: 1px dotted var(--newspaper-border);
+  border-bottom: 2px solid var(--western-brown);
 }
 
-.ad-section:last-of-type {
+/* Wanted poster */
+.wanted-poster {
+  background: var(--western-parchment);
+  border: 4px solid var(--western-dark-brown);
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  box-shadow: inset 0 0 20px rgba(139, 69, 19, 0.2);
+  position: relative;
+}
+
+.wanted-poster::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 2px dashed var(--western-brown);
+  pointer-events: none;
+}
+
+.poster-content {
+  position: relative;
+  z-index: 1;
+}
+
+.poster-section {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px dashed var(--western-brown);
+  position: relative;
+}
+
+.poster-section:last-of-type {
   border-bottom: none;
 }
 
 .section-label {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--newspaper-black);
+  letter-spacing: 0.1em;
+  color: var(--western-dark-brown);
   margin-bottom: var(--spacing-sm);
-  padding-bottom: var(--spacing-xs);
-  border-bottom: 1px solid var(--newspaper-black);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: linear-gradient(135deg, var(--western-tan) 0%, var(--western-cream) 100%);
+  border: 2px solid var(--western-brown);
+  border-radius: 4px;
   display: inline-block;
-  width: 100%;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.ad-text {
-  font-size: 15px;
+.poster-text {
+  font-size: 16px;
   line-height: 1.8;
-  color: var(--newspaper-black);
+  color: var(--western-black);
   text-align: justify;
   margin-top: var(--spacing-sm);
+  font-family: 'IM Fell English', serif;
 }
 
 /* Tapasztalat */
@@ -185,6 +223,10 @@ body {
 
 .job-entry {
   margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background: rgba(210, 180, 140, 0.2);
+  border-left: 4px solid var(--western-brown);
+  border-radius: 4px;
 }
 
 .job-header {
@@ -198,33 +240,37 @@ body {
 
 .job-position {
   font-weight: 700;
-  font-size: 17px;
-  color: var(--newspaper-black);
+  font-size: 18px;
+  color: var(--western-dark-brown);
+  font-family: 'Cinzel', serif;
 }
 
 .job-period {
   font-size: 14px;
-  color: var(--newspaper-gray);
+  color: var(--western-gray);
   font-style: italic;
 }
 
 .job-company {
   font-size: 15px;
-  color: var(--newspaper-gray);
+  color: var(--western-brown);
   margin-bottom: var(--spacing-sm);
   font-style: italic;
+  font-weight: 600;
 }
 
 .job-duties {
   margin-left: var(--spacing-md);
   margin-top: var(--spacing-xs);
-  list-style-type: disc;
+  list-style-type: '⚔️ ';
+  list-style-position: outside;
 }
 
 .job-duties li {
   margin-bottom: var(--spacing-xs);
   line-height: 1.7;
-  color: var(--newspaper-black);
+  color: var(--western-black);
+  padding-left: var(--spacing-xs);
 }
 
 /* Szakmai ismeretek */
@@ -236,43 +282,56 @@ body {
 }
 
 .skill-column {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.8;
-  color: var(--newspaper-black);
+  color: var(--western-black);
+  padding: var(--spacing-sm);
+  background: rgba(210, 180, 140, 0.15);
+  border: 1px solid var(--western-tan);
+  border-radius: 4px;
 }
 
 .skill-column strong {
   display: block;
   margin-bottom: var(--spacing-xs);
-  color: var(--newspaper-black);
+  color: var(--western-dark-brown);
   font-weight: 700;
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
 }
 
 /* Projektek */
 .project-block {
   margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: rgba(218, 165, 32, 0.1);
+  border: 2px solid var(--western-gold);
+  border-radius: 4px;
 }
 
-.project-title-ad {
+.project-title-poster {
   font-weight: 700;
-  font-size: 17px;
-  color: var(--newspaper-black);
+  font-size: 18px;
+  color: var(--western-dark-brown);
   margin-bottom: var(--spacing-xs);
+  font-family: 'Cinzel', serif;
 }
 
 .project-tech {
-  font-size: 13px;
-  color: var(--newspaper-gray);
+  font-size: 14px;
+  color: var(--western-brown);
   font-style: italic;
   margin-bottom: var(--spacing-sm);
 }
 
 /* Kapcsolat */
 .contact-section {
-  background: var(--newspaper-cream);
+  background: linear-gradient(135deg, var(--western-tan) 0%, var(--western-cream) 100%);
   padding: var(--spacing-md);
-  border: 1px solid var(--newspaper-border);
+  border: 3px solid var(--western-brown);
   margin-top: var(--spacing-lg);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .contact-info {
@@ -281,35 +340,44 @@ body {
 
 .contact-row {
   margin-bottom: var(--spacing-xs);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
 }
 
 .contact-row strong {
   font-weight: 700;
   margin-right: var(--spacing-xs);
+  color: var(--western-dark-brown);
+  font-family: 'Cinzel', serif;
 }
 
 /* Lábléc */
-.ad-footer {
+.poster-footer {
   margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-md);
-  border-top: 2px solid var(--newspaper-black);
+  padding: var(--spacing-md);
+  border-top: 4px double var(--western-dark-brown);
   text-align: center;
-}
-
-.footer-line {
-  height: 1px;
-  background: var(--newspaper-black);
-  margin-bottom: var(--spacing-sm);
+  background: linear-gradient(135deg, var(--western-dark-brown) 0%, var(--western-brown) 100%);
+  border-radius: 4px;
 }
 
 .footer-text {
-  font-size: 12px;
-  color: var(--newspaper-light-gray);
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--western-gold);
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer-subtext {
+  font-family: 'IM Fell English', serif;
+  font-size: 14px;
+  color: var(--western-cream);
   font-style: italic;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 /* Responsive */
@@ -318,19 +386,19 @@ body {
     padding: var(--spacing-sm);
   }
 
-  .newspaper-container {
+  .wanted-container {
     padding: var(--spacing-md);
   }
 
-  .newspaper-title {
-    font-size: 36px;
+  .wanted-title {
+    font-size: 48px;
   }
 
-  .job-title {
-    font-size: 20px;
+  .hero-name {
+    font-size: 32px;
   }
 
-  .candidate-name {
+  .hero-title {
     font-size: 18px;
   }
 
@@ -343,9 +411,8 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .ad-header {
-    flex-direction: column;
-    gap: var(--spacing-xs);
+  .footer-text {
+    font-size: 18px;
   }
 }
 
@@ -355,14 +422,13 @@ body {
     padding: 0;
   }
 
-  .newspaper-container {
-    box-shadow: none;
-    border: 1px solid black;
-    padding: 20mm;
-  }
-
-  .scanlines {
+  body::before {
     display: none;
   }
-}
 
+  .wanted-container {
+    box-shadow: none;
+    border: 2px solid black;
+    padding: 20mm;
+  }
+}
