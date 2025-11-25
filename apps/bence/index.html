@@ -3,158 +3,153 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bognár Bence – CV</title>
+  <title>Bognár Bence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="landing.css" />
 </head>
 <body>
-  <div class="newspaper-container">
-    <div class="newspaper-header">
-      <div class="newspaper-title">KISALFÖLD</div>
-      <div class="newspaper-date">2025. január</div>
-    </div>
-    
-    <div class="ad-section-header">
-      <div class="section-title-line"></div>
-      <div class="section-title-text">ÁLLÁSHIRDETÉSEK</div>
-      <div class="section-title-line"></div>
-    </div>
-
-    <div class="job-ad">
-      <div class="ad-header">
-        <div class="ad-number">Hirdetés száma: 2025/001</div>
-        <div class="ad-date">Közzétéve: 2025. január</div>
+  <div class="landing-container">
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-content">
+        <a href="/" class="nav-logo">
+          <span class="nav-logo-code">&lt;</span>Bognár Bence<span class="nav-logo-code">/&gt;</span>
+        </a>
+        <a href="cv.html" class="nav-link">CV</a>
       </div>
-      
-      <div class="job-title">SOFTWARE ENGINEER / PYTHON BACKEND FEJLESZTŐ</div>
-      
-      <div class="candidate-name">Bognár Bence</div>
-      
-      <div class="ad-content">
-        <!-- Rövid bemutatkozás -->
-        <div class="ad-section">
-          <div class="section-label">RÖVID BEMUTATKOZÁS</div>
-          <p class="ad-text">
-            Backend fejlesztés Pythonnal – olyan rendszereket épít, amik nem csak futnak,
-            hanem valódi üzleti értéket hoznak. Specializáció: Python backend fejlesztés,
-            cloud infrastruktúra és teljes stack megoldások.
-          </p>
-        </div>
+    </nav>
 
-        <!-- Tapasztalat -->
-        <div class="ad-section">
-          <div class="section-label">TAPASZTALAT</div>
-          <div class="experience-block">
-            <div class="job-entry">
-              <div class="job-header">
-                <span class="job-position">Software Engineer</span>
-                <span class="job-period">2020 – Jelenleg</span>
-              </div>
-              <div class="job-company">Freelance / bognar.dev</div>
-              <ul class="job-duties">
-                <li>Backend fejlesztés Pythonnal – olyan rendszereket épít, amik nem csak futnak, hanem valódi üzleti értéket hoznak</li>
-                <li>B2B dashboard logisztikai cégnek: Python backend API + admin dashboard, ami automatikusan összegyűjti és vizualizálja az adatokat</li>
-                <li>Manual reporting idő: 4 óráról 10 percre csökkent</li>
-                <li>Teljes stack fejlesztés egy csapatban: Python backend, JavaScript frontend</li>
-              </ul>
-            </div>
+    <!-- Hero Section -->
+    <main class="hero">
+      <div class="hero-content">
+        <!-- Profile Picture -->
+        <div class="profile-section">
+          <div class="profile-image-wrapper">
+            <div class="profile-tech-border"></div>
+            <img 
+              src="profile.jpeg" 
+              alt="Bognár Bence" 
+              class="profile-image"
+            />
+          </div>
+          <!-- Tech Stack Badges -->
+          <div class="tech-badges">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">FastAPI</span>
+            <span class="tech-badge">Django</span>
+            <span class="tech-badge">PostgreSQL</span>
           </div>
         </div>
 
-        <!-- Szakmai ismeretek -->
-        <div class="ad-section">
-          <div class="section-label">SZAKMAI ISMERETEK</div>
-          <div class="skills-columns">
-            <div class="skill-column">
-              <strong>Programozási nyelvek és keretrendszerek:</strong><br>
-              Python, FastAPI, Django, Flask
-            </div>
-            <div class="skill-column">
-              <strong>Backend és infrastruktúra:</strong><br>
-              REST APIs, Cloud Services, Database Design, System Architecture
-            </div>
-            <div class="skill-column">
-              <strong>Eszközök és technológiák:</strong><br>
-              Git, Docker, PostgreSQL, Linux
-            </div>
+        <!-- Intro Text -->
+        <div class="intro-section">
+          <div class="intro-header">
+            <span class="intro-label">Software Engineer</span>
+            <h1 class="intro-name">
+              <span class="code-symbol">$</span> Bognár Bence
+            </h1>
+            <p class="intro-title">Python Backend Developer</p>
           </div>
-        </div>
-
-        <!-- Végzettség -->
-        <div class="ad-section">
-          <div class="section-label">VÉGZETTSÉG</div>
-          <p class="ad-text">
-            [Diploma / Intézmény]<br>
-            [Év]<br>
-            [További részletek]
-          </p>
-        </div>
-
-        <!-- Projektek -->
-        <div class="ad-section">
-          <div class="section-label">FONTOSABB PROJEKTEK</div>
-          <div class="project-block">
-            <div class="project-title-ad">B2B Dashboard logisztikai cégnek</div>
-            <div class="project-tech">Python, FastAPI, Dashboard</div>
-            <p class="ad-text">
-              <strong>Kihívás:</strong> A cég napi 4 órát töltött manuális jelentéskészítéssel Excel táblázatokkal dolgoztak.<br>
-              <strong>Megoldás:</strong> Python backend API + admin dashboard, ami automatikusan összegyűjti és vizualizálja az adatokat.<br>
-              <strong>Eredmény:</strong> A manuális jelentéskészítési idő 4 óráról 10 percre csökkent.
+          
+          <div class="intro-text">
+            <p>
+              Backend fejlesztés Pythonnal – olyan rendszereket épít, amik nem csak futnak,
+              hanem valódi üzleti értéket hoznak.
+            </p>
+            <p>
+              Specializáció: Python backend fejlesztés, cloud infrastruktúra és teljes stack megoldások.
+              Tapasztalat: 2020 óta dolgozom freelance fejlesztőként, ahol különböző projekteken
+              segítek vállalatoknak hatékonyabbá tenni működésüket technológiai megoldásokkal.
             </p>
           </div>
-        </div>
 
-        <!-- Nyelvismeret -->
-        <div class="ad-section">
-          <div class="section-label">NYELVISMERET</div>
-          <p class="ad-text">
-            Magyar: anyanyelv<br>
-            Angol: felsőfokú
-          </p>
-        </div>
+          <!-- Code Snippet -->
+          <div class="code-snippet">
+            <div class="code-header">
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-dot"></span>
+              <span class="code-filename">main.py</span>
+            </div>
+            <pre class="code-content"><code><span class="code-keyword">def</span> <span class="code-function">build_backend</span>():
+    <span class="code-string">"""Olyan rendszereket épít, amik üzleti értéket hoznak"""</span>
+    <span class="code-keyword">return</span> {
+        <span class="code-string">"tech"</span>: [<span class="code-string">"Python"</span>, <span class="code-string">"FastAPI"</span>, <span class="code-string">"Django"</span>],
+        <span class="code-string">"result"</span>: <span class="code-string">"4 óra → 10 perc"</span>
+    }</code></pre>
+          </div>
 
-        <!-- Kapcsolat -->
-        <div class="ad-section contact-section">
-          <div class="section-label">KAPCSOLAT</div>
-          <div class="contact-info">
-            <div class="contact-row">
-              <strong>E-mail:</strong> bence@bognar.dev
+          <!-- Tech Stack -->
+          <div class="tech-stack-section">
+            <h3 class="tech-stack-title">Tech Stack</h3>
+            <div class="tech-stack-grid">
+              <div class="tech-item">
+                <span class="tech-icon">🐍</span>
+                <span class="tech-name">Python</span>
+              </div>
+              <div class="tech-item">
+                <span class="tech-icon">⚡</span>
+                <span class="tech-name">FastAPI</span>
+              </div>
+              <div class="tech-item">
+                <span class="tech-icon">🎯</span>
+                <span class="tech-name">Django</span>
+              </div>
+              <div class="tech-item">
+                <span class="tech-icon">🐳</span>
+                <span class="tech-name">Docker</span>
+              </div>
+              <div class="tech-item">
+                <span class="tech-icon">🗄️</span>
+                <span class="tech-name">PostgreSQL</span>
+              </div>
+              <div class="tech-item">
+                <span class="tech-icon">☁️</span>
+                <span class="tech-name">Cloud</span>
+              </div>
             </div>
-            <div class="contact-row">
-              <strong>Weboldal:</strong> bence.bognar.dev
-            </div>
-            <div class="contact-row">
-              <strong>Helyszín:</strong> Magyarország · Remote
-            </div>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="cta-section">
+            <a href="cv.html" class="cta-button">
+              <span>Önéletrajz megtekintése</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="contact-section">
+            <a href="mailto:bence@bognar.dev" class="contact-link">
+              <span class="contact-icon">✉️</span>
+              bence@bognar.dev
+            </a>
+            <span class="contact-separator">·</span>
+            <span class="contact-location">
+              <span class="contact-icon">📍</span>
+              Magyarország · Remote
+            </span>
           </div>
         </div>
       </div>
-      
-      <div class="ad-footer">
-        <div class="footer-line"></div>
-        <div class="footer-text">Kisalföld Hirdetési Iroda</div>
-      </div>
-    </div>
-  </div>
+    </main>
 
-  <!-- Print styles -->
-  <style media="print">
-    @page {
-      size: A4;
-      margin: 0;
-    }
-    body {
-      background: white;
-    }
-    .cv-container {
-      max-width: 100%;
-    }
-  </style>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p class="footer-text">
+          <span class="footer-code">const</span> <span class="footer-var">year</span> = <span class="footer-number">2025</span>;
+        </p>
+        <p class="footer-text">© Bognár Bence</p>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
-

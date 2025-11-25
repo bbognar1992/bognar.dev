@@ -1,18 +1,31 @@
-/* Kisalföld újság stílusú álláshirdetés */
+/* Academic Thesis/Dissertation Style */
 :root {
-  --newspaper-cream: #faf8f3;
-  --newspaper-white: #ffffff;
-  --newspaper-black: #1a1a1a;
-  --newspaper-gray: #4a4a4a;
-  --newspaper-light-gray: #8a8a8a;
-  --newspaper-border: #d4d4d4;
-  --newspaper-red: #8b0000;
-  --spacing-xs: 8px;
-  --spacing-sm: 16px;
-  --spacing-md: 24px;
-  --spacing-lg: 32px;
-  --spacing-xl: 48px;
-  --max-width: 900px;
+  --color-black: #000000;
+  --color-gray-dark: #333333;
+  --color-gray: #666666;
+  --color-gray-light: #999999;
+  --color-gray-lighter: #cccccc;
+  --color-white: #ffffff;
+  --color-link: #0066cc;
+  --color-link-hover: #004499;
+  
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+  
+  --max-width: 210mm;
+  --text-width: 160mm;
+  --margin-side: 25mm;
+  --margin-top: 30mm;
+  --margin-bottom: 25mm;
+  
+  --font-size-base: 12pt;
+  --font-size-small: 10pt;
+  --font-size-large: 14pt;
+  --line-height: 1.6;
 }
 
 * {
@@ -21,347 +34,474 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Merriweather', 'Times New Roman', serif;
-  background: var(--newspaper-cream);
-  color: var(--newspaper-black);
-  line-height: 1.7;
-  font-size: 15px;
-  padding: var(--spacing-md);
+html {
+  font-size: 16px;
 }
 
-.newspaper-container {
+body {
+  font-family: 'Crimson Text', 'Source Serif Pro', 'Times New Roman', Times, serif;
+  background: var(--color-white);
+  color: var(--color-black);
+  line-height: var(--line-height);
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* CV Navigation */
+.cv-nav {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-gray-lighter);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.cv-nav-link {
+  color: var(--color-link);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.cv-nav-link:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+.document {
   max-width: var(--max-width);
   margin: 0 auto;
-  background: var(--newspaper-white);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  padding: var(--spacing-xl);
-  border: 2px solid var(--newspaper-black);
+  background: var(--color-white);
+  padding: var(--margin-top) var(--margin-side) var(--margin-bottom);
 }
 
-/* Újság fejléc */
-.newspaper-header {
+/* Title Page */
+.title-page {
   text-align: center;
-  border-bottom: 3px double var(--newspaper-black);
-  padding-bottom: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-xxl) 0;
+  page-break-after: always;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.newspaper-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 48px;
-  font-weight: 900;
-  letter-spacing: 0.1em;
-  color: var(--newspaper-black);
+.document-title {
+  font-size: 24pt;
+  font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: var(--spacing-xs);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-xxl);
+  color: var(--color-black);
 }
 
-.newspaper-date {
-  font-size: 14px;
-  color: var(--newspaper-gray);
+.author-info {
+  margin-top: var(--spacing-xxl);
+}
+
+.author-name {
+  font-size: 18pt;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-black);
+}
+
+.author-title {
+  font-size: 14pt;
   font-style: italic;
+  color: var(--color-gray-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.author-location {
+  font-size: 12pt;
+  color: var(--color-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+.document-date {
+  font-size: 12pt;
+  color: var(--color-gray);
+  margin-top: var(--spacing-xl);
+}
+
+/* Table of Contents */
+.toc-page {
+  page-break-after: always;
+  padding: var(--spacing-xl) 0;
+}
+
+.toc-title {
+  font-size: 16pt;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-/* Szekció fejléc */
-.ad-section-header {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
   margin-bottom: var(--spacing-lg);
+  color: var(--color-black);
+  border-bottom: 2pt solid var(--color-black);
   padding-bottom: var(--spacing-sm);
-  border-bottom: 2px solid var(--newspaper-black);
 }
 
-.section-title-line {
+.toc-list {
+  list-style: none;
+  counter-reset: toc-counter;
+  padding-left: 0;
+}
+
+.toc-list li {
+  counter-increment: toc-counter;
+  margin-bottom: var(--spacing-sm);
+  padding-left: var(--spacing-lg);
+  position: relative;
+}
+
+.toc-list li::before {
+  content: counter(toc-counter) ".";
+  position: absolute;
+  left: 0;
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.toc-list a {
+  color: var(--color-black);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+}
+
+.toc-list a:hover {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+/* Content Sections */
+.content {
+  padding: var(--spacing-xl) 0;
+}
+
+.content-section {
+  margin-bottom: var(--spacing-xxl);
+  page-break-inside: avoid;
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.section-number {
+  font-size: 14pt;
+  font-weight: 600;
+  color: var(--color-black);
+  min-width: 2rem;
+  flex-shrink: 0;
+}
+
+.section-content {
   flex: 1;
-  height: 1px;
-  background: var(--newspaper-black);
+  max-width: var(--text-width);
 }
 
-.section-title-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--newspaper-black);
-  white-space: nowrap;
-}
-
-/* Álláshirdetés */
-.job-ad {
-  background: var(--newspaper-white);
-  border: 1px solid var(--newspaper-border);
-  padding: var(--spacing-lg);
+.section-title {
+  font-size: 14pt;
+  font-weight: 600;
   margin-bottom: var(--spacing-lg);
-}
-
-.ad-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--newspaper-light-gray);
+  color: var(--color-black);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: var(--spacing-md);
-  padding-bottom: var(--spacing-xs);
-  border-bottom: 1px dotted var(--newspaper-border);
 }
 
-.ad-number,
-.ad-date {
-  font-family: 'Merriweather', serif;
-}
-
-.job-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--newspaper-black);
-  margin-bottom: var(--spacing-sm);
-  line-height: 1.3;
-  text-align: center;
-  padding: var(--spacing-sm) 0;
-  border-top: 2px solid var(--newspaper-black);
-  border-bottom: 2px solid var(--newspaper-black);
-}
-
-.candidate-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: var(--spacing-lg);
-  color: var(--newspaper-black);
-  padding-bottom: var(--spacing-sm);
-  border-bottom: 1px solid var(--newspaper-border);
-}
-
-.ad-content {
-  margin-top: var(--spacing-md);
-}
-
-.ad-section {
-  margin-bottom: var(--spacing-lg);
-  padding-bottom: var(--spacing-md);
-  border-bottom: 1px dotted var(--newspaper-border);
-}
-
-.ad-section:last-of-type {
-  border-bottom: none;
-}
-
-.section-label {
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--newspaper-black);
-  margin-bottom: var(--spacing-sm);
-  padding-bottom: var(--spacing-xs);
-  border-bottom: 1px solid var(--newspaper-black);
-  display: inline-block;
-  width: 100%;
-}
-
-.ad-text {
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--newspaper-black);
+.section-text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-black);
   text-align: justify;
-  margin-top: var(--spacing-sm);
-}
-
-/* Tapasztalat */
-.experience-block {
-  margin-top: var(--spacing-sm);
-}
-
-.job-entry {
   margin-bottom: var(--spacing-md);
 }
 
-.job-header {
+.section-text.muted {
+  color: var(--color-gray);
+  font-style: italic;
+}
+
+/* Entries */
+.entry {
+  margin-bottom: var(--spacing-xl);
+}
+
+.entry-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: var(--spacing-xs);
   flex-wrap: wrap;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-sm);
 }
 
-.job-position {
-  font-weight: 700;
-  font-size: 17px;
-  color: var(--newspaper-black);
+.entry-title {
+  font-size: 12pt;
+  font-weight: 600;
+  color: var(--color-black);
 }
 
-.job-period {
-  font-size: 14px;
-  color: var(--newspaper-gray);
+.entry-period {
+  font-size: var(--font-size-small);
+  color: var(--color-gray);
   font-style: italic;
+  white-space: nowrap;
 }
 
-.job-company {
-  font-size: 15px;
-  color: var(--newspaper-gray);
-  margin-bottom: var(--spacing-sm);
-  font-style: italic;
-}
-
-.job-duties {
-  margin-left: var(--spacing-md);
-  margin-top: var(--spacing-xs);
-  list-style-type: disc;
-}
-
-.job-duties li {
-  margin-bottom: var(--spacing-xs);
-  line-height: 1.7;
-  color: var(--newspaper-black);
-}
-
-/* Szakmai ismeretek */
-.skills-columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-sm);
-}
-
-.skill-column {
-  font-size: 14px;
-  line-height: 1.8;
-  color: var(--newspaper-black);
-}
-
-.skill-column strong {
-  display: block;
-  margin-bottom: var(--spacing-xs);
-  color: var(--newspaper-black);
-  font-weight: 700;
-}
-
-/* Projektek */
-.project-block {
-  margin-top: var(--spacing-sm);
-}
-
-.project-title-ad {
-  font-weight: 700;
-  font-size: 17px;
-  color: var(--newspaper-black);
-  margin-bottom: var(--spacing-xs);
-}
-
-.project-tech {
-  font-size: 13px;
-  color: var(--newspaper-gray);
+.entry-institution {
+  font-size: var(--font-size-small);
+  color: var(--color-gray-dark);
   font-style: italic;
   margin-bottom: var(--spacing-sm);
 }
 
-/* Kapcsolat */
-.contact-section {
-  background: var(--newspaper-cream);
-  padding: var(--spacing-md);
-  border: 1px solid var(--newspaper-border);
-  margin-top: var(--spacing-lg);
-}
-
-.contact-info {
+.entry-list {
+  list-style: none;
+  padding-left: var(--spacing-lg);
   margin-top: var(--spacing-sm);
 }
 
-.contact-row {
-  margin-bottom: var(--spacing-xs);
-  font-size: 15px;
-  line-height: 1.8;
+.entry-list li {
+  position: relative;
+  padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-black);
+  text-align: justify;
 }
 
-.contact-row strong {
-  font-weight: 700;
-  margin-right: var(--spacing-xs);
+.entry-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-gray);
 }
 
-/* Lábléc */
-.ad-footer {
-  margin-top: var(--spacing-xl);
-  padding-top: var(--spacing-md);
-  border-top: 2px solid var(--newspaper-black);
-  text-align: center;
-}
-
-.footer-line {
-  height: 1px;
-  background: var(--newspaper-black);
+.entry-meta {
+  font-size: var(--font-size-small);
+  color: var(--color-gray);
+  font-style: italic;
   margin-bottom: var(--spacing-sm);
 }
 
-.footer-text {
-  font-size: 12px;
-  color: var(--newspaper-light-gray);
+/* Subsections */
+.subsection {
+  margin-bottom: var(--spacing-lg);
+}
+
+.subsection-title {
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: var(--spacing-sm);
+}
+
+.subsection-text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-black);
+  text-align: justify;
+}
+
+/* Projects */
+.project-details {
+  margin-top: var(--spacing-md);
+}
+
+.project-text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-black);
+  text-align: justify;
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-text strong {
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.project-text.highlight {
+  font-weight: 500;
+  color: var(--color-gray-dark);
+}
+
+/* Tables */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-lg) 0;
+  font-size: var(--font-size-base);
+}
+
+.data-table thead {
+  border-bottom: 1pt solid var(--color-black);
+}
+
+.data-table th {
+  text-align: left;
+  font-weight: 600;
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-black);
+  font-size: 11pt;
+}
+
+.data-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-black);
+  border-bottom: 0.5pt solid var(--color-gray-lighter);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.data-table a:hover {
+  text-decoration: underline;
+  color: var(--color-link-hover);
+}
+
+/* References */
+.references-page {
+  page-break-before: always;
+  padding: var(--spacing-xl) 0;
+  margin-top: var(--spacing-xxl);
+}
+
+.references-title {
+  font-size: 14pt;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-style: italic;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-black);
+  border-bottom: 1pt solid var(--color-black);
+  padding-bottom: var(--spacing-sm);
+}
+
+.references-text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  color: var(--color-black);
+  text-align: justify;
+}
+
+/* Links */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--color-link-hover);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  body {
-    padding: var(--spacing-sm);
+  .document {
+    padding: var(--spacing-lg) var(--spacing-md);
   }
 
-  .newspaper-container {
-    padding: var(--spacing-md);
-  }
-
-  .newspaper-title {
-    font-size: 36px;
-  }
-
-  .job-title {
-    font-size: 20px;
-  }
-
-  .candidate-name {
-    font-size: 18px;
-  }
-
-  .job-header {
+  .content-section {
     flex-direction: column;
-    align-items: flex-start;
   }
 
-  .skills-columns {
-    grid-template-columns: 1fr;
+  .section-number {
+    min-width: auto;
   }
 
-  .ad-header {
-    flex-direction: column;
-    gap: var(--spacing-xs);
+  .title-page {
+    min-height: auto;
+    padding: var(--spacing-xl) 0;
+  }
+
+  .document-title {
+    font-size: 20pt;
+  }
+
+  .author-name {
+    font-size: 16pt;
+  }
+
+  .section-title {
+    font-size: 12pt;
+  }
+
+  .data-table {
+    font-size: var(--font-size-small);
   }
 }
 
+@media (max-width: 480px) {
+  .document {
+    padding: var(--spacing-md);
+  }
+
+  .entry-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Print Styles */
 @media print {
+  @page {
+    size: A4;
+    margin: 2.5cm 2cm;
+  }
+
   body {
     background: white;
+    font-size: 12pt;
+  }
+
+  .document {
+    max-width: 100%;
     padding: 0;
   }
 
-  .newspaper-container {
-    box-shadow: none;
-    border: 1px solid black;
-    padding: 20mm;
+  .title-page {
+    page-break-after: always;
+    min-height: 100vh;
   }
 
-  .scanlines {
-    display: none;
+  .toc-page {
+    page-break-after: always;
+  }
+
+  .content-section {
+    page-break-inside: avoid;
+  }
+
+  .entry {
+    page-break-inside: avoid;
+  }
+
+  .data-table {
+    page-break-inside: avoid;
+  }
+
+  .references-page {
+    page-break-before: always;
+  }
+
+  a {
+    color: var(--color-black);
+    text-decoration: underline;
+  }
+
+  .toc-list a {
+    color: var(--color-black);
   }
 }
