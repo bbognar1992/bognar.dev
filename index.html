@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bognár.dev – Három testvér, egy márka</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Három testvér, három technológia, egy közös név: bognar.dev – Python backend, JavaScript frontend és C++ fejlesztés egy helyen."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020817;
+      --card: #0b1220;
+      --accent-bence: #2563eb;
+      --accent-two: #22c55e;
+      --accent-three: #f97316;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.65);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 60%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.92));
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 14px;
+      background: conic-gradient(
+        from 180deg,
+        var(--accent-bence),
+        var(--accent-two),
+        var(--accent-three),
+        var(--accent-bence)
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.8), 0 10px 25px rgba(15, 23, 42, 0.9);
+      font-size: 15px;
+      font-weight: 700;
+      color: #0b1120;
+    }
+
+    .brand-text-main {
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 0.18s ease border-color, 0.18s ease background, 0.18s ease color;
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+      color: #e5e7eb;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      background: linear-gradient(135deg, var(--accent-bence), #4f46e5);
+      border: 1px solid rgba(191, 219, 254, 0.4);
+      color: #e5e7eb;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.45);
+      cursor: pointer;
+    }
+
+    .nav-cta span.icon {
+      font-size: 14px;
+    }
+
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 20px 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 30px;
+        padding-bottom: 18px;
+      }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 9px 4px 4px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 14px;
+    }
+
+    .pill-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #e5e7eb, var(--accent-bence));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #0b1120;
+      border: 1px solid rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin: 0 0 12px;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(to right, #e5e7eb, #bfdbfe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      font-size: 14px;
+      padding: 10px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.18s ease transform, 0.18s ease box-shadow, 0.18s ease background,
+        0.18s ease border-color, 0.18s ease color;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-bence), #4f46e5);
+      border-color: rgba(191, 219, 254, 0.5);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 45px rgba(37, 99, 235, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      color: #e5e7eb;
+    }
+
+    .hero-note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(
+        circle at 0 0,
+        rgba(59, 130, 246, 0.23),
+        transparent 60%
+      );
+      opacity: 0.9;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 12px;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .hero-card-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .siblings-tag {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .hero-card-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .stack-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .stack-pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .siblings-column {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .siblings-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.85);
+    }
+
+    .siblings-row-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot-bence,
+    .dot-two,
+    .dot-three {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 1px solid #020617;
+    }
+
+    .dot-bence {
+      background: var(--accent-bence);
+    }
+
+    .dot-two {
+      background: var(--accent-two);
+    }
+
+    .dot-three {
+      background: var(--accent-three);
+    }
+
+    .siblings-role {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .siblings-link {
+      font-size: 11px;
+      color: #bfdbfe;
+      opacity: 0.9;
+    }
+
+    .siblings-link span {
+      margin-left: 4px;
+    }
+
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 8px 20px 32px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    .grid-three {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 880px) {
+      .grid-three {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .person-card {
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 13px;
+      background: radial-gradient(circle at top, #020617, #020817);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .person-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .person-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #e5e7eb, #111827);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 600;
+      color: #e5e7eb;
+      border: 1px solid #020617;
+    }
+
+    .person-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .person-name {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .person-role {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .person-tagline {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .person-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .pill-mini {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    .accent-bence {
+      border-color: rgba(37, 99, 235, 0.8);
+    }
+
+    .accent-two {
+      border-color: rgba(34, 197, 94, 0.7);
+    }
+
+    .accent-three {
+      border-color: rgba(249, 115, 22, 0.7);
+    }
+
+    .link-subtle {
+      color: #bfdbfe;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.9;
+    }
+
+    .link-subtle:hover {
+      opacity: 1;
+    }
+
+    .about-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 26px;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .about-section {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .about-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .about-card {
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      background: radial-gradient(circle at top left, #0f172a, #020617);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.85);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .about-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(31, 41, 55, 0.9);
+    }
+
+    .about-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .about-label {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    .about-value {
+      font-size: 12px;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 960px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 12px;
+      background: radial-gradient(circle at top, #020617, #020817);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.75);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .project-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .project-title {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .project-text {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .project-meta {
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .chip {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    .section-contact {
+      margin-top: 16px;
+      margin-bottom: 14px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      .section-contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-box {
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      background: radial-gradient(circle at top, #020617, #020817);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.85);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .contact-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-mail {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: #e5e7eb;
+    }
+
+    .contact-small {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 14px 20px 16px;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 10px;
+      background: rgba(2, 6, 23, 0.97);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Navigáció -->
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="brand-logo">B</div>
+          <div>
+            <div class="brand-text-main">bognar.dev</div>
+            <div class="brand-text-sub">három testvér, egy márka</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#testverek">Testvérek</a>
+          <a href="#rolunk">Történetünk</a>
+          <a href="#projektek">Projektek</a>
+          <a href="#kapcsolat">Kapcsolat</a>
+          <button class="nav-cta">
+            <span class="icon">✉️</span>
+            <span>Írj nekünk</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main>
+      <section class="hero">
+        <div>
+          <div class="pill">
+            <div class="pill-dot">∞</div>
+            <span>családi brand • Python • JavaScript • C++</span>
+          </div>
+          <h1 class="hero-title">
+            Három testvér.
+            <span class="hero-gradient">Három technológia.</span><br />
+            Egy közös név: Bognár.
+          </h1>
+          <p class="hero-subtitle">
+            A bognar.dev egy családi "stúdió": Python backend, JavaScript frontend
+            és C++ fejlesztés – egymást kiegészítve. Itt indulnak a saját
+            portfólió oldalak is.
+          </p>
+          <div class="hero-actions">
+            <!-- Itt majd az aldomain linkekre cserélheted a href-et -->
+            <a href="https://bence.bognar.dev" class="btn-primary">
+              Bence portfóliója
+              <span>↗</span>
+            </a>
+            <a href="#testverek" class="btn-ghost">
+              Ismerd meg a testvéreket
+            </a>
+          </div>
+          <div class="hero-note">
+            Tipp: a három testvér saját aldomainen mutatja be a munkáit (pl.
+            <code>bence.bognar.dev</code>).
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <div>
+                <div class="siblings-tag">Családi crew</div>
+                <div class="hero-card-title">Bognár testvérek</div>
+                <p class="hero-card-text">
+                  Mindhármunknak saját technológiai fókusza van – de a projektek, az értékrend és a
+                  név közös. Backend, frontend és C++ fejlesztés, egy helyről.
+                </p>
+                <div class="stack-row">
+                  <span class="stack-pill">Python / Backend</span>
+                  <span class="stack-pill">JavaScript / Frontend</span>
+                  <span class="stack-pill">C++</span>
+                </div>
+              </div>
+              <div class="siblings-column">
+                <div class="siblings-row">
+                  <div class="siblings-row-left">
+                    <div class="dot-bence"></div>
+                    <div>
+                      <div>Bence</div>
+                      <div class="siblings-role">Software Engineer / Python / backend</div>
+                    </div>
+                  </div>
+                  <a class="siblings-link" href="https://bence.bognar.dev">
+                    bence.bognar.dev <span>↗</span>
+                  </a>
+                </div>
+                <div class="siblings-row">
+                  <div class="siblings-row-left">
+                    <div class="dot-two"></div>
+                    <div>
+                      <div>Levente</div>
+                      <div class="siblings-role">Software Engineer / JS / frontend</div>
+                    </div>
+                  </div>
+                  <a class="siblings-link" href="https://levente.bognar.dev">
+                    levente.bognar.dev <span>↗</span>
+                  </a>
+                </div>
+                <div class="siblings-row">
+                  <div class="siblings-row-left">
+                    <div class="dot-three"></div>
+                    <div>
+                      <div>Lehet</div>
+                      <div class="siblings-role">Software Engineer / C++</div>
+                    </div>
+                  </div>
+                  <a class="siblings-link" href="https://lehet.bognar.dev">
+                    lehet.bognar.dev <span>↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testvérek szekció -->
+      <section class="section" id="testverek">
+        <div class="section-header">
+          <h2 class="section-title">Testvérek &amp; fókuszterületek</h2>
+          <p class="section-subtitle">
+            Mindhárman más technológiával dolgozunk – ez adja a bognar.dev erejét. Az alábbi
+            kártyák készíthetnek linket a saját aldomainedre.
+          </p>
+        </div>
+        <div class="grid-three">
+          <!-- Bence -->
+          <article class="person-card">
+            <div class="person-header">
+              <div class="person-avatar">B</div>
+              <div class="person-meta">
+                <div class="person-name">Bognár Bence</div>
+                <div class="person-role">Software Engineer / Python / backend</div>
+              </div>
+            </div>
+            <p class="person-tagline">
+              Backend fejlesztés Pythonnal – olyan rendszereket épít, amik nem csak futnak,
+              hanem valódi üzleti értéket hoznak.
+            </p>
+            <div class="person-footer">
+              <span class="pill-mini accent-bence">Python · Backend · Cloud</span>
+              <a class="link-subtle" href="https://bence.bognar.dev">
+                Portfólió megnyitása <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Levente -->
+          <article class="person-card">
+            <div class="person-header">
+              <div class="person-avatar">L</div>
+              <div class="person-meta">
+                <div class="person-name">Bognár Levente</div>
+                <div class="person-role">Software Engineer / JS / frontend</div>
+              </div>
+            </div>
+            <p class="person-tagline">
+              Frontend fejlesztés JavaScripttel – modern, reszponzív felhasználói felületeket
+              épít, amik nem csak jól néznek ki, hanem zökkenőmentesen működnek.
+            </p>
+            <div class="person-footer">
+              <span class="pill-mini accent-two">JavaScript · Frontend · React</span>
+              <a class="link-subtle" href="https://levente.bognar.dev">
+                Portfólió megnyitása <span>↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Lehet -->
+          <article class="person-card">
+            <div class="person-header">
+              <div class="person-avatar">Lh</div>
+              <div class="person-meta">
+                <div class="person-name">Bognár Lehet</div>
+                <div class="person-role">Software Engineer / C++</div>
+              </div>
+            </div>
+            <p class="person-tagline">
+              C++ fejlesztés – teljesítménykritikus rendszereket épít, ahol a sebesség
+              és az erőforrás-hatékonyság számít.
+            </p>
+            <div class="person-footer">
+              <span class="pill-mini accent-three">C++ · Systems · Performance</span>
+              <a class="link-subtle" href="https://lehet.bognar.dev">
+                Portfólió megnyitása <span>↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Rólunk -->
+      <section class="section" id="rolunk">
+        <div class="section-header">
+          <h2 class="section-title">A bognar.dev története</h2>
+          <p class="section-subtitle">
+            Röviden: ugyanaz a vezetéknév, teljesen külön utakon szerzett
+            tapasztalat – most egy közös “ernyő” alá húzva.
+          </p>
+        </div>
+        <div class="about-section">
+          <div class="about-text">
+            <p>
+              A bognar.dev egy családi projekt: három testvér közös digitális
+              "otthona". Mindenki a saját technológiai területén mozog otthonosan – Python backend,
+              JavaScript frontend, C++ –, de ha kell, összeállunk egy nagyobb
+              projektre is.
+            </p>
+            <p>
+              A főoldal célja, hogy egyértelműen megmutassa, kik vagyunk és mit
+              csinálunk, miközben egy kattintással elérhetőek a külön portfóliók.
+              Nem ügynökség, hanem családi stúdió vibe.
+            </p>
+          </div>
+          <aside class="about-card">
+            <div class="about-item">
+              <div class="about-label">Fókusz</div>
+              <div class="about-value">Python · JavaScript · C++</div>
+            </div>
+            <div class="about-item">
+              <div class="about-label">Bázis</div>
+              <div class="about-value">Magyarország · remote first</div>
+            </div>
+            <div class="about-item">
+              <div class="about-label">Nyelvek</div>
+              <div class="about-value">HU / EN</div>
+            </div>
+            <div class="about-item">
+              <div class="about-label">Mire jó nektek?</div>
+              <div class="about-value">közös márka &amp; külön portfóliók</div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Projektek -->
+      <section class="section" id="projektek">
+        <div class="section-header">
+          <h2 class="section-title">Vegyes ízelítő projektekből</h2>
+          <p class="section-subtitle">
+            Ez egy előnézeti szekció – ide tudtok berakni 1–1 zászlóshajó
+            projektet mindegyikőtöktől, hogy a látogató érezze a spektrumot.
+          </p>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-label">Bence · backend</div>
+            <div class="project-title">Python backend API &amp; dashboard</div>
+            <p class="project-text">
+              Skálázható backend rendszer Pythonnal, ami adatokat kezel és
+              érthető riportokba csomagolja az információkat.
+            </p>
+            <div class="project-meta">
+              <div class="chips-row">
+                <span class="chip">Python</span>
+                <span class="chip">Backend</span>
+                <span class="chip">API</span>
+              </div>
+              <span>case study →</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-label">Levente · frontend</div>
+            <div class="project-title">Modern React alkalmazás</div>
+            <p class="project-text">
+              Reszponzív webes felhasználói felület modern JavaScript keretrendszerekkel –
+              gyors, interaktív és felhasználóbarát megoldások.
+            </p>
+            <div class="project-meta">
+              <div class="chips-row">
+                <span class="chip">JavaScript</span>
+                <span class="chip">React</span>
+                <span class="chip">Frontend</span>
+              </div>
+              <span>case study →</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-label">Lehet · C++</div>
+            <div class="project-title">Teljesítménykritikus rendszer</div>
+            <p class="project-text">
+              Magas szintű optimalizáció és hatékonyság – C++ alapú rendszerfejlesztés,
+              ahol a sebesség és az erőforrás-használat kulcsfontosságú.
+            </p>
+            <div class="project-meta">
+              <div class="chips-row">
+                <span class="chip">C++</span>
+                <span class="chip">Systems</span>
+                <span class="chip">Performance</span>
+              </div>
+              <span>case study →</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Kapcsolat -->
+      <section class="section" id="kapcsolat">
+        <div class="section-header">
+          <h2 class="section-title">Kapcsolat &amp; együttműködés</h2>
+          <p class="section-subtitle">
+            Itt egy közös kontaktblokk, de nyugodtan szétbonthatod egyéni
+            elérhetőségre is, ha jobban illik hozzátok.
+          </p>
+        </div>
+        <div class="section-contact">
+          <div class="contact-box">
+            <div class="contact-label">Közös elérhetőség</div>
+            <div class="contact-mail">
+              <a href="mailto:hello@bognar.dev">hello@bognar.dev</a>
+            </div>
+            <p class="contact-small">
+              Írhatsz ide általános megkereséssel, és megbeszélitek, ki a legjobb
+              match a három testvér közül a projektre.
+            </p>
+          </div>
+          <div class="contact-box">
+            <div class="contact-label">Kinek írj közvetlenül?</div>
+            <p class="contact-small">
+              <strong>Bence</strong> – ha Python backend, API vagy szerveroldali
+              fejlesztés kell.<br />
+              <strong>Levente</strong> – ha JavaScript frontend, webes felhasználói felület vagy
+              modern UI/UX fejlesztés a téma.<br />
+              <strong>Lehet</strong> – ha C++, rendszerprogramozás vagy
+              teljesítménykritikus fejlesztés a téma.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Lábléc -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> bognar.dev – Bognár testvérek</div>
+        <div>kísérleti családi stúdió · HU / EN</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Egyszerű év-frissítés (elhagyható, ha full statikus kell) -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
