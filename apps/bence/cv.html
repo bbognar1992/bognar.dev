@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Serif+Pro:wght@400;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Times+New+Roman,serif&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="styles.css" />
@@ -16,208 +16,134 @@
   <nav class="cv-nav">
     <a href="index.html" class="cv-nav-link">← Vissza a főoldalra</a>
   </nav>
-  <div class="document">
-    <!-- Title Page -->
-    <div class="title-page">
-      <h1 class="document-title">Önéletrajz</h1>
-      <div class="author-info">
-        <h2 class="author-name">Bognár Bence</h2>
-        <p class="author-title">Software Engineer / Python Backend Developer</p>
-        <p class="author-location">Magyarország · Remote</p>
-        <p class="document-date">2025</p>
+  
+  <div class="cv-page">
+    <!-- Header -->
+    <header class="cv-header">
+      <h1 class="cv-name">Bognár Bence</h1>
+      <p class="cv-title">Software Engineer / Python Backend Developer</p>
+      <div class="cv-contact">
+        <span>E-mail: <a href="mailto:bence@bognar.dev">bence@bognar.dev</a></span>
+        <span>Weboldal: <a href="https://bence.bognar.dev" target="_blank" rel="noopener noreferrer">bence.bognar.dev</a></span>
+        <span>Magyarország · Remote</span>
       </div>
-    </div>
-
-    <!-- Table of Contents -->
-    <div class="toc-page">
-      <h2 class="toc-title">Tartalomjegyzék</h2>
-      <ol class="toc-list">
-        <li><a href="#section-1">Rövid bemutatkozás</a></li>
-        <li><a href="#section-2">Tapasztalat</a></li>
-        <li><a href="#section-3">Szakmai ismeretek</a></li>
-        <li><a href="#section-4">Fontosabb projektek</a></li>
-        <li><a href="#section-5">Végzettség</a></li>
-        <li><a href="#section-6">Nyelvismeret</a></li>
-        <li><a href="#section-7">Kapcsolat</a></li>
-      </ol>
-    </div>
+    </header>
 
     <!-- Main Content -->
-    <main class="content">
-      <!-- Section 1: About -->
-      <section id="section-1" class="content-section">
-        <h2 class="section-number">1.</h2>
-        <div class="section-content">
-          <h3 class="section-title">Rövid bemutatkozás</h3>
-          <p class="section-text">
-            Backend fejlesztés Pythonnal – olyan rendszereket épít, amik nem csak futnak,
-            hanem valódi üzleti értéket hoznak. Specializáció: Python backend fejlesztés,
-            cloud infrastruktúra és teljes stack megoldások.
+    <main class="cv-content">
+      <!-- About -->
+      <section class="cv-section">
+        <h2 class="section-heading">Rövid bemutatkozás</h2>
+        <p class="section-text">
+          Backend fejlesztés Pythonnal – olyan rendszereket épít, amik nem csak futnak,
+          hanem valódi üzleti értéket hoznak. Specializáció: Python backend fejlesztés,
+          cloud infrastruktúra és teljes stack megoldások.
+        </p>
+      </section>
+
+      <!-- Experience -->
+      <section class="cv-section">
+        <h2 class="section-heading">Tapasztalat</h2>
+        
+        <div class="cv-entry">
+          <div class="entry-header">
+            <h3 class="entry-title">Software Engineer</h3>
+            <span class="entry-date">2020 – Jelenleg</span>
+          </div>
+          <p class="entry-company">Freelance / bognar.dev</p>
+          <ul class="entry-list">
+            <li>Backend fejlesztés Pythonnal – olyan rendszereket épít, amik nem csak futnak, hanem valódi üzleti értéket hoznak</li>
+            <li>B2B dashboard logisztikai cégnek: Python backend API + admin dashboard, ami automatikusan összegyűjti és vizualizálja az adatokat</li>
+            <li>Manual reporting idő: 4 óráról 10 percre csökkent</li>
+            <li>Teljes stack fejlesztés egy csapatban: Python backend, JavaScript frontend</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="cv-section">
+        <h2 class="section-heading">Szakmai ismeretek</h2>
+        
+        <div class="skills-section">
+          <div class="skill-group">
+            <h3 class="skill-group-title">Programozási nyelvek és keretrendszerek</h3>
+            <p class="skill-list">Python, FastAPI, Django, Flask</p>
+          </div>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">Backend és infrastruktúra</h3>
+            <p class="skill-list">REST APIs, Cloud Services, Database Design, System Architecture</p>
+          </div>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">Eszközök és technológiák</h3>
+            <p class="skill-list">Git, Docker, PostgreSQL, Linux</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="cv-section">
+        <h2 class="section-heading">Fontosabb projektek</h2>
+        
+        <div class="cv-entry">
+          <h3 class="entry-title">B2B Dashboard logisztikai cégnek</h3>
+          <p class="entry-meta">Technológiák: Python, FastAPI, Dashboard</p>
+          <p class="project-text">
+            <strong>Kihívás:</strong> A cég napi 4 órát töltött manuális jelentéskészítéssel Excel táblázatokkal dolgoztak.
+          </p>
+          <p class="project-text">
+            <strong>Megoldás:</strong> Python backend API + admin dashboard, ami automatikusan összegyűjti és vizualizálja az adatokat.
+          </p>
+          <p class="project-text">
+            <strong>Eredmény:</strong> A manuális jelentéskészítési idő 4 óráról 10 percre csökkent.
           </p>
         </div>
       </section>
 
-      <!-- Section 2: Experience -->
-      <section id="section-2" class="content-section">
-        <h2 class="section-number">2.</h2>
-        <div class="section-content">
-          <h3 class="section-title">Tapasztalat</h3>
-          
-          <div class="entry">
-            <div class="entry-header">
-              <h4 class="entry-title">Software Engineer</h4>
-              <span class="entry-period">2020 – Jelenleg</span>
-            </div>
-            <p class="entry-institution">Freelance / bognar.dev</p>
-            <ul class="entry-list">
-              <li>Backend fejlesztés Pythonnal – olyan rendszereket épít, amik nem csak futnak, hanem valódi üzleti értéket hoznak</li>
-              <li>B2B dashboard logisztikai cégnek: Python backend API + admin dashboard, ami automatikusan összegyűjti és vizualizálja az adatokat</li>
-              <li>Manual reporting idő: 4 óráról 10 percre csökkent</li>
-              <li>Teljes stack fejlesztés egy csapatban: Python backend, JavaScript frontend</li>
-            </ul>
-          </div>
-        </div>
+      <!-- Education -->
+      <section class="cv-section">
+        <h2 class="section-heading">Végzettség</h2>
+        <p class="section-text muted">
+          [Diploma / Intézmény]<br>
+          [Év]<br>
+          [További részletek]
+        </p>
       </section>
 
-      <!-- Section 3: Skills -->
-      <section id="section-3" class="content-section">
-        <h2 class="section-number">3.</h2>
-        <div class="section-content">
-          <h3 class="section-title">Szakmai ismeretek</h3>
-          
-          <div class="subsection">
-            <h4 class="subsection-title">3.1. Programozási nyelvek és keretrendszerek</h4>
-            <p class="subsection-text">
-              Python, FastAPI, Django, Flask
-            </p>
+      <!-- Languages -->
+      <section class="cv-section">
+        <h2 class="section-heading">Nyelvismeret</h2>
+        <div class="languages-list">
+          <div class="language-item">
+            <span class="language-name">Magyar</span>
+            <span class="language-level">anyanyelv</span>
           </div>
-
-          <div class="subsection">
-            <h4 class="subsection-title">3.2. Backend és infrastruktúra</h4>
-            <p class="subsection-text">
-              REST APIs, Cloud Services, Database Design, System Architecture
-            </p>
+          <div class="language-item">
+            <span class="language-name">Angol</span>
+            <span class="language-level">felsőfokú</span>
           </div>
-
-          <div class="subsection">
-            <h4 class="subsection-title">3.3. Eszközök és technológiák</h4>
-            <p class="subsection-text">
-              Git, Docker, PostgreSQL, Linux
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section 4: Projects -->
-      <section id="section-4" class="content-section">
-        <h2 class="section-number">4.</h2>
-        <div class="section-content">
-          <h3 class="section-title">Fontosabb projektek</h3>
-          
-          <div class="entry">
-            <h4 class="entry-title">B2B Dashboard logisztikai cégnek</h4>
-            <p class="entry-meta"><em>Technológiák: Python, FastAPI, Dashboard</em></p>
-            <div class="project-details">
-              <p class="project-text">
-                <strong>Kihívás:</strong> A cég napi 4 órát töltött manuális jelentéskészítéssel Excel táblázatokkal dolgoztak.
-              </p>
-              <p class="project-text">
-                <strong>Megoldás:</strong> Python backend API + admin dashboard, ami automatikusan összegyűjti és vizualizálja az adatokat.
-              </p>
-              <p class="project-text highlight">
-                <strong>Eredmény:</strong> A manuális jelentéskészítési idő 4 óráról 10 percre csökkent.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section 5: Education -->
-      <section id="section-5" class="content-section">
-        <h2 class="section-number">5.</h2>
-        <div class="section-content">
-          <h3 class="section-title">Végzettség</h3>
-          <p class="section-text muted">
-            [Diploma / Intézmény]<br>
-            [Év]<br>
-            [További részletek]
-          </p>
-        </div>
-      </section>
-
-      <!-- Section 6: Languages -->
-      <section id="section-6" class="content-section">
-        <h2 class="section-number">6.</h2>
-        <div class="section-content">
-          <h3 class="section-title">Nyelvismeret</h3>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Nyelv</th>
-                <th>Szint</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Magyar</td>
-                <td>anyanyelv</td>
-              </tr>
-              <tr>
-                <td>Angol</td>
-                <td>felsőfokú</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Section 7: Contact -->
-      <section id="section-7" class="content-section">
-        <h2 class="section-number">7.</h2>
-        <div class="section-content">
-          <h3 class="section-title">Kapcsolat</h3>
-          <table class="data-table">
-            <tbody>
-              <tr>
-                <td><strong>E-mail</strong></td>
-                <td><a href="mailto:bence@bognar.dev">bence@bognar.dev</a></td>
-              </tr>
-              <tr>
-                <td><strong>Weboldal</strong></td>
-                <td><a href="https://bence.bognar.dev" target="_blank" rel="noopener noreferrer">bence.bognar.dev</a></td>
-              </tr>
-              <tr>
-                <td><strong>Helyszín</strong></td>
-                <td>Magyarország · Remote</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </section>
     </main>
-
-    <!-- References/Bibliography placeholder -->
-    <div class="references-page">
-      <h2 class="references-title">Jegyzetek</h2>
-      <p class="references-text">
-        Ez a dokumentum 2025-ben készült és tartalmazza a szerző szakmai tapasztalatait és készségeit.
-      </p>
-    </div>
   </div>
 
   <!-- Print styles -->
   <style media="print">
     @page {
       size: A4;
-      margin: 2.5cm 2cm;
+      margin: 2cm;
     }
     body {
       background: white;
     }
-    .document {
+    .cv-nav {
+      display: none;
+    }
+    .cv-page {
       max-width: 100%;
+      box-shadow: none;
     }
   </style>
 </body>
 </html>
-
