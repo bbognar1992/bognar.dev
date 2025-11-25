@@ -1,0 +1,367 @@
+/* Kisalföld újság stílusú álláshirdetés */
+:root {
+  --newspaper-cream: #faf8f3;
+  --newspaper-white: #ffffff;
+  --newspaper-black: #1a1a1a;
+  --newspaper-gray: #4a4a4a;
+  --newspaper-light-gray: #8a8a8a;
+  --newspaper-border: #d4d4d4;
+  --newspaper-red: #8b0000;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --max-width: 900px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Merriweather', 'Times New Roman', serif;
+  background: var(--newspaper-cream);
+  color: var(--newspaper-black);
+  line-height: 1.7;
+  font-size: 15px;
+  padding: var(--spacing-md);
+}
+
+.newspaper-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--newspaper-white);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: var(--spacing-xl);
+  border: 2px solid var(--newspaper-black);
+}
+
+/* Újság fejléc */
+.newspaper-header {
+  text-align: center;
+  border-bottom: 3px double var(--newspaper-black);
+  padding-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.newspaper-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--newspaper-black);
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-xs);
+}
+
+.newspaper-date {
+  font-size: 14px;
+  color: var(--newspaper-gray);
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Szekció fejléc */
+.ad-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--newspaper-black);
+}
+
+.section-title-line {
+  flex: 1;
+  height: 1px;
+  background: var(--newspaper-black);
+}
+
+.section-title-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--newspaper-black);
+  white-space: nowrap;
+}
+
+/* Álláshirdetés */
+.job-ad {
+  background: var(--newspaper-white);
+  border: 1px solid var(--newspaper-border);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.ad-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--newspaper-light-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px dotted var(--newspaper-border);
+}
+
+.ad-number,
+.ad-date {
+  font-family: 'Merriweather', serif;
+}
+
+.job-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--newspaper-black);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.3;
+  text-align: center;
+  padding: var(--spacing-sm) 0;
+  border-top: 2px solid var(--newspaper-black);
+  border-bottom: 2px solid var(--newspaper-black);
+}
+
+.candidate-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--newspaper-black);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--newspaper-border);
+}
+
+.ad-content {
+  margin-top: var(--spacing-md);
+}
+
+.ad-section {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px dotted var(--newspaper-border);
+}
+
+.ad-section:last-of-type {
+  border-bottom: none;
+}
+
+.section-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--newspaper-black);
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--newspaper-black);
+  display: inline-block;
+  width: 100%;
+}
+
+.ad-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--newspaper-black);
+  text-align: justify;
+  margin-top: var(--spacing-sm);
+}
+
+/* Tapasztalat */
+.experience-block {
+  margin-top: var(--spacing-sm);
+}
+
+.job-entry {
+  margin-bottom: var(--spacing-md);
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--spacing-xs);
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.job-position {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--newspaper-black);
+}
+
+.job-period {
+  font-size: 14px;
+  color: var(--newspaper-gray);
+  font-style: italic;
+}
+
+.job-company {
+  font-size: 15px;
+  color: var(--newspaper-gray);
+  margin-bottom: var(--spacing-sm);
+  font-style: italic;
+}
+
+.job-duties {
+  margin-left: var(--spacing-md);
+  margin-top: var(--spacing-xs);
+  list-style-type: disc;
+}
+
+.job-duties li {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.7;
+  color: var(--newspaper-black);
+}
+
+/* Szakmai ismeretek */
+.skills-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+}
+
+.skill-column {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--newspaper-black);
+}
+
+.skill-column strong {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--newspaper-black);
+  font-weight: 700;
+}
+
+/* Projektek */
+.project-block {
+  margin-top: var(--spacing-sm);
+}
+
+.project-title-ad {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--newspaper-black);
+  margin-bottom: var(--spacing-xs);
+}
+
+.project-tech {
+  font-size: 13px;
+  color: var(--newspaper-gray);
+  font-style: italic;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Kapcsolat */
+.contact-section {
+  background: var(--newspaper-cream);
+  padding: var(--spacing-md);
+  border: 1px solid var(--newspaper-border);
+  margin-top: var(--spacing-lg);
+}
+
+.contact-info {
+  margin-top: var(--spacing-sm);
+}
+
+.contact-row {
+  margin-bottom: var(--spacing-xs);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.contact-row strong {
+  font-weight: 700;
+  margin-right: var(--spacing-xs);
+}
+
+/* Lábléc */
+.ad-footer {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-md);
+  border-top: 2px solid var(--newspaper-black);
+  text-align: center;
+}
+
+.footer-line {
+  height: 1px;
+  background: var(--newspaper-black);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-text {
+  font-size: 12px;
+  color: var(--newspaper-light-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: var(--spacing-sm);
+  }
+
+  .newspaper-container {
+    padding: var(--spacing-md);
+  }
+
+  .newspaper-title {
+    font-size: 36px;
+  }
+
+  .job-title {
+    font-size: 20px;
+  }
+
+  .candidate-name {
+    font-size: 18px;
+  }
+
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .skills-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .ad-header {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .newspaper-container {
+    box-shadow: none;
+    border: 1px solid black;
+    padding: 20mm;
+  }
+
+  .scanlines {
+    display: none;
+  }
+}
