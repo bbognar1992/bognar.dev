@@ -111,13 +111,66 @@ body {
   justify-content: center;
 }
 
+/* Coming Soon Notice */
+.coming-soon-notice {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 107, 53, 0.1);
+  border: 2px solid var(--color-orange);
+  border-radius: 12px;
+  padding: var(--spacing-xl);
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: var(--color-orange);
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
+  }
+  50% {
+    border-color: var(--color-orange);
+    box-shadow: 0 0 0 8px rgba(255, 107, 53, 0);
+  }
+}
+
+.notice-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.notice-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.notice-text {
+  flex: 1;
+}
+
+.notice-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-xs);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.02em;
+}
+
+.notice-subtitle {
+  font-size: 1rem;
+  color: var(--color-gray-lighter);
+  line-height: 1.6;
+  margin: 0;
+}
+
 .hero-content {
   max-width: var(--content-width);
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: var(--spacing-xxl);
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Profile Section */
@@ -500,6 +553,23 @@ body {
   .tech-stack-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .coming-soon-notice {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .notice-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .notice-icon {
+    font-size: 2.5rem;
+  }
+
+  .notice-title {
+    font-size: 1.25rem;
+  }
 }
 
 @media (max-width: 640px) {
@@ -541,5 +611,21 @@ body {
 
   .tech-stack-grid {
     grid-template-columns: 1fr;
+  }
+
+  .coming-soon-notice {
+    padding: var(--spacing-md);
+  }
+
+  .notice-icon {
+    font-size: 2rem;
+  }
+
+  .notice-title {
+    font-size: 1.125rem;
+  }
+
+  .notice-subtitle {
+    font-size: 0.875rem;
   }
 }
