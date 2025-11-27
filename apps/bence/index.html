@@ -12,42 +12,37 @@
   />
   <link rel="stylesheet" href="landing.css" />
   <style>
-    /* Pythonic design - Hormozi-style conversion optimized */
+    /* Dark mode + single accent - Developer-friendly design */
     :root {
-      --python-blue: #3776ab;
-      --python-blue-dark: #2d5a7e;
-      --python-yellow: #FFD43B;
-      --python-yellow-light: #FFE873;
-      --dina-bg-light: #ffffff;
-      --dina-bg-dark: #0a1929;
-      --dina-text-light: #000000;
-      --dina-text-dark: #ffffff;
-      --dina-gray: #666666;
-      --dina-gray-light: #999999;
-      --code-bg: #f8f9fa;
-      --code-border: #e9ecef;
-      --success-green: #28a745;
+      --accent-cyan: #22D3EE;
+      --accent-yellow: #FACC15;
+      --bg-dark: #0a0a0a;
+      --bg-dark-soft: #111111;
+      --bg-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --border-color: #27272a;
+      --code-bg: #1a1a1a;
+      --code-border: #27272a;
+      --success-green: #22c55e;
     }
 
     body {
-      background: var(--dina-bg-light);
-      color: var(--dina-text-light);
+      background: var(--bg-dark);
+      color: var(--text-primary);
     }
 
     .dina-nav {
       padding: var(--spacing-md) var(--spacing-lg);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(255, 255, 255, 0.98) 100%
-      );
+      background: rgba(10, 10, 10, 0.8);
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 1px solid rgba(55, 118, 171, 0.15);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
     }
 
     .dina-nav-content {
@@ -61,7 +56,7 @@
     .dina-logo {
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--dina-text-light);
+      color: var(--text-primary);
       text-decoration: none;
       font-family: 'Inter', sans-serif;
       letter-spacing: -0.02em;
@@ -69,13 +64,13 @@
     }
 
     .dina-logo:hover {
-      color: var(--python-blue);
+      color: var(--accent-cyan);
     }
 
     .logo-subtitle {
       font-size: 0.875rem;
       font-weight: 500;
-      color: var(--dina-gray);
+      color: var(--text-secondary);
       margin-left: 0.5rem;
       letter-spacing: 0;
       opacity: 0.7;
@@ -84,7 +79,7 @@
 
     .dina-logo:hover .logo-subtitle {
       opacity: 1;
-      color: var(--python-blue-dark);
+      color: var(--accent-cyan);
     }
 
     .dina-nav-right {
@@ -94,7 +89,7 @@
     }
 
     .dina-link {
-      color: var(--dina-text-light);
+      color: var(--text-secondary);
       text-decoration: none;
       font-size: 0.9375rem;
       font-weight: 500;
@@ -104,7 +99,7 @@
     }
 
     .dina-link:hover {
-      color: var(--python-blue);
+      color: var(--accent-cyan);
     }
 
     .dina-link::after {
@@ -114,7 +109,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--python-yellow);
+      background: var(--accent-yellow);
       transition: width 0.2s;
     }
 
@@ -134,31 +129,32 @@
       align-items: center;
       gap: var(--spacing-xs);
       padding: var(--spacing-xs) var(--spacing-sm);
-      background: rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(55, 118, 171, 0.2);
+      background: rgba(26, 26, 26, 0.8);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s ease;
       font-size: 0.875rem;
       font-weight: 500;
-      color: var(--dina-text-light);
+      color: var(--text-secondary);
       white-space: nowrap;
       min-width: 50px;
       backdrop-filter: blur(10px);
     }
 
     .lang-button:hover {
-      background: rgba(55, 118, 171, 0.1);
-      border-color: rgba(55, 118, 171, 0.3);
+      background: rgba(34, 211, 238, 0.1);
+      border-color: rgba(34, 211, 238, 0.3);
+      color: var(--accent-cyan);
       transform: translateY(-1px);
-      box-shadow: 0 2px 8px rgba(55, 118, 171, 0.15);
+      box-shadow: 0 2px 8px rgba(34, 211, 238, 0.2);
     }
 
     .lang-button.active {
-      background: linear-gradient(135deg, var(--python-blue) 0%, var(--python-blue-dark) 100%);
-      color: var(--dina-bg-light);
-      border-color: var(--python-blue);
-      box-shadow: 0 2px 12px rgba(55, 118, 171, 0.3);
+      background: var(--accent-cyan);
+      color: var(--bg-dark);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 2px 12px rgba(34, 211, 238, 0.4);
     }
 
     .lang-flag {
@@ -172,7 +168,7 @@
     /* Hero Section - Big Headline */
     .hero-section {
       padding: var(--spacing-xxl) var(--spacing-lg);
-      background: linear-gradient(135deg, var(--dina-bg-light) 0%, #f0f7ff 100%);
+      background: var(--bg-dark);
       position: relative;
       overflow: hidden;
       min-height: 70vh;
@@ -208,7 +204,7 @@
       font-weight: 900;
       line-height: 1.1;
       letter-spacing: -0.04em;
-      color: var(--dina-text-light);
+      color: var(--text-primary);
       margin-bottom: var(--spacing-lg);
       font-family: 'Inter', sans-serif;
     }
@@ -217,14 +213,14 @@
       font-size: clamp(1.25rem, 2.5vw, 1.75rem);
       font-weight: 400;
       line-height: 1.4;
-      color: var(--dina-gray);
+      color: var(--text-secondary);
       margin-bottom: var(--spacing-xl);
       font-family: 'Inter', sans-serif;
       max-width: 800px;
     }
 
     .python-accent {
-      color: var(--python-blue);
+      color: var(--accent-cyan);
       position: relative;
     }
 
@@ -235,7 +231,7 @@
       left: 0;
       right: 0;
       height: 0.15em;
-      background: linear-gradient(90deg, var(--python-blue), var(--python-yellow));
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-yellow));
       opacity: 0.3;
       z-index: -1;
     }
@@ -243,7 +239,7 @@
     /* Dream Outcome Section */
     .outcome-section {
       padding: var(--spacing-xxl) var(--spacing-lg);
-      background: var(--dina-bg-light);
+      background: var(--bg-dark);
     }
 
     .outcome-container {
@@ -258,7 +254,7 @@
       letter-spacing: -0.03em;
       margin-bottom: var(--spacing-xl);
       font-family: 'Inter', sans-serif;
-      color: var(--dina-text-light);
+      color: var(--text-primary);
     }
 
     .outcome-grid {
@@ -269,16 +265,17 @@
 
     .outcome-item {
       padding: var(--spacing-xl);
-      background: var(--code-bg);
-      border: 1px solid var(--code-border);
-      border-left: 4px solid var(--python-blue);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent-cyan);
       border-radius: 8px;
       transition: all 0.3s;
     }
 
     .outcome-item:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(55, 118, 171, 0.15);
+      box-shadow: 0 8px 24px rgba(34, 211, 238, 0.2);
+      border-color: var(--accent-cyan);
     }
 
     .outcome-icon {
@@ -289,7 +286,7 @@
     .outcome-title {
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--dina-text-light);
+      color: var(--text-primary);
       margin-bottom: var(--spacing-sm);
       font-family: 'Inter', sans-serif;
     }
@@ -297,15 +294,15 @@
     .outcome-description {
       font-size: 1rem;
       line-height: 1.6;
-      color: var(--dina-gray);
+      color: var(--text-secondary);
       font-family: 'Inter', sans-serif;
     }
 
     /* Proof Section */
     .proof-section {
       padding: var(--spacing-xxl) var(--spacing-lg);
-      background: linear-gradient(135deg, var(--dina-bg-dark) 0%, #0d1f2e 100%);
-      color: var(--dina-text-dark);
+      background: var(--bg-dark-soft);
+      color: var(--text-primary);
       position: relative;
     }
 
@@ -316,7 +313,7 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--python-blue), transparent);
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
     }
 
     .proof-container {
@@ -325,7 +322,7 @@
     }
 
     .proof-section .section-title {
-      color: var(--dina-text-dark);
+      color: var(--text-primary);
       text-align: center;
     }
 
@@ -336,23 +333,24 @@
     }
 
     .proof-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: var(--spacing-xl);
       transition: all 0.3s;
     }
 
     .proof-card:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--python-blue);
+      background: rgba(34, 211, 238, 0.05);
+      border-color: var(--accent-cyan);
       transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(34, 211, 238, 0.15);
     }
 
     .proof-number {
       font-size: 3rem;
       font-weight: 800;
-      color: var(--python-yellow);
+      color: var(--accent-yellow);
       font-family: 'Inter', sans-serif;
       margin-bottom: var(--spacing-sm);
     }
@@ -360,7 +358,7 @@
     .proof-title {
       font-size: 1.25rem;
       font-weight: 600;
-      color: var(--dina-text-dark);
+      color: var(--text-primary);
       margin-bottom: var(--spacing-sm);
       font-family: 'Inter', sans-serif;
     }
@@ -368,14 +366,14 @@
     .proof-description {
       font-size: 1rem;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--text-secondary);
       font-family: 'Inter', sans-serif;
     }
 
     /* Project Cards in Proof Section */
     .project-card-proof {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
       border-radius: 12px;
       padding: var(--spacing-xl);
       transition: all 0.3s;
@@ -385,15 +383,16 @@
     }
 
     .project-card-proof:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--python-blue);
+      background: rgba(34, 211, 238, 0.05);
+      border-color: var(--accent-cyan);
       transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(34, 211, 238, 0.15);
     }
 
     .project-number-proof {
       font-size: 0.875rem;
       font-weight: 600;
-      color: var(--python-yellow);
+      color: var(--accent-yellow);
       font-family: 'JetBrains Mono', monospace;
       opacity: 0.8;
     }
@@ -401,7 +400,7 @@
     .project-title-proof {
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--dina-text-dark);
+      color: var(--text-primary);
       margin: 0;
       font-family: 'Inter', sans-serif;
     }
@@ -409,7 +408,7 @@
     .project-description-proof {
       font-size: 1rem;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--text-secondary);
       font-family: 'Inter', sans-serif;
       flex: 1;
     }
@@ -423,12 +422,12 @@
 
     .tech-tag-proof {
       padding: 0.25rem 0.75rem;
-      background: rgba(55, 118, 171, 0.2);
-      border: 1px solid rgba(55, 118, 171, 0.3);
+      background: rgba(34, 211, 238, 0.15);
+      border: 1px solid rgba(34, 211, 238, 0.3);
       border-radius: 4px;
       font-size: 0.75rem;
       font-weight: 500;
-      color: var(--python-yellow);
+      color: var(--accent-cyan);
       font-family: 'JetBrains Mono', monospace;
     }
 
@@ -437,12 +436,12 @@
       align-items: center;
       gap: var(--spacing-xs);
       padding: 0.25rem 0.75rem;
-      background: rgba(255, 212, 59, 0.15);
-      border: 1px solid rgba(255, 212, 59, 0.3);
+      background: rgba(250, 204, 21, 0.15);
+      border: 1px solid rgba(250, 204, 21, 0.3);
       border-radius: 20px;
       font-size: 0.75rem;
       font-weight: 600;
-      color: var(--python-yellow);
+      color: var(--accent-yellow);
       font-family: 'Inter', sans-serif;
       margin-bottom: var(--spacing-xs);
       width: fit-content;
@@ -457,8 +456,8 @@
       align-items: center;
       gap: var(--spacing-sm);
       padding: var(--spacing-md) var(--spacing-xl);
-      background: var(--python-yellow);
-      color: var(--dina-bg-dark);
+      background: var(--accent-yellow);
+      color: var(--bg-dark);
       text-decoration: none;
       border-radius: 50px;
       font-size: 1rem;
@@ -466,19 +465,19 @@
       transition: all 0.3s;
       font-family: 'Inter', sans-serif;
       margin-top: var(--spacing-xl);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 20px rgba(250, 204, 21, 0.3);
     }
 
     .projects-cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
-      background: var(--python-yellow-light);
+      box-shadow: 0 6px 30px rgba(250, 204, 21, 0.4);
+      background: #FDE047;
     }
 
     /* Process Section */
     .process-section {
       padding: var(--spacing-xxl) var(--spacing-lg);
-      background: var(--dina-bg-light);
+      background: var(--bg-dark);
     }
 
     .process-container {
@@ -500,7 +499,7 @@
     .process-number {
       font-size: 3rem;
       font-weight: 800;
-      color: var(--python-blue);
+      color: var(--accent-cyan);
       font-family: 'Inter', sans-serif;
       line-height: 1;
       flex-shrink: 0;
@@ -513,7 +512,7 @@
     .process-title {
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--dina-text-light);
+      color: var(--text-primary);
       margin-bottom: var(--spacing-sm);
       font-family: 'Inter', sans-serif;
     }
@@ -521,14 +520,14 @@
     .process-description {
       font-size: 1.125rem;
       line-height: 1.7;
-      color: var(--dina-gray);
+      color: var(--text-secondary);
       font-family: 'Inter', sans-serif;
     }
 
     /* Offers Section */
     .offers-section {
       padding: var(--spacing-xxl) var(--spacing-lg);
-      background: var(--code-bg);
+      background: var(--bg-dark-soft);
     }
 
     .offers-container {
@@ -544,8 +543,8 @@
     }
 
     .offer-card {
-      background: var(--dina-bg-light);
-      border: 2px solid var(--code-border);
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
       border-radius: 12px;
       padding: var(--spacing-xl);
       transition: all 0.3s;
@@ -553,13 +552,13 @@
     }
 
     .offer-card:hover {
-      border-color: var(--python-blue);
+      border-color: var(--accent-cyan);
       transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(55, 118, 171, 0.2);
+      box-shadow: 0 8px 24px rgba(34, 211, 238, 0.2);
     }
 
     .offer-card.featured {
-      border-color: var(--python-blue);
+      border-color: var(--accent-cyan);
       border-width: 3px;
     }
 
@@ -567,8 +566,8 @@
       position: absolute;
       top: -12px;
       right: var(--spacing-lg);
-      background: var(--python-yellow);
-      color: var(--dina-bg-dark);
+      background: var(--accent-yellow);
+      color: var(--bg-dark);
       padding: 0.25rem 0.75rem;
       border-radius: 20px;
       font-size: 0.75rem;
@@ -579,7 +578,7 @@
     .offer-title {
       font-size: 1.75rem;
       font-weight: 700;
-      color: var(--dina-text-light);
+      color: var(--text-primary);
       margin-bottom: var(--spacing-sm);
       font-family: 'Inter', sans-serif;
     }
@@ -587,7 +586,7 @@
     .offer-price {
       font-size: 2.5rem;
       font-weight: 800;
-      color: var(--python-blue);
+      color: var(--accent-cyan);
       margin-bottom: var(--spacing-md);
       font-family: 'Inter', sans-serif;
     }
@@ -602,7 +601,7 @@
       padding: var(--spacing-sm) 0;
       padding-left: var(--spacing-lg);
       position: relative;
-      color: var(--dina-gray);
+      color: var(--text-secondary);
       font-family: 'Inter', sans-serif;
     }
 
@@ -617,8 +616,8 @@
     /* CTA Section */
     .cta-section {
       padding: var(--spacing-xxl) var(--spacing-lg);
-      background: linear-gradient(135deg, var(--python-blue) 0%, var(--python-blue-dark) 100%);
-      color: var(--dina-text-dark);
+      background: linear-gradient(135deg, var(--accent-cyan) 0%, #06b6d4 100%);
+      color: var(--bg-dark);
       text-align: center;
     }
 
@@ -634,14 +633,14 @@
       letter-spacing: -0.03em;
       margin-bottom: var(--spacing-lg);
       font-family: 'Inter', sans-serif;
-      color: var(--dina-text-dark);
+      color: var(--bg-dark);
     }
 
     .cta-description {
       font-size: 1.25rem;
       line-height: 1.6;
       margin-bottom: var(--spacing-xl);
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(10, 10, 10, 0.8);
       font-family: 'Inter', sans-serif;
     }
 
@@ -650,28 +649,29 @@
       align-items: center;
       gap: var(--spacing-sm);
       padding: var(--spacing-md) var(--spacing-xxl);
-      background: var(--python-yellow);
-      color: var(--dina-bg-dark);
+      background: var(--accent-yellow);
+      color: var(--bg-dark);
       text-decoration: none;
       border-radius: 50px;
       font-size: 1.25rem;
       font-weight: 700;
       transition: all 0.3s;
       font-family: 'Inter', sans-serif;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 20px rgba(250, 204, 21, 0.4);
     }
 
     .cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
-      background: var(--python-yellow-light);
+      box-shadow: 0 6px 30px rgba(250, 204, 21, 0.5);
+      background: #FDE047;
     }
 
     .dina-footer {
       padding: var(--spacing-xl) var(--spacing-lg);
-      background: var(--dina-bg-dark);
-      color: var(--dina-text-dark);
+      background: var(--bg-dark);
+      color: var(--text-primary);
       text-align: center;
+      border-top: 1px solid var(--border-color);
     }
 
     .dina-footer-content {
@@ -681,7 +681,7 @@
 
     .dina-footer-text {
       font-size: 0.875rem;
-      color: rgba(255, 255, 255, 0.6);
+      color: var(--text-muted);
       font-family: 'Inter', sans-serif;
     }
 
@@ -765,7 +765,7 @@
   </style>
 </head>
 <body class="lang-hu">
-  <div class="landing-container" style="background: var(--dina-bg-light);">
+  <div class="landing-container" style="background: var(--bg-dark);">
     <!-- Navigation -->
     <nav class="dina-nav">
       <div class="dina-nav-content">
@@ -1235,7 +1235,7 @@
           if (priceAmountSpan) {
             priceAmountSpan.textContent = formatHUF(hufAmount);
           } else {
-            element.textContent = formatHUF(hufAmount);
+          element.textContent = formatHUF(hufAmount);
           }
         } else if (eurMin && eurMax) {
           // Price range
@@ -1244,7 +1244,7 @@
           if (priceAmountSpan) {
             priceAmountSpan.textContent = formatHUF(hufMin) + '–' + formatHUF(hufMax);
           } else {
-            element.textContent = formatHUF(hufMin) + '–' + formatHUF(hufMax);
+          element.textContent = formatHUF(hufMin) + '–' + formatHUF(hufMax);
           }
         }
       });
