@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bognár Bence - Backend Fejlesztő</title>
+  <title>Bognár Bence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -35,12 +35,19 @@
     }
 
     .dina-nav {
-      padding: var(--spacing-lg);
-      background: var(--dina-bg-light);
+      padding: var(--spacing-md) var(--spacing-lg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.98) 100%
+      );
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(55, 118, 171, 0.15);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     }
 
     .dina-nav-content {
@@ -58,6 +65,26 @@
       text-decoration: none;
       font-family: 'Inter', sans-serif;
       letter-spacing: -0.02em;
+      transition: all 0.2s ease;
+    }
+
+    .dina-logo:hover {
+      color: var(--python-blue);
+    }
+
+    .logo-subtitle {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--dina-gray);
+      margin-left: 0.5rem;
+      letter-spacing: 0;
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+
+    .dina-logo:hover .logo-subtitle {
+      opacity: 1;
+      color: var(--python-blue-dark);
     }
 
     .dina-nav-right {
@@ -107,26 +134,31 @@
       align-items: center;
       gap: var(--spacing-xs);
       padding: var(--spacing-xs) var(--spacing-sm);
-      background: transparent;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(55, 118, 171, 0.2);
+      border-radius: 8px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
       font-size: 0.875rem;
       font-weight: 500;
       color: var(--dina-text-light);
       white-space: nowrap;
       min-width: 50px;
+      backdrop-filter: blur(10px);
     }
 
     .lang-button:hover {
-      background: rgba(0, 0, 0, 0.05);
+      background: rgba(55, 118, 171, 0.1);
+      border-color: rgba(55, 118, 171, 0.3);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(55, 118, 171, 0.15);
     }
 
     .lang-button.active {
-      background: var(--python-blue);
+      background: linear-gradient(135deg, var(--python-blue) 0%, var(--python-blue-dark) 100%);
       color: var(--dina-bg-light);
       border-color: var(--python-blue);
+      box-shadow: 0 2px 12px rgba(55, 118, 171, 0.3);
     }
 
     .lang-flag {
@@ -685,13 +717,20 @@
 
     @media (max-width: 768px) {
       .dina-nav-content {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: var(--spacing-sm);
       }
 
       .dina-nav-right {
-        width: 100%;
-        justify-content: space-between;
+        width: auto;
+        justify-content: flex-end;
+        flex-shrink: 0;
+      }
+
+      .dina-logo {
+        font-size: 1.25rem;
+        flex-shrink: 1;
+        min-width: 0;
       }
 
       .lang-button {
@@ -759,10 +798,10 @@
         </h1>
         
         <p class="hero-subheadline" data-lang="hu">
-          Nem designert kapsz. Nem junior fejlesztőt. Olyan valakit, aki gyorsan működő rendszert ad át — minimális hibával.
+          Nem designert kapsz. Nem junior fejlesztőt. Olyan valakit, aki gyorsan működő rendszert ad át.
         </p>
         <p class="hero-subheadline" data-lang="en">
-          You don't get a designer. You don't get a junior developer. You get someone who delivers a working system quickly — with minimal errors.
+          You don't get a designer. You don't get a junior developer. You get someone who delivers a working system quickly.
         </p>
       </div>
     </section>
@@ -1029,8 +1068,8 @@
     <!-- 5. FRONTEND OFFERS -->
     <section class="offers-section">
       <div class="offers-container">
-        <h2 class="section-title" data-lang="hu">Mit vehetsz meg tőlem</h2>
-        <h2 class="section-title" data-lang="en">What you can buy from me</h2>
+        <h2 class="section-title" data-lang="hu">Ajánlatok</h2>
+        <h2 class="section-title" data-lang="en">Offers</h2>
         
         <div class="offers-grid">
           <div class="offer-card">
@@ -1039,20 +1078,20 @@
             <div class="offer-price" data-eur-min="499" data-eur-max="999" data-lang="hu"></div>
             <div class="offer-price" data-lang="en">499–999€</div>
             <p class="outcome-description" data-lang="hu">
-              Frontend template + saját backend + deploy.
+              Kész webes alkalmazás 7–14 nap alatt. Modern UI template, saját backend logika és azonnali deploy.
             </p>
             <p class="outcome-description" data-lang="en">
-              Frontend template + custom backend + deploy.
+              Ready web application in 7–14 days. Modern UI template, custom backend logic and instant deployment.
             </p>
             <ul class="offer-features">
-              <li data-lang="hu">Modern frontend template</li>
-              <li data-lang="hu">Saját backend fejlesztés</li>
-              <li data-lang="hu">Teljes deployment</li>
-              <li data-lang="hu">Dokumentáció</li>
-              <li data-lang="en">Modern frontend template</li>
-              <li data-lang="en">Custom backend development</li>
-              <li data-lang="en">Complete deployment</li>
-              <li data-lang="en">Documentation</li>
+              <li data-lang="hu">Reszponzív, modern frontend template</li>
+              <li data-lang="hu">Saját backend API fejlesztés</li>
+              <li data-lang="hu">Production-ready deployment</li>
+              <li data-lang="hu">Teljes dokumentáció és átadás</li>
+              <li data-lang="en">Responsive, modern frontend template</li>
+              <li data-lang="en">Custom backend API development</li>
+              <li data-lang="en">Production-ready deployment</li>
+              <li data-lang="en">Complete documentation and handover</li>
             </ul>
           </div>
 
@@ -1064,22 +1103,24 @@
             <div class="offer-price" data-eur-min="1500" data-eur-max="3000" data-lang="hu"></div>
             <div class="offer-price" data-lang="en">1.500–3.000€</div>
             <p class="outcome-description" data-lang="hu">
-              Next.js template + teljes backend + auth + DB + API + admin.
+              Teljes MVP 14–30 nap alatt. Next.js frontend, teljes backend rendszer, autentikáció, adatbázis, admin felület és API-k — minden egy helyen.
             </p>
             <p class="outcome-description" data-lang="en">
-              Next.js template + complete backend + auth + DB + API + admin.
+              Complete MVP in 14–30 days. Next.js frontend, full backend system, authentication, database, admin interface and APIs — everything in one place.
             </p>
             <ul class="offer-features">
-              <li data-lang="hu">Next.js frontend template</li>
-              <li data-lang="hu">Teljes backend rendszer</li>
-              <li data-lang="hu">Autentikáció és adatbázis</li>
-              <li data-lang="hu">Admin felület</li>
-              <li data-lang="hu">API fejlesztés</li>
-              <li data-lang="en">Next.js frontend template</li>
-              <li data-lang="en">Complete backend system</li>
-              <li data-lang="en">Authentication and database</li>
-              <li data-lang="en">Admin interface</li>
-              <li data-lang="en">API development</li>
+              <li data-lang="hu">Next.js frontend template (reszponzív, SEO-optimalizált)</li>
+              <li data-lang="hu">Teljes backend architektúra és API fejlesztés</li>
+              <li data-lang="hu">Felhasználó autentikáció és jogosultságkezelés</li>
+              <li data-lang="hu">Adatbázis design és implementáció</li>
+              <li data-lang="hu">Admin felület az adatok kezeléséhez</li>
+              <li data-lang="hu">Production deployment és monitoring</li>
+              <li data-lang="en">Next.js frontend template (responsive, SEO-optimized)</li>
+              <li data-lang="en">Complete backend architecture and API development</li>
+              <li data-lang="en">User authentication and authorization</li>
+              <li data-lang="en">Database design and implementation</li>
+              <li data-lang="en">Admin interface for data management</li>
+              <li data-lang="en">Production deployment and monitoring</li>
             </ul>
           </div>
 
@@ -1093,15 +1134,23 @@
             <div class="offer-price" data-lang="en" style="font-size: 1.75rem;">
               99–299€<span style="font-size: 1rem; font-weight: 400;">/month</span>
             </div>
+            <p class="outcome-description" data-lang="hu" style="margin-bottom: var(--spacing-md);">
+              Folyamatos támogatás és fejlesztés.
+            </p>
+            <p class="outcome-description" data-lang="en" style="margin-bottom: var(--spacing-md);">
+              Ongoing support and development.
+            </p>
             <ul class="offer-features">
-              <li data-lang="hu">Folyamatos backend támogatás</li>
-              <li data-lang="hu">Automatizációk fejlesztése</li>
-              <li data-lang="hu">Monitoring és karbantartás</li>
-              <li data-lang="hu">Prioritásos support</li>
-              <li data-lang="en">Ongoing backend support</li>
-              <li data-lang="en">Automation development</li>
-              <li data-lang="en">Monitoring and maintenance</li>
-              <li data-lang="en">Priority support</li>
+              <li data-lang="hu">Folyamatos backend támogatás és hibajavítás</li>
+              <li data-lang="hu">Új automatizációk és funkciók fejlesztése</li>
+              <li data-lang="hu">Rendszer monitoring és teljesítmény optimalizálás</li>
+              <li data-lang="hu">Prioritásos technikai support</li>
+              <li data-lang="hu">Havi jelentések és ajánlások</li>
+              <li data-lang="en">Ongoing backend support and bug fixes</li>
+              <li data-lang="en">New automations and features development</li>
+              <li data-lang="en">System monitoring and performance optimization</li>
+              <li data-lang="en">Priority technical support</li>
+              <li data-lang="en">Monthly reports and recommendations</li>
             </ul>
           </div>
         </div>
@@ -1214,8 +1263,8 @@
       
       // Update page title
       const titleTexts = {
-        'hu': 'Bognár Bence - Backend Fejlesztő',
-        'en': 'Bognár Bence - Backend Developer'
+        'hu': 'Bognár Bence',
+        'en': 'Bognár Bence'
       };
       document.title = titleTexts[lang];
       
@@ -1249,7 +1298,7 @@
       
       // Ensure Hungarian title is set initially
       if (savedLang === 'hu') {
-        document.title = 'Bognár Bence - Backend Fejlesztő';
+        document.title = 'Bognár Bence';
       }
     });
   </script>
