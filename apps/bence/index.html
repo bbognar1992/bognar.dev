@@ -542,6 +542,17 @@
       margin-top: var(--spacing-xl);
     }
 
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
     .offer-card {
       background: var(--bg-card);
       border: 2px solid var(--border-color);
@@ -549,7 +560,17 @@
       padding: var(--spacing-xl);
       transition: all 0.3s;
       position: relative;
+      opacity: 0;
+      transform: scale(0.95) translateY(20px);
     }
+
+    .offer-card.animate-in {
+      animation: scaleIn 0.6s ease-out both;
+    }
+
+    .offer-card.animate-in:nth-child(1) { animation-delay: 0.1s; }
+    .offer-card.animate-in:nth-child(2) { animation-delay: 0.2s; }
+    .offer-card.animate-in:nth-child(3) { animation-delay: 0.3s; }
 
     .offer-card:hover {
       border-color: var(--accent-cyan);
@@ -644,6 +665,12 @@
       font-family: 'Inter', sans-serif;
     }
 
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px) rotate(-2deg); }
+      20%, 40%, 60%, 80% { transform: translateX(5px) rotate(2deg); }
+    }
+
     .cta-button {
       display: inline-flex;
       align-items: center;
@@ -658,6 +685,10 @@
       transition: all 0.3s;
       font-family: 'Inter', sans-serif;
       box-shadow: 0 4px 20px rgba(250, 204, 21, 0.4);
+    }
+
+    .cta-button.shake {
+      animation: shake 0.5s ease-in-out;
     }
 
     .cta-button:hover {
@@ -996,14 +1027,6 @@
             </div>
           </div>
         </div>
-
-        <div style="text-align: center;">
-          <a href="projects.html" class="projects-cta-button">
-            <span data-lang="hu">Tovább a többire</span>
-            <span data-lang="en">See more projects</span>
-            <span style="font-size: 1.25rem;">→</span>
-          </a>
-        </div>
       </div>
     </section>
 
@@ -1287,6 +1310,54 @@
       localStorage.setItem('preferred-language', lang);
     }
 
+    // Scroll-triggered animations for offer cards
+    function initOfferAnimations() {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe offer cards
+      const offerCards = document.querySelectorAll('.offer-card');
+      offerCards.forEach(card => observer.observe(card));
+    }
+
+    // Shake animation for CTA button when scrolled into view
+    function initCTAButtonShake() {
+      const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('shake');
+            // Remove shake class after animation completes to allow re-triggering if needed
+            setTimeout(() => {
+              entry.target.classList.remove('shake');
+            }, 500);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe CTA button
+      const ctaButton = document.querySelector('.cta-button');
+      if (ctaButton) {
+        observer.observe(ctaButton);
+      }
+    }
+
     // Initialize language on page load
     document.addEventListener('DOMContentLoaded', function() {
       const savedLang = localStorage.getItem('preferred-language') || 'hu';
@@ -1300,6 +1371,12 @@
       if (savedLang === 'hu') {
         document.title = 'Bognár Bence';
       }
+
+      // Initialize offer card animations
+      initOfferAnimations();
+
+      // Initialize CTA button shake animation
+      initCTAButtonShake();
     });
   </script>
 </body>
