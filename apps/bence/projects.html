@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bognár Bence - Projektek</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="landing.css" />
+  <style>
+    /* Pythonic design - Matching next_index.html style */
+    :root {
+      --python-blue: #3776ab;
+      --python-blue-dark: #2d5a7e;
+      --python-yellow: #FFD43B;
+      --python-yellow-light: #FFE873;
+      --dina-bg-light: #ffffff;
+      --dina-bg-dark: #0a1929;
+      --dina-text-light: #000000;
+      --dina-text-dark: #ffffff;
+      --dina-gray: #666666;
+      --dina-gray-light: #999999;
+      --code-bg: #f8f9fa;
+      --code-border: #e9ecef;
+    }
+
+    body {
+      background: var(--dina-bg-light);
+      color: var(--dina-text-light);
+    }
+
+    .dina-nav {
+      padding: var(--spacing-lg);
+      background: var(--dina-bg-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .dina-nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dina-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dina-text-light);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .dina-nav-right {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .dina-link {
+      color: var(--dina-text-light);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+    }
+
+    .dina-link:hover {
+      color: var(--python-blue);
+    }
+
+    .dina-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--python-yellow);
+      transition: width 0.2s;
+    }
+
+    .dina-link:hover::after {
+      width: 100%;
+    }
+
+    .dina-arrow {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+
+    .dina-link:hover .dina-arrow {
+      transform: translateX(4px);
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .lang-button {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--dina-text-light);
+      white-space: nowrap;
+      min-width: 50px;
+    }
+
+    .lang-button:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .lang-button.active {
+      background: var(--python-blue);
+      color: var(--dina-bg-light);
+      border-color: var(--python-blue);
+    }
+
+    .lang-flag {
+      font-size: 1.2rem;
+      line-height: 1;
+      display: inline-block;
+      min-width: 1.2rem;
+      text-align: center;
+    }
+
+    .projects-hero {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      background: linear-gradient(135deg, var(--dina-bg-light) 0%, #f0f7ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .projects-hero::before {
+      content: '🐍';
+      position: absolute;
+      top: 10%;
+      right: 10%;
+      font-size: 12rem;
+      opacity: 0.03;
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .projects-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .projects-title {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--dina-text-light);
+      margin-bottom: var(--spacing-md);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .python-accent {
+      color: var(--python-blue);
+      position: relative;
+    }
+
+    .python-accent::after {
+      content: '';
+      position: absolute;
+      bottom: 0.1em;
+      left: 0;
+      right: 0;
+      height: 0.15em;
+      background: linear-gradient(90deg, var(--python-blue), var(--python-yellow));
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .projects-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      color: var(--dina-gray);
+      max-width: 600px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--spacing-xl);
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: var(--dina-bg-light);
+      border: 2px solid var(--code-border);
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--python-blue);
+      transform: scaleY(0);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(55, 118, 171, 0.15);
+      border-color: var(--python-blue);
+    }
+
+    .project-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .project-result {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      background: rgba(40, 167, 69, 0.1);
+      border: 1px solid rgba(40, 167, 69, 0.3);
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #28a745;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .project-result-icon {
+      font-size: 1rem;
+    }
+
+    .project-number {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--python-blue);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: var(--spacing-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dina-text-light);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.2;
+    }
+
+    .project-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--dina-gray);
+      margin-bottom: var(--spacing-md);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-xs);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .tech-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      background: rgba(55, 118, 171, 0.1);
+      border: 1px solid rgba(55, 118, 171, 0.2);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--python-blue);
+      font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      color: var(--python-blue);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .project-link:hover {
+      gap: var(--spacing-sm);
+      color: var(--python-blue-dark);
+    }
+
+    .project-link .dina-arrow {
+      transition: transform 0.2s;
+    }
+
+    .project-link:hover .dina-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Modal/Popup Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: var(--dina-bg-light);
+      border-radius: 16px;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transform: scale(0.9);
+      transition: transform 0.3s;
+      border: 1px solid var(--code-border);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      padding: var(--spacing-xl);
+      border-bottom: 1px solid var(--code-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: sticky;
+      top: 0;
+      background: var(--dina-bg-light);
+      z-index: 10;
+    }
+
+    .modal-title-section {
+      flex: 1;
+    }
+
+    .modal-number {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--python-blue);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: var(--spacing-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .modal-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dina-text-light);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.2;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--dina-gray);
+      cursor: pointer;
+      padding: var(--spacing-xs);
+      line-height: 1;
+      transition: all 0.2s;
+      border-radius: 4px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--dina-text-light);
+    }
+
+    .modal-body {
+      padding: var(--spacing-xl);
+    }
+
+    .modal-description {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--dina-gray);
+      margin-bottom: var(--spacing-xl);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .modal-section {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .modal-section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dina-text-light);
+      margin-bottom: var(--spacing-md);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    .modal-section-title::before {
+      content: '';
+      width: 4px;
+      height: 1.25rem;
+      background: var(--python-blue);
+      border-radius: 2px;
+    }
+
+    .modal-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .modal-features li {
+      padding: var(--spacing-sm) 0;
+      padding-left: var(--spacing-lg);
+      position: relative;
+      color: var(--dina-gray);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    .modal-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--python-blue);
+      font-weight: 600;
+    }
+
+    .modal-tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+    }
+
+    .modal-code {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-left: 4px solid var(--python-blue);
+      border-radius: 8px;
+      padding: var(--spacing-md);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      overflow-x: auto;
+      margin-top: var(--spacing-md);
+    }
+
+    .modal-code .keyword {
+      color: var(--python-blue);
+      font-weight: 600;
+    }
+
+    .modal-code .string {
+      color: #22863a;
+    }
+
+    @media (max-width: 640px) {
+      .modal-content {
+        width: 95%;
+        max-height: 95vh;
+      }
+
+      .modal-header {
+        padding: var(--spacing-lg);
+      }
+
+      .modal-body {
+        padding: var(--spacing-lg);
+      }
+
+      .modal-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    .dina-footer {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      background: linear-gradient(135deg, var(--dina-bg-dark) 0%, #0d1f2e 100%);
+      color: var(--dina-text-dark);
+      position: relative;
+    }
+
+    .dina-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--python-blue), transparent);
+    }
+
+    .dina-footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .dina-footer-text {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Inter', sans-serif;
+    }
+
+    [data-lang="en"] {
+      display: none;
+    }
+
+    .lang-hu [data-lang="en"] {
+      display: none;
+    }
+
+    .lang-hu [data-lang="hu"] {
+      display: block;
+    }
+
+    .lang-en [data-lang="hu"] {
+      display: none;
+    }
+
+    .lang-en [data-lang="en"] {
+      display: block;
+    }
+
+    /* Language switcher buttons should always be visible */
+    .lang-switcher .lang-button {
+      display: flex !important;
+    }
+
+    .lang-switcher .lang-button[data-lang="hu"],
+    .lang-switcher .lang-button[data-lang="en"] {
+      display: flex !important;
+    }
+
+    @media (max-width: 768px) {
+      .dina-nav-content {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+      }
+
+      .dina-nav-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .lang-button {
+        font-size: 0.75rem;
+        padding: var(--spacing-xs);
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-xl) var(--spacing-md);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .projects-hero {
+        padding: var(--spacing-xl) var(--spacing-md);
+      }
+    }
+  </style>
+</head>
+<body class="lang-hu">
+  <div class="landing-container" style="background: var(--dina-bg-light);">
+    <!-- Navigation -->
+    <nav class="dina-nav">
+      <div class="dina-nav-content">
+        <a href="index.html" class="dina-logo">
+          <span style="color: var(--python-blue);">🐍</span> Bognár Bence
+        </a>
+        <div class="dina-nav-right">
+          <a href="index.html" class="dina-link">
+            <span data-lang="hu">Főoldal</span>
+            <span data-lang="en">Home</span>
+            <span class="dina-arrow">→</span>
+          </a>
+          <div class="lang-switcher" id="langSwitcher">
+            <div class="lang-button active" data-lang="hu" onclick="setLanguage('hu')" title="Magyar">
+              <span class="lang-flag" style="font-size: 1.2rem;">🇭🇺</span>
+              <span>HU</span>
+            </div>
+            <div class="lang-button" data-lang="en" onclick="setLanguage('en')" title="English">
+              <span class="lang-flag" style="font-size: 1.2rem;">🇬🇧</span>
+              <span>EN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section - Big Headline -->
+    <section class="projects-hero">
+      <div class="projects-container">
+        <h1 class="projects-title" data-lang="hu">
+          <span class="python-accent">Valódi eredmények</span>, nem csak szép szavak
+        </h1>
+        <h1 class="projects-title" data-lang="en">
+          <span class="python-accent">Real results</span>, not just pretty words
+        </h1>
+        <p class="projects-subtitle" data-lang="hu">
+          Itt vannak a projektek, amelyeket építettem. Mindegyik valódi üzleti problémát old meg, 
+          mérhető eredményekkel. Kattints a részletekre, hogy lássd, hogyan működik.
+        </p>
+        <p class="projects-subtitle" data-lang="en">
+          Here are the projects I've built. Each one solves a real business problem, 
+          with measurable results. Click details to see how it works.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-number">01</div>
+        <div class="project-result">
+          <span class="project-result-icon">⚡</span>
+          <span data-lang="hu">62% gyorsulás • 0 downtime</span>
+          <span data-lang="en">62% speed improvement • 0 downtime</span>
+        </div>
+        <h3 class="project-title" data-lang="hu">REST API Fejlesztés</h3>
+        <h3 class="project-title" data-lang="en">REST API Development</h3>
+        <p class="project-description" data-lang="hu">
+          FastAPI alapú REST API fejlesztése skálázható mikroservisekhez. 
+          Async műveletek, JWT autentikáció és Swagger dokumentáció.
+        </p>
+        <p class="project-description" data-lang="en">
+          FastAPI-based REST API development for scalable microservices. 
+          Async operations, JWT authentication and Swagger documentation.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">Docker</span>
+        </div>
+        <a href="#" class="project-link" onclick="openModal(0); return false;">
+          <span data-lang="hu">Részletek</span>
+          <span data-lang="en">Details</span>
+          <span class="dina-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-number">02</div>
+        <div class="project-result">
+          <span class="project-result-icon">🚀</span>
+          <span data-lang="hu">4x gyorsabb lekérdezések</span>
+          <span data-lang="en">4x faster queries</span>
+        </div>
+        <h3 class="project-title" data-lang="hu">Adatbázis Optimalizálás</h3>
+        <h3 class="project-title" data-lang="en">Database Optimization</h3>
+        <p class="project-description" data-lang="hu">
+          PostgreSQL adatbázis teljesítmény optimalizálása komplex lekérdezésekhez. 
+          Index stratégia, query tuning és connection pooling implementálása.
+        </p>
+        <p class="project-description" data-lang="en">
+          PostgreSQL database performance optimization for complex queries. 
+          Index strategy, query tuning and connection pooling implementation.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">SQLAlchemy</span>
+        </div>
+        <a href="#" class="project-link" onclick="openModal(1); return false;">
+          <span data-lang="hu">Részletek</span>
+          <span data-lang="en">Details</span>
+          <span class="dina-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-number">03</div>
+        <div class="project-result">
+          <span class="project-result-icon">💰</span>
+          <span data-lang="hu">40% költségcsökkentés</span>
+          <span data-lang="en">40% cost reduction</span>
+        </div>
+        <h3 class="project-title" data-lang="hu">Cloud Infrastruktúra</h3>
+        <h3 class="project-title" data-lang="en">Cloud Infrastructure</h3>
+        <p class="project-description" data-lang="hu">
+          AWS cloud infrastruktúra beállítása Docker és Kubernetes használatával. 
+          CI/CD pipeline konfigurálása és automatizált deployment megoldások.
+        </p>
+        <p class="project-description" data-lang="en">
+          AWS cloud infrastructure setup using Docker and Kubernetes. 
+          CI/CD pipeline configuration and automated deployment solutions.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">AWS</span>
+          <span class="tech-tag">Docker</span>
+          <span class="tech-tag">Kubernetes</span>
+          <span class="tech-tag">CI/CD</span>
+        </div>
+        <a href="#" class="project-link" onclick="openModal(2); return false;">
+          <span data-lang="hu">Részletek</span>
+          <span data-lang="en">Details</span>
+          <span class="dina-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card">
+        <div class="project-number">04</div>
+        <div class="project-result">
+          <span class="project-result-icon">📈</span>
+          <span data-lang="hu">10.000+ felhasználó kezelése</span>
+          <span data-lang="en">Handling 10,000+ users</span>
+        </div>
+        <h3 class="project-title" data-lang="hu">Django Webalkalmazás</h3>
+        <h3 class="project-title" data-lang="en">Django Web Application</h3>
+        <p class="project-description" data-lang="hu">
+          Teljes stack Django webalkalmazás fejlesztése admin felülettel. 
+          REST API integráció, real-time funkciók és responsive design.
+        </p>
+        <p class="project-description" data-lang="en">
+          Full-stack Django web application development with admin interface. 
+          REST API integration, real-time features and responsive design.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">Django</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">Redis</span>
+        </div>
+        <a href="#" class="project-link" onclick="openModal(3); return false;">
+          <span data-lang="hu">Részletek</span>
+          <span data-lang="en">Details</span>
+          <span class="dina-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card">
+        <div class="project-number">05</div>
+        <div class="project-result">
+          <span class="project-result-icon">🎯</span>
+          <span data-lang="hu">80% kevesebb API hívás</span>
+          <span data-lang="en">80% fewer API calls</span>
+        </div>
+        <h3 class="project-title" data-lang="hu">GraphQL API</h3>
+        <h3 class="project-title" data-lang="en">GraphQL API</h3>
+        <p class="project-description" data-lang="hu">
+          GraphQL API fejlesztése Graphene Python könyvtárral. 
+          Komplex adatlekérdezések optimalizálása és subscription támogatás.
+        </p>
+        <p class="project-description" data-lang="en">
+          GraphQL API development using Graphene Python library. 
+          Complex data query optimization and subscription support.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">GraphQL</span>
+          <span class="tech-tag">Graphene</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">PostgreSQL</span>
+        </div>
+        <a href="#" class="project-link" onclick="openModal(4); return false;">
+          <span data-lang="hu">Részletek</span>
+          <span data-lang="en">Details</span>
+          <span class="dina-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card">
+        <div class="project-number">06</div>
+        <div class="project-result">
+          <span class="project-result-icon">🔧</span>
+          <span data-lang="hu">99.9% uptime • Auto-scaling</span>
+          <span data-lang="en">99.9% uptime • Auto-scaling</span>
+        </div>
+        <h3 class="project-title" data-lang="hu">Mikroservis Architektúra</h3>
+        <h3 class="project-title" data-lang="en">Microservice Architecture</h3>
+        <p class="project-description" data-lang="hu">
+          Mikroservisek tervezése és implementálása Pythonnal. 
+          Service discovery, API gateway és message queue integráció.
+        </p>
+        <p class="project-description" data-lang="en">
+          Microservices design and implementation with Python. 
+          Service discovery, API gateway and message queue integration.
+        </p>
+        <div class="project-tech">
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">RabbitMQ</span>
+          <span class="tech-tag">Docker</span>
+          <span class="tech-tag">Kubernetes</span>
+        </div>
+        <a href="#" class="project-link" onclick="openModal(5); return false;">
+          <span data-lang="hu">Részletek</span>
+          <span data-lang="en">Details</span>
+          <span class="dina-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section style="padding: var(--spacing-xxl) var(--spacing-lg); background: linear-gradient(135deg, var(--python-blue) 0%, var(--python-blue-dark) 100%); color: var(--dina-text-dark); text-align: center;">
+      <div style="max-width: 700px; margin: 0 auto;">
+        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: var(--spacing-lg); font-family: 'Inter', sans-serif; color: var(--dina-text-dark);" data-lang="hu">
+          Szeretnéd, hogy neked is ilyen eredményeket hozzak?
+        </h2>
+        <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: var(--spacing-lg); font-family: 'Inter', sans-serif; color: var(--dina-text-dark);" data-lang="en">
+          Want me to bring you these kinds of results?
+        </h2>
+        <p style="font-size: 1.25rem; line-height: 1.6; margin-bottom: var(--spacing-xl); color: rgba(255, 255, 255, 0.9); font-family: 'Inter', sans-serif;" data-lang="hu">
+          15 perc alatt megmondom, mi a probléma, és mit kell csinálni. Ingyenes. Nincs kötelezettség.
+        </p>
+        <p style="font-size: 1.25rem; line-height: 1.6; margin-bottom: var(--spacing-xl); color: rgba(255, 255, 255, 0.9); font-family: 'Inter', sans-serif;" data-lang="en">
+          In 15 minutes I'll tell you what the problem is and what needs to be done. Free. No obligation.
+        </p>
+        <a href="mailto:bence@bognar.dev?subject=Diagnózis hívás&body=Szeretnék egy 15 perces diagnózis hívást foglalni." style="display: inline-flex; align-items: center; gap: var(--spacing-sm); padding: var(--spacing-md) var(--spacing-xxl); background: var(--python-yellow); color: var(--dina-bg-dark); text-decoration: none; border-radius: 50px; font-size: 1.25rem; font-weight: 700; transition: all 0.3s; font-family: 'Inter', sans-serif; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
+          <span data-lang="hu">Foglalj időpontot</span>
+          <span data-lang="en">Book a call</span>
+          <span style="font-size: 1.5rem;">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Modal/Popup -->
+    <div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+          <div class="modal-title-section">
+            <div class="modal-number" id="modalNumber">01</div>
+            <h2 class="modal-title" id="modalTitle" data-lang="hu">REST API Fejlesztés</h2>
+            <h2 class="modal-title" id="modalTitleEn" data-lang="en">REST API Development</h2>
+          </div>
+          <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-description" id="modalDescription" data-lang="hu">
+            FastAPI alapú REST API fejlesztése skálázható mikroservisekhez. 
+            Async műveletek, JWT autentikáció és Swagger dokumentáció.
+          </p>
+          <p class="modal-description" id="modalDescriptionEn" data-lang="en">
+            FastAPI-based REST API development for scalable microservices. 
+            Async operations, JWT authentication and Swagger documentation.
+          </p>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title" data-lang="hu">Főbb funkciók</h3>
+            <h3 class="modal-section-title" data-lang="en">Key Features</h3>
+            <ul class="modal-features" id="modalFeatures">
+              <li data-lang="hu">Async műveletek teljesítmény optimalizálással</li>
+              <li data-lang="hu">JWT token alapú autentikáció és autorizáció</li>
+              <li data-lang="hu">Automatikus Swagger/OpenAPI dokumentáció</li>
+              <li data-lang="hu">Docker konténerizáció és CI/CD integráció</li>
+              <li data-lang="en">Async operations with performance optimization</li>
+              <li data-lang="en">JWT token-based authentication and authorization</li>
+              <li data-lang="en">Automatic Swagger/OpenAPI documentation</li>
+              <li data-lang="en">Docker containerization and CI/CD integration</li>
+            </ul>
+          </div>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title" data-lang="hu">Technológiai stack</h3>
+            <h3 class="modal-section-title" data-lang="en">Technology Stack</h3>
+            <div class="modal-tech-grid" id="modalTech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+          </div>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title" data-lang="hu">Kód példa</h3>
+            <h3 class="modal-section-title" data-lang="en">Code Example</h3>
+            <div class="modal-code" id="modalCode">
+              <div><span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI</div>
+              <div><span class="keyword">from</span> fastapi.security <span class="keyword">import</span> HTTPBearer</div>
+              <div></div>
+              <div>app = FastAPI()</div>
+              <div>security = HTTPBearer()</div>
+              <div></div>
+              <div><span class="keyword">@app</span>.get(<span class="string">"/api/v1/health"</span>)</div>
+              <div><span class="keyword">async def</span> health_check():</div>
+              <div style="padding-left: 1.5em;"><span class="keyword">return</span> {<span class="string">"status"</span>: <span class="string">"ok"</span>}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="dina-footer">
+      <div class="dina-footer-content">
+        <p class="dina-footer-text">© 2025 Bognár Bence</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Project data
+    const projectsData = [
+      {
+        number: '01',
+        titleHu: 'REST API Fejlesztés',
+        titleEn: 'REST API Development',
+        descriptionHu: 'FastAPI alapú REST API fejlesztése skálázható mikroservisekhez. Async műveletek, JWT autentikáció és Swagger dokumentáció.',
+        descriptionEn: 'FastAPI-based REST API development for scalable microservices. Async operations, JWT authentication and Swagger documentation.',
+        featuresHu: [
+          'Async műveletek teljesítmény optimalizálással',
+          'JWT token alapú autentikáció és autorizáció',
+          'Automatikus Swagger/OpenAPI dokumentáció',
+          'Docker konténerizáció és CI/CD integráció',
+          'PostgreSQL adatbázis integráció',
+          'Unit és integration tesztek'
+        ],
+        featuresEn: [
+          'Async operations with performance optimization',
+          'JWT token-based authentication and authorization',
+          'Automatic Swagger/OpenAPI documentation',
+          'Docker containerization and CI/CD integration',
+          'PostgreSQL database integration',
+          'Unit and integration tests'
+        ],
+        tech: ['Python', 'FastAPI', 'PostgreSQL', 'Docker', 'JWT', 'Swagger'],
+        code: `from fastapi import FastAPI
+from fastapi.security import HTTPBearer
+
+app = FastAPI()
+security = HTTPBearer()
+
+@app.get("/api/v1/health")
+async def health_check():
+    return {"status": "ok"}
+
+@app.post("/api/v1/auth/login")
+async def login(credentials: LoginRequest):
+    # JWT token generation
+    return {"token": generate_jwt(credentials)}`
+      },
+      {
+        number: '02',
+        titleHu: 'Adatbázis Optimalizálás',
+        titleEn: 'Database Optimization',
+        descriptionHu: 'PostgreSQL adatbázis teljesítmény optimalizálása komplex lekérdezésekhez. Index stratégia, query tuning és connection pooling implementálása.',
+        descriptionEn: 'PostgreSQL database performance optimization for complex queries. Index strategy, query tuning and connection pooling implementation.',
+        featuresHu: [
+          'Komplex lekérdezések optimalizálása',
+          'Index stratégia tervezése és implementálása',
+          'Query execution plan elemzése',
+          'Connection pooling konfigurálása',
+          'Adatbázis monitoring és alerting',
+          'Backup és recovery stratégia'
+        ],
+        featuresEn: [
+          'Complex query optimization',
+          'Index strategy design and implementation',
+          'Query execution plan analysis',
+          'Connection pooling configuration',
+          'Database monitoring and alerting',
+          'Backup and recovery strategy'
+        ],
+        tech: ['PostgreSQL', 'Python', 'SQLAlchemy', 'pgAdmin'],
+        code: `-- Index creation for performance
+CREATE INDEX idx_user_email ON users(email);
+CREATE INDEX idx_order_date ON orders(created_at);
+
+-- Optimized query with EXPLAIN
+EXPLAIN ANALYZE
+SELECT u.name, COUNT(o.id) as order_count
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+WHERE u.created_at > '2024-01-01'
+GROUP BY u.id, u.name;`
+      },
+      {
+        number: '03',
+        titleHu: 'Cloud Infrastruktúra',
+        titleEn: 'Cloud Infrastructure',
+        descriptionHu: 'AWS cloud infrastruktúra beállítása Docker és Kubernetes használatával. CI/CD pipeline konfigurálása és automatizált deployment megoldások.',
+        descriptionEn: 'AWS cloud infrastructure setup using Docker and Kubernetes. CI/CD pipeline configuration and automated deployment solutions.',
+        featuresHu: [
+          'AWS ECS/EKS cluster konfigurálása',
+          'Docker konténerizáció és image registry',
+          'CI/CD pipeline GitHub Actions-szel',
+          'Auto-scaling és load balancing',
+          'CloudWatch monitoring és logging',
+          'Infrastructure as Code (Terraform)'
+        ],
+        featuresEn: [
+          'AWS ECS/EKS cluster configuration',
+          'Docker containerization and image registry',
+          'CI/CD pipeline with GitHub Actions',
+          'Auto-scaling and load balancing',
+          'CloudWatch monitoring and logging',
+          'Infrastructure as Code (Terraform)'
+        ],
+        tech: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions'],
+        code: `# docker-compose.yml
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://...
+    depends_on:
+      - db
+  
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=myapp`
+      },
+      {
+        number: '04',
+        titleHu: 'Django Webalkalmazás',
+        titleEn: 'Django Web Application',
+        descriptionHu: 'Teljes stack Django webalkalmazás fejlesztése admin felülettel. REST API integráció, real-time funkciók és responsive design.',
+        descriptionEn: 'Full-stack Django web application development with admin interface. REST API integration, real-time features and responsive design.',
+        featuresHu: [
+          'Django REST Framework API',
+          'Admin felület testreszabása',
+          'Real-time funkciók WebSocket-tel',
+          'Celery background task kezelés',
+          'Redis cache integráció',
+          'Responsive frontend design'
+        ],
+        featuresEn: [
+          'Django REST Framework API',
+          'Custom admin interface',
+          'Real-time features with WebSocket',
+          'Celery background task handling',
+          'Redis cache integration',
+          'Responsive frontend design'
+        ],
+        tech: ['Django', 'Python', 'PostgreSQL', 'Redis', 'Celery'],
+        code: `from django.db import models
+from django.contrib.auth.models import User
+
+class Project(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.title`
+      },
+      {
+        number: '05',
+        titleHu: 'GraphQL API',
+        titleEn: 'GraphQL API',
+        descriptionHu: 'GraphQL API fejlesztése Graphene Python könyvtárral. Komplex adatlekérdezések optimalizálása és subscription támogatás.',
+        descriptionEn: 'GraphQL API development using Graphene Python library. Complex data query optimization and subscription support.',
+        featuresHu: [
+          'Graphene Python GraphQL implementáció',
+          'Nested query optimalizálás',
+          'Real-time subscriptions',
+          'DataLoader pattern a N+1 probléma megoldásához',
+          'Schema stitching és federation',
+          'GraphQL playground integráció'
+        ],
+        featuresEn: [
+          'Graphene Python GraphQL implementation',
+          'Nested query optimization',
+          'Real-time subscriptions',
+          'DataLoader pattern for N+1 problem',
+          'Schema stitching and federation',
+          'GraphQL playground integration'
+        ],
+        tech: ['GraphQL', 'Graphene', 'Python', 'PostgreSQL'],
+        code: `import graphene
+from graphene_django import DjangoObjectType
+
+class UserType(DjangoObjectType):
+    class Meta:
+        model = User
+
+class Query(graphene.ObjectType):
+    users = graphene.List(UserType)
+    
+    def resolve_users(self, info):
+        return User.objects.all()`
+      },
+      {
+        number: '06',
+        titleHu: 'Mikroservis Architektúra',
+        titleEn: 'Microservice Architecture',
+        descriptionHu: 'Mikroservisek tervezése és implementálása Pythonnal. Service discovery, API gateway és message queue integráció.',
+        descriptionEn: 'Microservices design and implementation with Python. Service discovery, API gateway and message queue integration.',
+        featuresHu: [
+          'Több mikroservis koordinációja',
+          'API Gateway (Kong/Traefik)',
+          'Message queue (RabbitMQ/Kafka)',
+          'Service discovery és health checks',
+          'Distributed tracing',
+          'Circuit breaker pattern'
+        ],
+        featuresEn: [
+          'Multiple microservices coordination',
+          'API Gateway (Kong/Traefik)',
+          'Message queue (RabbitMQ/Kafka)',
+          'Service discovery and health checks',
+          'Distributed tracing',
+          'Circuit breaker pattern'
+        ],
+        tech: ['FastAPI', 'RabbitMQ', 'Docker', 'Kubernetes', 'Kong'],
+        code: `# Microservice communication
+import aio_pika
+
+async def send_message(queue_name, message):
+    connection = await aio_pika.connect_robust(
+        "amqp://guest:guest@localhost/"
+    )
+    channel = await connection.channel()
+    await channel.default_exchange.publish(
+        aio_pika.Message(message.encode()),
+        routing_key=queue_name
+    )`
+      }
+    ];
+
+    // Modal functions
+    function openModal(index) {
+      const project = projectsData[index];
+      const modal = document.getElementById('projectModal');
+      const currentLang = document.body.classList.contains('lang-en') ? 'en' : 'hu';
+      
+      // Update modal content
+      document.getElementById('modalNumber').textContent = project.number;
+      
+      if (currentLang === 'hu') {
+        document.getElementById('modalTitle').style.display = 'block';
+        document.getElementById('modalTitleEn').style.display = 'none';
+        document.getElementById('modalTitle').textContent = project.titleHu;
+        document.getElementById('modalDescription').style.display = 'block';
+        document.getElementById('modalDescriptionEn').style.display = 'none';
+        document.getElementById('modalDescription').textContent = project.descriptionHu;
+      } else {
+        document.getElementById('modalTitle').style.display = 'none';
+        document.getElementById('modalTitleEn').style.display = 'block';
+        document.getElementById('modalTitleEn').textContent = project.titleEn;
+        document.getElementById('modalDescription').style.display = 'none';
+        document.getElementById('modalDescriptionEn').style.display = 'block';
+        document.getElementById('modalDescriptionEn').textContent = project.descriptionEn;
+      }
+      
+      // Update features
+      const featuresList = document.getElementById('modalFeatures');
+      featuresList.innerHTML = '';
+      const features = currentLang === 'hu' ? project.featuresHu : project.featuresEn;
+      features.forEach(feature => {
+        const li = document.createElement('li');
+        li.textContent = feature;
+        li.setAttribute('data-lang', currentLang);
+        featuresList.appendChild(li);
+      });
+      
+      // Update tech stack
+      const techGrid = document.getElementById('modalTech');
+      techGrid.innerHTML = '';
+      project.tech.forEach(tech => {
+        const tag = document.createElement('span');
+        tag.className = 'tech-tag';
+        tag.textContent = tech;
+        techGrid.appendChild(tag);
+      });
+      
+      // Update code
+      const codeBlock = document.getElementById('modalCode');
+      codeBlock.innerHTML = formatCode(project.code);
+      
+      // Show modal
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(event) {
+      if (event && event.target !== event.currentTarget) return;
+      const modal = document.getElementById('projectModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function formatCode(code) {
+      const lines = code.split('\n');
+      return lines.map(line => {
+        let formatted = line;
+        formatted = formatted.replace(/\b(from|import|def|async|class|if|else|elif|for|while|return|try|except|finally|with|as|and|or|not|in|is|True|False|None)\b/g, '<span class="keyword">$1</span>');
+        formatted = formatted.replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, '<span class="string">$&</span>');
+        return `<div>${formatted}</div>`;
+      }).join('');
+    }
+
+    // Language switching functionality
+    function setLanguage(lang) {
+      const body = document.body;
+      
+      // Update body class
+      body.classList.remove('lang-hu', 'lang-en');
+      body.classList.add(`lang-${lang}`);
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+      
+      // Update page title
+      const titleTexts = {
+        'hu': 'Bognár Bence - Projektek',
+        'en': 'Bognár Bence - Projects'
+      };
+      document.title = titleTexts[lang];
+      
+      // Update active language button
+      const langButtons = document.querySelectorAll('.lang-button');
+      langButtons.forEach(button => {
+        if (button.getAttribute('data-lang') === lang) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+      
+      // Update modal if open - find which modal was opened
+      const modal = document.getElementById('projectModal');
+      if (modal.classList.contains('active')) {
+        // Find the currently open project by checking modal number
+        const modalNumber = document.getElementById('modalNumber').textContent;
+        const projectIndex = projectsData.findIndex(p => p.number === modalNumber);
+        if (projectIndex >= 0) {
+          openModal(projectIndex);
+        }
+      }
+      
+      // Save preference to localStorage
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    // Initialize language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLang = localStorage.getItem('preferred-language') || 'hu';
+      setLanguage(savedLang);
+      
+      // Ensure Hungarian title is set initially
+      if (savedLang === 'hu') {
+        document.title = 'Bognár Bence - Projektek';
+      }
+      
+      // Close modal on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const modal = document.getElementById('projectModal');
+          if (modal.classList.contains('active')) {
+            closeModal();
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+

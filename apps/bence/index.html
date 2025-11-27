@@ -3,52 +3,1201 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bognár Bence</title>
+  <title>Bognár Bence - Backend Fejlesztő</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="landing.css" />
-</head>
-<body>
-  <div class="landing-container">
-    <!-- Navigation -->
-    <nav class="nav">
-      <div class="nav-content">
-        <a href="/" class="nav-logo">
-          <span class="nav-logo-code">&lt;</span>Bognár Bence<span class="nav-logo-code">/&gt;</span>
-        </a>
-        <a href="cv.html" class="nav-link">CV</a>
-      </div>
-    </nav>
+  <style>
+    /* Pythonic design - Hormozi-style conversion optimized */
+    :root {
+      --python-blue: #3776ab;
+      --python-blue-dark: #2d5a7e;
+      --python-yellow: #FFD43B;
+      --python-yellow-light: #FFE873;
+      --dina-bg-light: #ffffff;
+      --dina-bg-dark: #0a1929;
+      --dina-text-light: #000000;
+      --dina-text-dark: #ffffff;
+      --dina-gray: #666666;
+      --dina-gray-light: #999999;
+      --code-bg: #f8f9fa;
+      --code-border: #e9ecef;
+      --success-green: #28a745;
+    }
 
-    <!-- Hero Section -->
-    <main class="hero">
-      <div class="hero-content">
-        <!-- Coming Soon Notice -->
-        <div class="coming-soon-notice">
-          <div class="notice-content">
-            <span class="notice-icon">🚧</span>
-            <div class="notice-text">
-              <h2 class="notice-title">Pgae is not yet ready</h2>
-              <p class="notice-subtitle">This page is currently under construction. Please check back soon!</p>
+    body {
+      background: var(--dina-bg-light);
+      color: var(--dina-text-light);
+    }
+
+    .dina-nav {
+      padding: var(--spacing-lg);
+      background: var(--dina-bg-light);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .dina-nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dina-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dina-text-light);
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .dina-nav-right {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .dina-link {
+      color: var(--dina-text-light);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+    }
+
+    .dina-link:hover {
+      color: var(--python-blue);
+    }
+
+    .dina-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--python-yellow);
+      transition: width 0.2s;
+    }
+
+    .dina-link:hover::after {
+      width: 100%;
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .lang-button {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--dina-text-light);
+      white-space: nowrap;
+      min-width: 50px;
+    }
+
+    .lang-button:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .lang-button.active {
+      background: var(--python-blue);
+      color: var(--dina-bg-light);
+      border-color: var(--python-blue);
+    }
+
+    .lang-flag {
+      font-size: 1.2rem;
+      line-height: 1;
+      display: inline-block;
+      min-width: 1.2rem;
+      text-align: center;
+    }
+
+    /* Hero Section - Big Headline */
+    .hero-section {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      background: linear-gradient(135deg, var(--dina-bg-light) 0%, #f0f7ff 100%);
+      position: relative;
+      overflow: hidden;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      font-size: 20rem;
+      opacity: 0.02;
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      color: var(--dina-text-light);
+      margin-bottom: var(--spacing-lg);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hero-subheadline {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 400;
+      line-height: 1.4;
+      color: var(--dina-gray);
+      margin-bottom: var(--spacing-xl);
+      font-family: 'Inter', sans-serif;
+      max-width: 800px;
+    }
+
+    .python-accent {
+      color: var(--python-blue);
+      position: relative;
+    }
+
+    .python-accent::after {
+      content: '';
+      position: absolute;
+      bottom: 0.1em;
+      left: 0;
+      right: 0;
+      height: 0.15em;
+      background: linear-gradient(90deg, var(--python-blue), var(--python-yellow));
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    /* Dream Outcome Section */
+    .outcome-section {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      background: var(--dina-bg-light);
+    }
+
+    .outcome-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--spacing-xl);
+      font-family: 'Inter', sans-serif;
+      color: var(--dina-text-light);
+    }
+
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .outcome-item {
+      padding: var(--spacing-xl);
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-left: 4px solid var(--python-blue);
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .outcome-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(55, 118, 171, 0.15);
+    }
+
+    .outcome-icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .outcome-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dina-text-light);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .outcome-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--dina-gray);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Proof Section */
+    .proof-section {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      background: linear-gradient(135deg, var(--dina-bg-dark) 0%, #0d1f2e 100%);
+      color: var(--dina-text-dark);
+      position: relative;
+    }
+
+    .proof-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--python-blue), transparent);
+    }
+
+    .proof-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .proof-section .section-title {
+      color: var(--dina-text-dark);
+      text-align: center;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .proof-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      transition: all 0.3s;
+    }
+
+    .proof-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--python-blue);
+      transform: translateY(-4px);
+    }
+
+    .proof-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--python-yellow);
+      font-family: 'Inter', sans-serif;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .proof-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--dina-text-dark);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .proof-description {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Project Cards in Proof Section */
+    .project-card-proof {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .project-card-proof:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--python-blue);
+      transform: translateY(-4px);
+    }
+
+    .project-number-proof {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--python-yellow);
+      font-family: 'JetBrains Mono', monospace;
+      opacity: 0.8;
+    }
+
+    .project-title-proof {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dina-text-dark);
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .project-description-proof {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+      font-family: 'Inter', sans-serif;
+      flex: 1;
+    }
+
+    .project-tech-proof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-xs);
+      margin-top: var(--spacing-sm);
+    }
+
+    .tech-tag-proof {
+      padding: 0.25rem 0.75rem;
+      background: rgba(55, 118, 171, 0.2);
+      border: 1px solid rgba(55, 118, 171, 0.3);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--python-yellow);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .project-result-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: 0.25rem 0.75rem;
+      background: rgba(255, 212, 59, 0.15);
+      border: 1px solid rgba(255, 212, 59, 0.3);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--python-yellow);
+      font-family: 'Inter', sans-serif;
+      margin-bottom: var(--spacing-xs);
+      width: fit-content;
+    }
+
+    .project-result-icon {
+      font-size: 1rem;
+    }
+
+    .projects-cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md) var(--spacing-xl);
+      background: var(--python-yellow);
+      color: var(--dina-bg-dark);
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: all 0.3s;
+      font-family: 'Inter', sans-serif;
+      margin-top: var(--spacing-xl);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .projects-cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+      background: var(--python-yellow-light);
+    }
+
+    /* Process Section */
+    .process-section {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      background: var(--dina-bg-light);
+    }
+
+    .process-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .process-list {
+      display: grid;
+      gap: var(--spacing-xl);
+    }
+
+    .process-item {
+      display: flex;
+      gap: var(--spacing-lg);
+      align-items: flex-start;
+    }
+
+    .process-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--python-blue);
+      font-family: 'Inter', sans-serif;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .process-content {
+      flex: 1;
+    }
+
+    .process-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--dina-text-light);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .process-description {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--dina-gray);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Offers Section */
+    .offers-section {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      background: var(--code-bg);
+    }
+
+    .offers-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-xl);
+      margin-top: var(--spacing-xl);
+    }
+
+    .offer-card {
+      background: var(--dina-bg-light);
+      border: 2px solid var(--code-border);
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .offer-card:hover {
+      border-color: var(--python-blue);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(55, 118, 171, 0.2);
+    }
+
+    .offer-card.featured {
+      border-color: var(--python-blue);
+      border-width: 3px;
+    }
+
+    .offer-badge {
+      position: absolute;
+      top: -12px;
+      right: var(--spacing-lg);
+      background: var(--python-yellow);
+      color: var(--dina-bg-dark);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .offer-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--dina-text-light);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .offer-price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--python-blue);
+      margin-bottom: var(--spacing-md);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .offer-features {
+      list-style: none;
+      padding: 0;
+      margin: var(--spacing-lg) 0;
+    }
+
+    .offer-features li {
+      padding: var(--spacing-sm) 0;
+      padding-left: var(--spacing-lg);
+      position: relative;
+      color: var(--dina-gray);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .offer-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success-green);
+      font-weight: 600;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      background: linear-gradient(135deg, var(--python-blue) 0%, var(--python-blue-dark) 100%);
+      color: var(--dina-text-dark);
+      text-align: center;
+    }
+
+    .cta-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--spacing-lg);
+      font-family: 'Inter', sans-serif;
+      color: var(--dina-text-dark);
+    }
+
+    .cta-description {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: var(--spacing-xl);
+      color: rgba(255, 255, 255, 0.9);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md) var(--spacing-xxl);
+      background: var(--python-yellow);
+      color: var(--dina-bg-dark);
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      transition: all 0.3s;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+      background: var(--python-yellow-light);
+    }
+
+    .dina-footer {
+      padding: var(--spacing-xl) var(--spacing-lg);
+      background: var(--dina-bg-dark);
+      color: var(--dina-text-dark);
+      text-align: center;
+    }
+
+    .dina-footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .dina-footer-text {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Inter', sans-serif;
+    }
+
+    [data-lang="en"] {
+      display: none;
+    }
+
+    .lang-hu [data-lang="en"] {
+      display: none;
+    }
+
+    .lang-hu [data-lang="hu"] {
+      display: block;
+    }
+
+    .lang-en [data-lang="hu"] {
+      display: none;
+    }
+
+    .lang-en [data-lang="en"] {
+      display: block;
+    }
+
+    /* Language switcher buttons should always be visible */
+    .lang-switcher .lang-button {
+      display: flex !important;
+    }
+
+    .lang-switcher .lang-button[data-lang="hu"],
+    .lang-switcher .lang-button[data-lang="en"] {
+      display: flex !important;
+    }
+
+    @media (max-width: 768px) {
+      .dina-nav-content {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+      }
+
+      .dina-nav-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .lang-button {
+        font-size: 0.75rem;
+        padding: var(--spacing-xs);
+      }
+
+      .process-item {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .process-number {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-section {
+        padding: var(--spacing-xl) var(--spacing-md);
+        min-height: 60vh;
+      }
+
+      .outcome-section,
+      .proof-section,
+      .process-section,
+      .offers-section,
+      .cta-section {
+        padding: var(--spacing-xl) var(--spacing-md);
+      }
+    }
+  </style>
+</head>
+<body class="lang-hu">
+  <div class="landing-container" style="background: var(--dina-bg-light);">
+    <!-- Navigation -->
+    <nav class="dina-nav">
+      <div class="dina-nav-content">
+        <a href="index.html" class="dina-logo">
+          Bognár Bence
+        </a>
+        <div class="dina-nav-right">
+          <div class="lang-switcher" id="langSwitcher">
+            <div class="lang-button active" data-lang="hu" onclick="setLanguage('hu')" title="Magyar">
+              <span class="lang-flag" style="font-size: 1.2rem;">🇭🇺</span>
+              <span>HU</span>
+            </div>
+            <div class="lang-button" data-lang="en" onclick="setLanguage('en')" title="English">
+              <span class="lang-flag" style="font-size: 1.2rem;">🇬🇧</span>
+              <span>EN</span>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </nav>
+
+    <!-- 1. BIG HEADLINE -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <h1 class="hero-headline" data-lang="hu">
+          <span class="python-accent">Backend fejlesztő</span>, aki gyorsan és biztonságosan megoldja a piszkos munkát — anélkül, hogy vissza kéne térned hozzá.
+        </h1>
+        <h1 class="hero-headline" data-lang="en">
+          <span class="python-accent">Backend developer</span> who quickly and securely solves the dirty work — without you having to come back to it.
+        </h1>
+        
+        <p class="hero-subheadline" data-lang="hu">
+          Stabil, skálázható rendszert építek neked 7–30 nap alatt. API-k, integrációk, automációk és teljes backend megoldások vállalkozóknak és startupoknak.
+        </p>
+        <p class="hero-subheadline" data-lang="en">
+          I build stable, scalable systems for you in 7–30 days. APIs, integrations, automations and complete backend solutions for entrepreneurs and startups.
+        </p>
+      </div>
+    </section>
+
+    <!-- 2. DREAM OUTCOME -->
+    <section class="outcome-section">
+      <div class="outcome-container">
+        <h2 class="section-title" data-lang="hu">Mit kapsz tőlem?</h2>
+        <h2 class="section-title" data-lang="en">What do you get from me?</h2>
+        
+        <div class="outcome-grid">
+          <div class="outcome-item">
+            <div class="outcome-icon">🚀</div>
+            <h3 class="outcome-title" data-lang="hu">API-k, amik sose dőlnek össze</h3>
+            <h3 class="outcome-title" data-lang="en">APIs that never crash</h3>
+            <p class="outcome-description" data-lang="hu">
+              Skálázható REST és GraphQL API-k, amelyek milliós forgalmat kezelnek. 
+              Auto-scaling, monitoring és automatikus recovery.
+            </p>
+            <p class="outcome-description" data-lang="en">
+              Scalable REST and GraphQL APIs that handle millions of requests. 
+              Auto-scaling, monitoring and automatic recovery.
+            </p>
+          </div>
+
+          <div class="outcome-item">
+            <div class="outcome-icon">⚡</div>
+            <h3 class="outcome-title" data-lang="hu">Integrációk, amik órákat spórolnak</h3>
+            <h3 class="outcome-title" data-lang="en">Integrations that save hours</h3>
+            <p class="outcome-description" data-lang="hu">
+              Stripe, Auth0, Firebase, webhookok, CRM stitching — működőre rakom. 
+              Nem kell foglalkoznod vele többé.
+            </p>
+            <p class="outcome-description" data-lang="en">
+              Stripe, Auth0, Firebase, webhooks, CRM stitching — I make it work. 
+              You don't have to deal with it anymore.
+            </p>
+          </div>
+
+          <div class="outcome-item">
+            <div class="outcome-icon">🤖</div>
+            <h3 class="outcome-title" data-lang="hu">Automációk, amik embereket váltanak ki</h3>
+            <h3 class="outcome-title" data-lang="en">Automations that replace people</h3>
+            <p class="outcome-description" data-lang="hu">
+              Background jobs, scheduled tasks, data processing — minden fut, 
+              amikor kell, anélkül hogy bárki is rá kellene nézzen.
+            </p>
+            <p class="outcome-description" data-lang="en">
+              Background jobs, scheduled tasks, data processing — everything runs 
+              when needed, without anyone having to check on it.
+            </p>
+          </div>
+
+          <div class="outcome-item">
+            <div class="outcome-icon">🏗️</div>
+            <h3 class="outcome-title" data-lang="hu">Teljes backend rendszer, ami fut, működik és skálázható</h3>
+            <h3 class="outcome-title" data-lang="en">Complete backend system that runs, works and scales</h3>
+            <p class="outcome-description" data-lang="hu">
+              Adatbázisok, API-k, autentikáció, deployment — minden egy helyen, 
+              dokumentálva, tesztekkel, kész a production-re.
+            </p>
+            <p class="outcome-description" data-lang="en">
+              Databases, APIs, authentication, deployment — everything in one place, 
+              documented, tested, ready for production.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PROJECTS SECTION -->
+    <section class="proof-section">
+      <div class="proof-container">
+        <h2 class="section-title" data-lang="hu">Projektek</h2>
+        <h2 class="section-title" data-lang="en">Projects</h2>
+        
+        <div class="proof-grid" style="margin-bottom: var(--spacing-xl);">
+          <!-- Project 1 -->
+          <div class="project-card-proof">
+            <div class="project-number-proof">01</div>
+            <div class="project-result-proof">
+              <span class="project-result-icon">⚡</span>
+              <span data-lang="hu">62% gyorsulás • 0 downtime</span>
+              <span data-lang="en">62% speed improvement • 0 downtime</span>
+            </div>
+            <h3 class="project-title-proof" data-lang="hu">FastAPI Migráció</h3>
+            <h3 class="project-title-proof" data-lang="en">FastAPI Migration</h3>
+            <p class="project-description-proof" data-lang="hu">
+              Régi REST API modern FastAPI-re migrálva. Response time: 450ms → 170ms. 
+              Auto-scaling és monitoring implementálva.
+            </p>
+            <p class="project-description-proof" data-lang="en">
+              Legacy REST API migrated to modern FastAPI. Response time: 450ms → 170ms. 
+              Auto-scaling and monitoring implemented.
+            </p>
+            <div class="project-tech-proof">
+              <span class="tech-tag-proof">Python</span>
+              <span class="tech-tag-proof">FastAPI</span>
+              <span class="tech-tag-proof">PostgreSQL</span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card-proof">
+            <div class="project-number-proof">02</div>
+            <div class="project-result-proof">
+              <span class="project-result-icon">🚀</span>
+              <span data-lang="hu">4x gyorsabb lekérdezések</span>
+              <span data-lang="en">4x faster queries</span>
+            </div>
+            <h3 class="project-title-proof" data-lang="hu">Adatbázis Optimalizálás</h3>
+            <h3 class="project-title-proof" data-lang="en">Database Optimization</h3>
+            <p class="project-description-proof" data-lang="hu">
+              PostgreSQL adatbázis teljesítmény optimalizálása komplex lekérdezésekhez. 
+              Index stratégia és query tuning implementálva.
+            </p>
+            <p class="project-description-proof" data-lang="en">
+              PostgreSQL database performance optimization for complex queries. 
+              Index strategy and query tuning implemented.
+            </p>
+            <div class="project-tech-proof">
+              <span class="tech-tag-proof">PostgreSQL</span>
+              <span class="tech-tag-proof">Python</span>
+              <span class="tech-tag-proof">SQLAlchemy</span>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card-proof">
+            <div class="project-number-proof">03</div>
+            <div class="project-result-proof">
+              <span class="project-result-icon">💰</span>
+              <span data-lang="hu">40% költségcsökkentés</span>
+              <span data-lang="en">40% cost reduction</span>
+            </div>
+            <h3 class="project-title-proof" data-lang="hu">Cloud Infrastruktúra</h3>
+            <h3 class="project-title-proof" data-lang="en">Cloud Infrastructure</h3>
+            <p class="project-description-proof" data-lang="hu">
+              AWS cloud infrastruktúra beállítása Docker és Kubernetes használatával. 
+              CI/CD pipeline konfigurálása és automatizált deployment.
+            </p>
+            <p class="project-description-proof" data-lang="en">
+              AWS cloud infrastructure setup using Docker and Kubernetes. 
+              CI/CD pipeline configuration and automated deployment.
+            </p>
+            <div class="project-tech-proof">
+              <span class="tech-tag-proof">AWS</span>
+              <span class="tech-tag-proof">Docker</span>
+              <span class="tech-tag-proof">Kubernetes</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="projects.html" class="projects-cta-button">
+            <span data-lang="hu">Tovább a többire</span>
+            <span data-lang="en">See more projects</span>
+            <span style="font-size: 1.25rem;">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. HOW I WORK -->
+    <section class="process-section">
+      <div class="process-container">
+        <h2 class="section-title" data-lang="hu">Hogyan dolgozom</h2>
+        <h2 class="section-title" data-lang="en">How I work</h2>
+        
+        <div class="process-list">
+          <div class="process-item">
+            <div class="process-number">1</div>
+            <div class="process-content">
+              <h3 class="process-title" data-lang="hu">Diagnózis hívás – 15 perc</h3>
+              <h3 class="process-title" data-lang="en">Diagnosis call – 15 minutes</h3>
+              <p class="process-description" data-lang="hu">
+                Megmondom, mi a probléma, és mit kell csinálni. Nincs bizonytalanság, 
+                nincs óradíjas túlszámlázás. Egyértelmű ajánlat fix áron.
+              </p>
+              <p class="process-description" data-lang="en">
+                I tell you what the problem is and what needs to be done. No uncertainty, 
+                no hourly overbilling. Clear offer at a fixed price.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-item">
+            <div class="process-number">2</div>
+            <div class="process-content">
+              <h3 class="process-title" data-lang="hu">Fix vagy project alapú ajánlat</h3>
+              <h3 class="process-title" data-lang="en">Fixed or project-based offer</h3>
+              <p class="process-description" data-lang="hu">
+                Nincs bizonytalanság, nincs óradíjas túlszámlázás. Tudod előre, 
+                mennyibe kerül, és mikor készül el.
+              </p>
+              <p class="process-description" data-lang="en">
+                No uncertainty, no hourly overbilling. You know in advance 
+                how much it costs and when it will be ready.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-item">
+            <div class="process-number">3</div>
+            <div class="process-content">
+              <h3 class="process-title" data-lang="hu">Kézbesítés és átadás</h3>
+              <h3 class="process-title" data-lang="en">Delivery and handover</h3>
+              <p class="process-description" data-lang="hu">
+                Doksik. Tesztek. Minden működik. Nem kell futkosnod utánam. 
+                Átadom a kulcsokat, és megtanítom, hogyan kell használni.
+              </p>
+              <p class="process-description" data-lang="en">
+                Documentation. Tests. Everything works. You don't have to chase me. 
+                I hand over the keys and teach you how to use it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. FRONTEND OFFERS -->
+    <section class="offers-section">
+      <div class="offers-container">
+        <h2 class="section-title" data-lang="hu">Mit vehetsz meg tőlem</h2>
+        <h2 class="section-title" data-lang="en">What you can buy from me</h2>
+        
+        <div class="offers-grid">
+          <div class="offer-card">
+            <h3 class="offer-title" data-lang="hu">Starter API Fix</h3>
+            <h3 class="offer-title" data-lang="en">Starter API Fix</h3>
+            <div class="offer-price" data-eur="249" data-lang="hu"></div>
+            <div class="offer-price" data-lang="en">249€</div>
+            <p class="outcome-description" data-lang="hu">
+              Egy API, ami jelenleg rossz / instabil / lassú → 48 órán belüli javítás.
+            </p>
+            <p class="outcome-description" data-lang="en">
+              An API that is currently bad / unstable / slow → fixed within 48 hours.
+            </p>
+            <ul class="offer-features">
+              <li data-lang="hu">Teljesítmény optimalizálás</li>
+              <li data-lang="hu">Hibajavítás</li>
+              <li data-lang="hu">Stabilizálás</li>
+              <li data-lang="hu">Rövid dokumentáció</li>
+              <li data-lang="en">Performance optimization</li>
+              <li data-lang="en">Bug fixes</li>
+              <li data-lang="en">Stabilization</li>
+              <li data-lang="en">Short documentation</li>
+            </ul>
+          </div>
+
+          <div class="offer-card featured">
+            <div class="offer-badge" data-lang="hu">NÉPSZERŰ</div>
+            <div class="offer-badge" data-lang="en">POPULAR</div>
+            <h3 class="offer-title" data-lang="hu">Integration Setup</h3>
+            <h3 class="offer-title" data-lang="en">Integration Setup</h3>
+            <div class="offer-price" data-eur-min="399" data-eur-max="799" data-lang="hu"></div>
+            <div class="offer-price" data-lang="en">399–799€</div>
+            <p class="outcome-description" data-lang="hu">
+              Stripe, Auth0, Firebase, webhookok, CRM stitching — működőre rakom.
+            </p>
+            <p class="outcome-description" data-lang="en">
+              Stripe, Auth0, Firebase, webhooks, CRM stitching — I make it work.
+            </p>
+            <ul class="offer-features">
+              <li data-lang="hu">3rd party integráció</li>
+              <li data-lang="hu">Webhook konfiguráció</li>
+              <li data-lang="hu">Error handling</li>
+              <li data-lang="hu">Tesztelés és dokumentáció</li>
+              <li data-lang="en">3rd party integration</li>
+              <li data-lang="en">Webhook configuration</li>
+              <li data-lang="en">Error handling</li>
+              <li data-lang="en">Testing and documentation</li>
+            </ul>
+          </div>
+
+          <div class="offer-card">
+            <h3 class="offer-title" data-lang="hu">Mini Backend Build</h3>
+            <h3 class="offer-title" data-lang="en">Mini Backend Build</h3>
+            <div class="offer-price" data-eur-min="1500" data-eur-max="3000" data-lang="hu"></div>
+            <div class="offer-price" data-lang="en">1.500–3.000€</div>
+            <p class="outcome-description" data-lang="hu">
+              Kis SaaS vagy MVP backend 2–4 hét alatt.
+            </p>
+            <p class="outcome-description" data-lang="en">
+              Small SaaS or MVP backend in 2–4 weeks.
+            </p>
+            <ul class="offer-features">
+              <li data-lang="hu">Teljes backend architektúra</li>
+              <li data-lang="hu">API fejlesztés</li>
+              <li data-lang="hu">Adatbázis design</li>
+              <li data-lang="hu">Deployment és dokumentáció</li>
+              <li data-lang="en">Complete backend architecture</li>
+              <li data-lang="en">API development</li>
+              <li data-lang="en">Database design</li>
+              <li data-lang="en">Deployment and documentation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. SINGLE CTA -->
+    <section class="cta-section">
+      <div class="cta-container">
+        <h2 class="cta-title" data-lang="hu">Kérek egy gyors diagnózist</h2>
+        <h2 class="cta-title" data-lang="en">I want a quick diagnosis</h2>
+        <p class="cta-description" data-lang="hu">
+          15 perc alatt megmondom, mi a probléma, és mit kell csinálni. 
+          Ingyenes. Nincs kötelezettség.
+        </p>
+        <p class="cta-description" data-lang="en">
+          In 15 minutes I'll tell you what the problem is and what needs to be done. 
+          Free. No obligation.
+        </p>
+        <a href="mailto:bence@bognar.dev?subject=Diagnózis hívás&body=Szeretnék egy 15 perces diagnózis hívást foglalni." class="cta-button">
+          <span data-lang="hu">Foglalj időpontot</span>
+          <span data-lang="en">Book a call</span>
+          <span style="font-size: 1.5rem;">→</span>
+        </a>
+      </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <p class="footer-text">
-          <span class="footer-code">const</span> <span class="footer-var">year</span> = <span class="footer-number">2025</span>;
-        </p>
-        <p class="footer-text">© Bognár Bence</p>
+    <footer class="dina-footer">
+      <div class="dina-footer-content">
+        <p class="dina-footer-text">© 2025 Bognár Bence</p>
       </div>
     </footer>
   </div>
+
+  <script>
+    // Exchange rate conversion
+    let eurToHufRate = null;
+
+    async function fetchExchangeRate() {
+      try {
+        const response = await fetch('https://api.exchangerate-api.com/v4/latest/EUR');
+        const data = await response.json();
+        eurToHufRate = data.rates.HUF;
+        updatePrices();
+      } catch (error) {
+        console.error('Error fetching exchange rate:', error);
+        // Fallback rate if API fails (approximate)
+        eurToHufRate = 390;
+        updatePrices();
+      }
+    }
+
+    function formatHUF(amount) {
+      return new Intl.NumberFormat('hu-HU', {
+        style: 'currency',
+        currency: 'HUF',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(amount);
+    }
+
+    function roundToThousands(amount) {
+      return Math.round(amount / 1000) * 1000;
+    }
+
+    function updatePrices() {
+      if (!eurToHufRate) return;
+
+      const priceElements = document.querySelectorAll('.offer-price[data-lang="hu"]');
+      priceElements.forEach(element => {
+        const eurMin = element.getAttribute('data-eur-min');
+        const eurMax = element.getAttribute('data-eur-max');
+        const eur = element.getAttribute('data-eur');
+
+        if (eur) {
+          // Single price
+          const hufAmount = roundToThousands(Math.round(parseFloat(eur) * eurToHufRate));
+          element.textContent = formatHUF(hufAmount);
+        } else if (eurMin && eurMax) {
+          // Price range
+          const hufMin = roundToThousands(Math.round(parseFloat(eurMin) * eurToHufRate));
+          const hufMax = roundToThousands(Math.round(parseFloat(eurMax) * eurToHufRate));
+          element.textContent = formatHUF(hufMin) + '–' + formatHUF(hufMax);
+        }
+      });
+    }
+
+    // Language switching functionality
+    function setLanguage(lang) {
+      const body = document.body;
+      
+      // Update body class
+      body.classList.remove('lang-hu', 'lang-en');
+      body.classList.add(`lang-${lang}`);
+      
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+      
+      // Update page title
+      const titleTexts = {
+        'hu': 'Bognár Bence - Backend Fejlesztő',
+        'en': 'Bognár Bence - Backend Developer'
+      };
+      document.title = titleTexts[lang];
+      
+      // Update active language button
+      const langButtons = document.querySelectorAll('.lang-button');
+      langButtons.forEach(button => {
+        if (button.getAttribute('data-lang') === lang) {
+          button.classList.add('active');
+        } else {
+          button.classList.remove('active');
+        }
+      });
+      
+      // Update prices if Hungarian is selected
+      if (lang === 'hu' && eurToHufRate) {
+        updatePrices();
+      }
+      
+      // Save preference to localStorage
+      localStorage.setItem('preferred-language', lang);
+    }
+
+    // Initialize language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLang = localStorage.getItem('preferred-language') || 'hu';
+      
+      // Fetch exchange rate first
+      fetchExchangeRate();
+      
+      setLanguage(savedLang);
+      
+      // Ensure Hungarian title is set initially
+      if (savedLang === 'hu') {
+        document.title = 'Bognár Bence - Backend Fejlesztő';
+      }
+    });
+  </script>
 </body>
 </html>
