@@ -35,31 +35,6 @@
       overflow-x: hidden;
     }
 
-    /* Snow animation - Set SNOW_ENABLED to false to disable */
-    @keyframes snow {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .snowflake {
-      position: fixed;
-      top: -10px;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 1rem;
-      font-family: Arial, sans-serif;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-      user-select: none;
-      pointer-events: none;
-      z-index: 1;
-      animation: snow linear infinite;
-    }
-
     .dina-nav {
       padding: var(--spacing-md) var(--spacing-lg);
       backdrop-filter: blur(20px) saturate(180%);
@@ -608,32 +583,6 @@
     .offer-card.featured {
       border-color: var(--accent-cyan);
       border-width: 3px;
-    }
-
-    .offer-card.christmas-gift {
-      position: relative;
-      background: rgba(220, 38, 38, 0.2);
-      border-color: rgba(220, 38, 38, 0.5);
-      border-width: 3px;
-      overflow: hidden;
-    }
-
-    .offer-card.christmas-gift::before {
-      content: '🎁';
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      font-size: 4rem;
-      opacity: 0.3;
-      transform: rotate(15deg);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .offer-card.christmas-gift:hover {
-      border-color: var(--accent-cyan);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(34, 211, 238, 0.2);
     }
 
     .offer-price-original {
@@ -1185,17 +1134,11 @@
         <h2 class="section-title" data-lang="en">Offers</h2>
         
         <div class="offers-grid">
-          <div class="offer-card christmas-gift">
+          <div class="offer-card">
             <h3 class="offer-title" data-lang="hu">Mini Webapp Build</h3>
             <h3 class="offer-title" data-lang="en">Mini Webapp Build</h3>
-            <div class="offer-price" data-eur="749" data-lang="hu">
-              <span class="offer-price-original"></span>
-              <span class="offer-price-discounted"></span>
-            </div>
-            <div class="offer-price" data-lang="en">
-              <span class="offer-price-original">749€</span>
-              <span class="offer-price-discounted">150€</span>
-            </div>
+            <div class="offer-price" data-eur="749" data-lang="hu"></div>
+            <div class="offer-price" data-lang="en">749€</div>
             <p class="outcome-description" data-lang="hu">
               Kész webes alkalmazás 7–14 nap alatt. Modern UI template, saját backend logika és azonnali deploy.
             </p>
@@ -1343,10 +1286,6 @@
         const eurMax = element.getAttribute('data-eur-max');
         const eur = element.getAttribute('data-eur');
         
-        // Check if this is a Christmas gift card (has discount)
-        const isChristmasGift = element.closest('.christmas-gift');
-        const discountPercent = isChristmasGift ? 0.8 : 0; // 80% discount for Christmas gift
-        
         const originalSpan = element.querySelector('.offer-price-original');
         const discountedSpan = element.querySelector('.offer-price-discounted');
         const priceAmountSpan = element.querySelector('.price-amount');
@@ -1354,35 +1293,30 @@
         if (eur) {
           // Single price
           const originalEur = parseFloat(eur);
-          const discountedEur = originalEur * (1 - discountPercent);
           const originalHuf = roundToThousands(Math.round(originalEur * eurToHufRate));
-          const discountedHuf = roundToThousands(Math.round(discountedEur * eurToHufRate));
           
           if (priceAmountSpan) {
-            priceAmountSpan.textContent = formatHUF(discountedHuf);
+            priceAmountSpan.textContent = formatHUF(originalHuf);
           } else if (originalSpan && discountedSpan) {
             originalSpan.textContent = formatHUF(originalHuf);
-            discountedSpan.textContent = formatHUF(discountedHuf);
+            discountedSpan.textContent = formatHUF(originalHuf);
           } else {
-            element.textContent = formatHUF(discountedHuf);
+            element.textContent = formatHUF(originalHuf);
           }
         } else if (eurMin && eurMax) {
           // Price range - calculate middle value
           const originalEurMin = parseFloat(eurMin);
           const originalEurMax = parseFloat(eurMax);
           const originalEur = (originalEurMin + originalEurMax) / 2; // Middle value
-          const discountedEur = originalEur * (1 - discountPercent);
-          
           const originalHuf = roundToThousands(Math.round(originalEur * eurToHufRate));
-          const discountedHuf = roundToThousands(Math.round(discountedEur * eurToHufRate));
           
           if (priceAmountSpan) {
-            priceAmountSpan.textContent = formatHUF(discountedHuf);
+            priceAmountSpan.textContent = formatHUF(originalHuf);
           } else if (originalSpan && discountedSpan) {
             originalSpan.textContent = formatHUF(originalHuf);
-            discountedSpan.textContent = formatHUF(discountedHuf);
+            discountedSpan.textContent = formatHUF(originalHuf);
           } else {
-            element.textContent = formatHUF(discountedHuf);
+            element.textContent = formatHUF(originalHuf);
           }
         }
       });
@@ -1492,74 +1426,7 @@
 
       // Initialize CTA button shake animation
       initCTAButtonShake();
-
-      // Initialize snowflakes when scrolling to offers section
-      initSnowflakesOnScroll();
     });
-
-    // Winter snowflakes - Only appear when scrolling to offers section
-    let snowflakesCreated = false;
-    
-    function initSnowflakesOnScroll() {
-      const offersSection = document.querySelector('.offers-section');
-      if (!offersSection) return;
-
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px 0px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !snowflakesCreated) {
-            createSnowflakes(offersSection);
-            snowflakesCreated = true;
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      observer.observe(offersSection);
-    }
-
-    function createSnowflakes(offersSection) {
-      const snowflakeCount = 50;
-      
-      const snowflakeContainer = document.createElement('div');
-      snowflakeContainer.id = 'snowflake-container';
-      snowflakeContainer.style.position = 'fixed';
-      snowflakeContainer.style.left = '0';
-      snowflakeContainer.style.width = '100%';
-      snowflakeContainer.style.height = '100vh';
-      snowflakeContainer.style.pointerEvents = 'none';
-      snowflakeContainer.style.zIndex = '1';
-      snowflakeContainer.style.overflow = 'hidden';
-      
-      // Update container position to start at offers section top
-      function updateSnowflakePosition() {
-        const offersTop = offersSection.getBoundingClientRect().top;
-        snowflakeContainer.style.top = offersTop + 'px';
-        snowflakeContainer.style.clipPath = `inset(${offersTop}px 0 0 0)`;
-      }
-      
-      updateSnowflakePosition();
-      window.addEventListener('scroll', updateSnowflakePosition);
-      window.addEventListener('resize', updateSnowflakePosition);
-      
-      document.body.appendChild(snowflakeContainer);
-
-      for (let i = 0; i < snowflakeCount; i++) {
-        const snowflake = document.createElement('div');
-        snowflake.className = 'snowflake';
-        snowflake.innerHTML = '❄';
-        snowflake.style.left = Math.random() * 100 + '%';
-        snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        snowflake.style.animationDelay = Math.random() * 2 + 's';
-        snowflake.style.opacity = Math.random() * 0.5 + 0.3;
-        snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
-        snowflakeContainer.appendChild(snowflake);
-      }
-    }
   </script>
 </body>
 </html>
