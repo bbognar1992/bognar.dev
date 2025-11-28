@@ -564,6 +564,8 @@
       position: relative;
       opacity: 0;
       transform: scale(0.95) translateY(20px);
+      display: flex;
+      flex-direction: column;
     }
 
     .offer-card.animate-in {
@@ -673,6 +675,27 @@
       left: 0;
       color: var(--success-green);
       font-weight: 600;
+    }
+
+    .offer-use-case {
+      margin-top: auto;
+      padding-top: var(--spacing-lg);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .offer-use-case-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .offer-use-case-text {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
     }
 
     /* CTA Section */
@@ -1137,81 +1160,131 @@
           <div class="offer-card">
             <h3 class="offer-title" data-lang="hu">Mini Webapp Build</h3>
             <h3 class="offer-title" data-lang="en">Mini Webapp Build</h3>
-            <div class="offer-price" data-eur="749" data-lang="hu"></div>
-            <div class="offer-price" data-lang="en">749€</div>
-            <p class="outcome-description" data-lang="hu">
-              Kész webes alkalmazás 7–14 nap alatt. Modern UI template, saját backend logika és azonnali deploy.
+            <div class="offer-price" data-eur="733" data-lang="hu"></div>
+            <div class="offer-price" data-lang="en">733€</div>
+            <p class="outcome-description" data-lang="hu" style="font-weight: 600; margin-bottom: var(--spacing-sm);">
+              Kis, célzott webalkalmazás 7–14 nap alatt.
             </p>
-            <p class="outcome-description" data-lang="en">
-              Ready web application in 7–14 days. Modern UI template, custom backend logic and instant deployment.
+            <p class="outcome-description" data-lang="hu" style="margin-bottom: var(--spacing-lg);">
+              Egyetlen fontos folyamatot vagy funkciót automatizál, modern UI-val és saját backend logikával. Gyors, egyszerű, azonnal használható.
+            </p>
+            <p class="outcome-description" data-lang="en" style="font-weight: 600; margin-bottom: var(--spacing-sm);">
+              Small, targeted web application in 7–14 days.
+            </p>
+            <p class="outcome-description" data-lang="en" style="margin-bottom: var(--spacing-lg);">
+              Automates a single important process or function, with modern UI and custom backend logic. Fast, simple, ready to use immediately.
             </p>
             <ul class="offer-features">
               <li data-lang="hu">Reszponzív, modern frontend template</li>
-              <li data-lang="hu">Saját backend API fejlesztés</li>
-              <li data-lang="hu">Production-ready deployment</li>
+              <li data-lang="hu">Saját backend API és logika (1–2 fő funkció)</li>
+              <li data-lang="hu">Egyszerű adatkezelés / CRUD</li>
+              <li data-lang="hu">Gyors, production-ready deploy</li>
               <li data-lang="hu">Teljes dokumentáció és átadás</li>
               <li data-lang="en">Responsive, modern frontend template</li>
-              <li data-lang="en">Custom backend API development</li>
-              <li data-lang="en">Production-ready deployment</li>
+              <li data-lang="en">Custom backend API and logic (1–2 main functions)</li>
+              <li data-lang="en">Simple data management / CRUD</li>
+              <li data-lang="en">Fast, production-ready deployment</li>
               <li data-lang="en">Complete documentation and handover</li>
             </ul>
+            <div class="offer-use-case">
+              <div class="offer-use-case-title" data-lang="hu">Mire jó?</div>
+              <div class="offer-use-case-title" data-lang="en">What is it good for?</div>
+              <div class="offer-use-case-text" data-lang="hu">
+                Kisebb belső folyamatok automatizálása, prototípus, micro-SaaS kezdés, egy konkrét funkció működő verziója.
+              </div>
+              <div class="offer-use-case-text" data-lang="en">
+                Automating smaller internal processes, prototypes, micro-SaaS start, working version of a specific function.
+              </div>
+            </div>
           </div>
 
           <div class="offer-card featured">
             <h3 class="offer-title" data-lang="hu">MVP Build</h3>
             <h3 class="offer-title" data-lang="en">MVP Build</h3>
-            <div class="offer-price" data-eur="2250" data-lang="hu"></div>
-            <div class="offer-price" data-lang="en">2.250€</div>
-            <p class="outcome-description" data-lang="hu">
-              Teljes MVP 14–30 nap alatt. Next.js frontend, teljes backend rendszer, autentikáció, adatbázis, admin felület és API-k — minden egy helyen.
+            <div class="offer-price" data-eur="2200" data-lang="hu"></div>
+            <div class="offer-price" data-lang="en">2.200€</div>
+            <p class="outcome-description" data-lang="hu" style="font-weight: 600; margin-bottom: var(--spacing-sm);">
+              Komplett, élesben használható termék 14–30 nap alatt.
             </p>
-            <p class="outcome-description" data-lang="en">
-              Complete MVP in 14–30 days. Next.js frontend, full backend system, authentication, database, admin interface and APIs — everything in one place.
+            <p class="outcome-description" data-lang="hu" style="margin-bottom: var(--spacing-lg);">
+              Több funkció, teljes felhasználói rendszer, adatbázis-struktúra, admin felület — minden, ami egy induló SaaS-hoz vagy digitális termékhez kell.
+            </p>
+            <p class="outcome-description" data-lang="en" style="font-weight: 600; margin-bottom: var(--spacing-sm);">
+              Complete, production-ready product in 14–30 days.
+            </p>
+            <p class="outcome-description" data-lang="en" style="margin-bottom: var(--spacing-lg);">
+              Multiple functions, complete user system, database structure, admin interface — everything needed for a starting SaaS or digital product.
             </p>
             <ul class="offer-features">
               <li data-lang="hu">Next.js frontend template (reszponzív, SEO-optimalizált)</li>
-              <li data-lang="hu">Teljes backend architektúra és API fejlesztés</li>
-              <li data-lang="hu">Felhasználó autentikáció és jogosultságkezelés</li>
+              <li data-lang="hu">Teljes backend architektúra és API-k</li>
+              <li data-lang="hu">Felhasználói autentikáció + jogosultságkezelés</li>
               <li data-lang="hu">Adatbázis design és implementáció</li>
               <li data-lang="hu">Admin felület az adatok kezeléséhez</li>
-              <li data-lang="hu">Production deployment és monitoring</li>
+              <li data-lang="hu">Production deployment + monitoring</li>
               <li data-lang="en">Next.js frontend template (responsive, SEO-optimized)</li>
-              <li data-lang="en">Complete backend architecture and API development</li>
-              <li data-lang="en">User authentication and authorization</li>
+              <li data-lang="en">Complete backend architecture and APIs</li>
+              <li data-lang="en">User authentication + authorization</li>
               <li data-lang="en">Database design and implementation</li>
               <li data-lang="en">Admin interface for data management</li>
-              <li data-lang="en">Production deployment and monitoring</li>
+              <li data-lang="en">Production deployment + monitoring</li>
             </ul>
+            <div class="offer-use-case">
+              <div class="offer-use-case-title" data-lang="hu">Mire jó?</div>
+              <div class="offer-use-case-title" data-lang="en">What is it good for?</div>
+              <div class="offer-use-case-text" data-lang="hu">
+                Induló SaaS, ügyfélportál, összetettebb rendszer első éles verziója — valódi használatra és skálázásra.
+              </div>
+              <div class="offer-use-case-text" data-lang="en">
+                Starting SaaS, client portal, first production version of a more complex system — for real use and scaling.
+              </div>
+            </div>
           </div>
 
           <div class="offer-card">
-            <h3 class="offer-title" data-lang="hu">Automation & Backend Support</h3>
-            <h3 class="offer-title" data-lang="en">Automation & Backend Support</h3>
-            <div class="offer-price" data-eur="199" data-lang="hu" style="font-size: 1.75rem;">
+            <h3 class="offer-title" data-lang="hu">Support</h3>
+            <h3 class="offer-title" data-lang="en">Support</h3>
+            <div class="offer-price" data-eur="195" data-lang="hu" style="font-size: 1.75rem;">
               <span class="price-amount"></span>
               <span style="font-size: 1rem; font-weight: 400;">/hó</span>
             </div>
             <div class="offer-price" data-lang="en" style="font-size: 1.75rem;">
-              199€<span style="font-size: 1rem; font-weight: 400;">/month</span>
+              195€<span style="font-size: 1rem; font-weight: 400;">/month</span>
             </div>
-            <p class="outcome-description" data-lang="hu" style="margin-bottom: var(--spacing-md);">
-              Folyamatos támogatás és fejlesztés.
+            <p class="outcome-description" data-lang="hu" style="font-weight: 600; margin-bottom: var(--spacing-sm);">
+              Havi támogatás, fejlesztés és optimalizálás.
             </p>
-            <p class="outcome-description" data-lang="en" style="margin-bottom: var(--spacing-md);">
-              Ongoing support and development.
+            <p class="outcome-description" data-lang="hu" style="margin-bottom: var(--spacing-lg);">
+              A rendszered nem marad magára: folyamatos karbantartás, új funkciók, hibamentes működés.
+            </p>
+            <p class="outcome-description" data-lang="en" style="font-weight: 600; margin-bottom: var(--spacing-sm);">
+              Monthly support, development and optimization.
+            </p>
+            <p class="outcome-description" data-lang="en" style="margin-bottom: var(--spacing-lg);">
+              Your system won't be left alone: continuous maintenance, new features, error-free operation.
             </p>
             <ul class="offer-features">
               <li data-lang="hu">Folyamatos backend támogatás és hibajavítás</li>
               <li data-lang="hu">Új automatizációk és funkciók fejlesztése</li>
-              <li data-lang="hu">Rendszer monitoring és teljesítmény optimalizálás</li>
+              <li data-lang="hu">Rendszer monitoring + teljesítmény optimalizálás</li>
               <li data-lang="hu">Prioritásos technikai support</li>
-              <li data-lang="hu">Havi jelentések és ajánlások</li>
+              <li data-lang="hu">Havi jelentések és fejlesztési ajánlások</li>
               <li data-lang="en">Ongoing backend support and bug fixes</li>
               <li data-lang="en">New automations and features development</li>
-              <li data-lang="en">System monitoring and performance optimization</li>
+              <li data-lang="en">System monitoring + performance optimization</li>
               <li data-lang="en">Priority technical support</li>
-              <li data-lang="en">Monthly reports and recommendations</li>
+              <li data-lang="en">Monthly reports and development recommendations</li>
             </ul>
+            <div class="offer-use-case">
+              <div class="offer-use-case-title" data-lang="hu">Mire jó?</div>
+              <div class="offer-use-case-title" data-lang="en">What is it good for?</div>
+              <div class="offer-use-case-text" data-lang="hu">
+                Stabil üzemeltetés, gyors reagálás, folyamatos fejlesztés — nem kell saját fejlesztőt tartanod.
+              </div>
+              <div class="offer-use-case-text" data-lang="en">
+                Stable operation, quick response, continuous development — you don't need to keep your own developer.
+              </div>
+            </div>
           </div>
         </div>
       </div>
