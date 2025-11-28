@@ -56,7 +56,7 @@
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
       user-select: none;
       pointer-events: none;
-      z-index: 999;
+      z-index: 1;
       animation: snow linear infinite;
     }
 
@@ -612,10 +612,8 @@
 
     .offer-card.christmas-gift {
       position: relative;
-      background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
-      border: 3px solid;
-      border-image: linear-gradient(135deg, #dc2626, #16a34a, #dc2626) 1;
-      box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3), 0 0 20px rgba(22, 163, 74, 0.2);
+      border-color: var(--accent-cyan);
+      border-width: 3px;
       overflow: hidden;
     }
 
@@ -628,47 +626,13 @@
       opacity: 0.3;
       transform: rotate(15deg);
       pointer-events: none;
-    }
-
-    .offer-card.christmas-gift::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #dc2626, #16a34a, #dc2626);
-      animation: shimmer 2s infinite;
-    }
-
-    @keyframes shimmer {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
+      z-index: 0;
     }
 
     .offer-card.christmas-gift:hover {
-      border-image: linear-gradient(135deg, #ef4444, #22c55e, #ef4444) 1;
-      box-shadow: 0 12px 40px rgba(220, 38, 38, 0.4), 0 0 30px rgba(22, 163, 74, 0.3);
-      transform: translateY(-6px) scale(1.02);
-    }
-
-    .christmas-badge {
-      background: linear-gradient(135deg, #dc2626, #ef4444);
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 700;
-      font-family: 'JetBrains Mono', monospace;
-      display: inline-block;
-      margin-bottom: var(--spacing-md);
-      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      border-color: var(--accent-cyan);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(34, 211, 238, 0.2);
     }
 
     .offer-price-original {
@@ -696,6 +660,11 @@
       font-family: 'JetBrains Mono', monospace;
       margin-left: var(--spacing-sm);
       box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+    }
+
+    .lang-hu .offer-price-badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
     }
 
     .offer-price {
@@ -1216,18 +1185,16 @@
         
         <div class="offers-grid">
           <div class="offer-card christmas-gift">
-            <div class="christmas-badge" data-lang="hu">🎄 KARÁCSONYI AJÁNDÉK 🎄</div>
-            <div class="christmas-badge" data-lang="en">🎄 CHRISTMAS GIFT 🎄</div>
             <h3 class="offer-title" data-lang="hu">Mini Webapp Build</h3>
             <h3 class="offer-title" data-lang="en">Mini Webapp Build</h3>
-            <div class="offer-price" data-eur-min="499" data-eur-max="999" data-lang="hu">
+            <div class="offer-price" data-eur="749" data-lang="hu">
               <span class="offer-price-original"></span>
               <span class="offer-price-discounted"></span>
               <span class="offer-price-badge" data-lang="hu">-80%</span>
             </div>
             <div class="offer-price" data-lang="en">
-              <span class="offer-price-original">499–999€</span>
-              <span class="offer-price-discounted">99–199€</span>
+              <span class="offer-price-original">749€</span>
+              <span class="offer-price-discounted">150€</span>
               <span class="offer-price-badge">-80%</span>
             </div>
             <p class="outcome-description" data-lang="hu">
@@ -1251,8 +1218,8 @@
           <div class="offer-card featured">
             <h3 class="offer-title" data-lang="hu">MVP Build</h3>
             <h3 class="offer-title" data-lang="en">MVP Build</h3>
-            <div class="offer-price" data-eur-min="1500" data-eur-max="3000" data-lang="hu"></div>
-            <div class="offer-price" data-lang="en">1.500–3.000€</div>
+            <div class="offer-price" data-eur="2250" data-lang="hu"></div>
+            <div class="offer-price" data-lang="en">2.250€</div>
             <p class="outcome-description" data-lang="hu">
               Teljes MVP 14–30 nap alatt. Next.js frontend, teljes backend rendszer, autentikáció, adatbázis, admin felület és API-k — minden egy helyen.
             </p>
@@ -1278,12 +1245,12 @@
           <div class="offer-card">
             <h3 class="offer-title" data-lang="hu">Automation & Backend Support</h3>
             <h3 class="offer-title" data-lang="en">Automation & Backend Support</h3>
-            <div class="offer-price" data-eur-min="99" data-eur-max="299" data-lang="hu" style="font-size: 1.75rem;">
+            <div class="offer-price" data-eur="199" data-lang="hu" style="font-size: 1.75rem;">
               <span class="price-amount"></span>
               <span style="font-size: 1rem; font-weight: 400;">/hó</span>
             </div>
             <div class="offer-price" data-lang="en" style="font-size: 1.75rem;">
-              99–299€<span style="font-size: 1rem; font-weight: 400;">/month</span>
+              199€<span style="font-size: 1rem; font-weight: 400;">/month</span>
             </div>
             <p class="outcome-description" data-lang="hu" style="margin-bottom: var(--spacing-md);">
               Folyamatos támogatás és fejlesztés.
@@ -1401,24 +1368,22 @@
             element.textContent = formatHUF(discountedHuf);
           }
         } else if (eurMin && eurMax) {
-          // Price range
+          // Price range - calculate middle value
           const originalEurMin = parseFloat(eurMin);
           const originalEurMax = parseFloat(eurMax);
-          const discountedEurMin = originalEurMin * (1 - discountPercent);
-          const discountedEurMax = originalEurMax * (1 - discountPercent);
+          const originalEur = (originalEurMin + originalEurMax) / 2; // Middle value
+          const discountedEur = originalEur * (1 - discountPercent);
           
-          const originalHufMin = roundToThousands(Math.round(originalEurMin * eurToHufRate));
-          const originalHufMax = roundToThousands(Math.round(originalEurMax * eurToHufRate));
-          const discountedHufMin = roundToThousands(Math.round(discountedEurMin * eurToHufRate));
-          const discountedHufMax = roundToThousands(Math.round(discountedEurMax * eurToHufRate));
+          const originalHuf = roundToThousands(Math.round(originalEur * eurToHufRate));
+          const discountedHuf = roundToThousands(Math.round(discountedEur * eurToHufRate));
           
           if (priceAmountSpan) {
-            priceAmountSpan.textContent = formatHUF(discountedHufMin) + '–' + formatHUF(discountedHufMax);
+            priceAmountSpan.textContent = formatHUF(discountedHuf);
           } else if (originalSpan && discountedSpan) {
-            originalSpan.textContent = formatHUF(originalHufMin) + '–' + formatHUF(originalHufMax);
-            discountedSpan.textContent = formatHUF(discountedHufMin) + '–' + formatHUF(discountedHufMax);
+            originalSpan.textContent = formatHUF(originalHuf);
+            discountedSpan.textContent = formatHUF(discountedHuf);
           } else {
-            element.textContent = formatHUF(discountedHufMin) + '–' + formatHUF(discountedHufMax);
+            element.textContent = formatHUF(discountedHuf);
           }
         }
       });
@@ -1529,24 +1494,59 @@
       // Initialize CTA button shake animation
       initCTAButtonShake();
 
-      // Initialize snowflakes (set to false to disable)
-      const SNOW_ENABLED = true;
-      if (SNOW_ENABLED) {
-        createSnowflakes();
-      }
+      // Initialize snowflakes when scrolling to offers section
+      initSnowflakesOnScroll();
     });
 
-    // Winter snowflakes - Set SNOW_ENABLED to false above to disable
-    function createSnowflakes() {
+    // Winter snowflakes - Only appear when scrolling to offers section
+    let snowflakesCreated = false;
+    
+    function initSnowflakesOnScroll() {
+      const offersSection = document.querySelector('.offers-section');
+      if (!offersSection) return;
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px 0px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !snowflakesCreated) {
+            createSnowflakes(offersSection);
+            snowflakesCreated = true;
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      observer.observe(offersSection);
+    }
+
+    function createSnowflakes(offersSection) {
       const snowflakeCount = 50;
+      
       const snowflakeContainer = document.createElement('div');
+      snowflakeContainer.id = 'snowflake-container';
       snowflakeContainer.style.position = 'fixed';
-      snowflakeContainer.style.top = '0';
       snowflakeContainer.style.left = '0';
       snowflakeContainer.style.width = '100%';
-      snowflakeContainer.style.height = '100%';
+      snowflakeContainer.style.height = '100vh';
       snowflakeContainer.style.pointerEvents = 'none';
-      snowflakeContainer.style.zIndex = '999';
+      snowflakeContainer.style.zIndex = '1';
+      snowflakeContainer.style.overflow = 'hidden';
+      
+      // Update container position to start at offers section top
+      function updateSnowflakePosition() {
+        const offersTop = offersSection.getBoundingClientRect().top;
+        snowflakeContainer.style.top = offersTop + 'px';
+        snowflakeContainer.style.clipPath = `inset(${offersTop}px 0 0 0)`;
+      }
+      
+      updateSnowflakePosition();
+      window.addEventListener('scroll', updateSnowflakePosition);
+      window.addEventListener('resize', updateSnowflakePosition);
+      
       document.body.appendChild(snowflakeContainer);
 
       for (let i = 0; i < snowflakeCount; i++) {
