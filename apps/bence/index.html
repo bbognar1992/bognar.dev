@@ -31,6 +31,33 @@
     body {
       background: var(--bg-dark);
       color: var(--text-primary);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Snow animation - Set SNOW_ENABLED to false to disable */
+    @keyframes snow {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1rem;
+      font-family: Arial, sans-serif;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+      user-select: none;
+      pointer-events: none;
+      z-index: 999;
+      animation: snow linear infinite;
     }
 
     .dina-nav {
@@ -1377,7 +1404,39 @@
 
       // Initialize CTA button shake animation
       initCTAButtonShake();
+
+      // Initialize snowflakes (set to false to disable)
+      const SNOW_ENABLED = true;
+      if (SNOW_ENABLED) {
+        createSnowflakes();
+      }
     });
+
+    // Winter snowflakes - Set SNOW_ENABLED to false above to disable
+    function createSnowflakes() {
+      const snowflakeCount = 50;
+      const snowflakeContainer = document.createElement('div');
+      snowflakeContainer.style.position = 'fixed';
+      snowflakeContainer.style.top = '0';
+      snowflakeContainer.style.left = '0';
+      snowflakeContainer.style.width = '100%';
+      snowflakeContainer.style.height = '100%';
+      snowflakeContainer.style.pointerEvents = 'none';
+      snowflakeContainer.style.zIndex = '999';
+      document.body.appendChild(snowflakeContainer);
+
+      for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        snowflake.innerHTML = '❄';
+        snowflake.style.left = Math.random() * 100 + '%';
+        snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        snowflake.style.animationDelay = Math.random() * 2 + 's';
+        snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+        snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+        snowflakeContainer.appendChild(snowflake);
+      }
+    }
   </script>
 </body>
 </html>

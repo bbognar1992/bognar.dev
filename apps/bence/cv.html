@@ -7,14 +7,398 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Times+New+Roman,serif&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Dark mode + single accent - Developer-friendly design */
+    :root {
+      --accent-cyan: #22D3EE;
+      --accent-yellow: #FACC15;
+      --bg-dark: #0a0a0a;
+      --bg-dark-soft: #111111;
+      --bg-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --border-color: #27272a;
+      --code-bg: #1a1a1a;
+      --code-border: #27272a;
+      --success-green: #22c55e;
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 1.5rem;
+      --spacing-lg: 2rem;
+      --spacing-xl: 3rem;
+      --spacing-xxl: 4rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Navigation */
+    .cv-nav {
+      padding: var(--spacing-md) var(--spacing-lg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(10, 10, 10, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .cv-nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cv-nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+    }
+
+    .cv-nav-link:hover {
+      color: var(--accent-cyan);
+    }
+
+    .cv-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-yellow);
+      transition: width 0.2s;
+    }
+
+    .cv-nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* CV Page Container */
+    .cv-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: var(--spacing-xxl) var(--spacing-lg);
+    }
+
+    /* Header */
+    .cv-header {
+      margin-bottom: var(--spacing-xxl);
+      padding-bottom: var(--spacing-xl);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .cv-name {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .cv-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--accent-cyan);
+      margin-bottom: var(--spacing-md);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .cv-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-md);
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+
+    .cv-contact a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .cv-contact a:hover {
+      color: var(--accent-yellow);
+    }
+
+    /* Main Content */
+    .cv-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xxl);
+    }
+
+    /* Sections */
+    .cv-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: var(--spacing-xl);
+      transition: all 0.3s;
+    }
+
+    .cv-section:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 8px 24px rgba(34, 211, 238, 0.1);
+    }
+
+    .section-heading {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-lg);
+      font-family: 'Inter', sans-serif;
+      border-left: 4px solid var(--accent-cyan);
+      padding-left: var(--spacing-md);
+    }
+
+    .section-text {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .section-text.muted {
+      color: var(--text-muted);
+    }
+
+    /* CV Entry */
+    .cv-entry {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .cv-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-xs);
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+    }
+
+    .entry-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .entry-date {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--accent-yellow);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .entry-company {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      margin-bottom: var(--spacing-md);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .entry-meta {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .entry-list {
+      list-style: none;
+      padding: 0;
+      margin-top: var(--spacing-md);
+    }
+
+    .entry-list li {
+      padding: var(--spacing-sm) 0;
+      padding-left: var(--spacing-lg);
+      position: relative;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    .entry-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    /* Skills */
+    .skills-section {
+      display: grid;
+      gap: var(--spacing-lg);
+    }
+
+    .skill-group {
+      padding: var(--spacing-md);
+      background: var(--bg-dark);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .skill-group-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-sm);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .skill-list {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Projects */
+    .project-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-md);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .project-text strong {
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    /* Languages */
+    .languages-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+
+    .language-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-md);
+      background: var(--bg-dark);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .language-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .language-level {
+      font-size: 0.875rem;
+      color: var(--accent-yellow);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Footer */
+    .cv-footer {
+      margin-top: var(--spacing-xxl);
+      padding-top: var(--spacing-xl);
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cv-page {
+        padding: var(--spacing-xl) var(--spacing-md);
+      }
+
+      .entry-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cv-contact {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      @page {
+        size: A4;
+        margin: 2cm;
+      }
+      body {
+        background: white;
+        color: black;
+      }
+      .cv-nav {
+        display: none;
+      }
+      .cv-page {
+        max-width: 100%;
+        padding: 0;
+      }
+      .cv-section {
+        background: white;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+      }
+      .section-heading {
+        color: black;
+        border-left-color: #333;
+      }
+      .cv-title {
+        color: #333;
+      }
+      .entry-date,
+      .language-level {
+        color: #666;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav class="cv-nav">
+    <div class="cv-nav-content">
     <a href="index.html" class="cv-nav-link">← Vissza a főoldalra</a>
+    </div>
   </nav>
   
   <div class="cv-page">
@@ -127,23 +511,5 @@
       </section>
     </main>
   </div>
-
-  <!-- Print styles -->
-  <style media="print">
-    @page {
-      size: A4;
-      margin: 2cm;
-    }
-    body {
-      background: white;
-    }
-    .cv-nav {
-      display: none;
-    }
-    .cv-page {
-      max-width: 100%;
-      box-shadow: none;
-    }
-  </style>
 </body>
 </html>
