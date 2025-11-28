@@ -610,6 +610,101 @@
       border-width: 3px;
     }
 
+    .offer-card.christmas-gift {
+      position: relative;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
+      border: 3px solid;
+      border-image: linear-gradient(135deg, #dc2626, #16a34a, #dc2626) 1;
+      box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3), 0 0 20px rgba(22, 163, 74, 0.2);
+      overflow: hidden;
+    }
+
+    .offer-card.christmas-gift::before {
+      content: '🎁';
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 4rem;
+      opacity: 0.3;
+      transform: rotate(15deg);
+      pointer-events: none;
+    }
+
+    .offer-card.christmas-gift::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #dc2626, #16a34a, #dc2626);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .offer-card.christmas-gift:hover {
+      border-image: linear-gradient(135deg, #ef4444, #22c55e, #ef4444) 1;
+      box-shadow: 0 12px 40px rgba(220, 38, 38, 0.4), 0 0 30px rgba(22, 163, 74, 0.3);
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .christmas-badge {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      display: inline-block;
+      margin-bottom: var(--spacing-md);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .offer-price-original {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      font-weight: 400;
+      opacity: 0.6;
+      margin-right: var(--spacing-sm);
+    }
+
+    .offer-price-discounted {
+      color: #22c55e;
+      font-weight: 800;
+      font-size: 2.5rem;
+    }
+
+    .offer-price-badge {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      color: #fff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      margin-left: var(--spacing-sm);
+      box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+    }
+
+    .offer-price {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      flex-wrap: wrap;
+    }
+
     .offer-badge {
       position: absolute;
       top: -12px;
@@ -1122,11 +1217,21 @@
         <h2 class="section-title" data-lang="en">Offers</h2>
         
         <div class="offers-grid">
-          <div class="offer-card">
+          <div class="offer-card christmas-gift">
+            <div class="christmas-badge" data-lang="hu">🎄 KARÁCSONYI AJÁNDÉK 🎄</div>
+            <div class="christmas-badge" data-lang="en">🎄 CHRISTMAS GIFT 🎄</div>
             <h3 class="offer-title" data-lang="hu">Mini Webapp Build</h3>
             <h3 class="offer-title" data-lang="en">Mini Webapp Build</h3>
-            <div class="offer-price" data-eur-min="499" data-eur-max="999" data-lang="hu"></div>
-            <div class="offer-price" data-lang="en">499–999€</div>
+            <div class="offer-price" data-eur-min="499" data-eur-max="999" data-lang="hu">
+              <span class="offer-price-original"></span>
+              <span class="offer-price-discounted"></span>
+              <span class="offer-price-badge" data-lang="hu">-80%</span>
+            </div>
+            <div class="offer-price" data-lang="en">
+              <span class="offer-price-original">499–999€</span>
+              <span class="offer-price-discounted">99–199€</span>
+              <span class="offer-price-badge">-80%</span>
+            </div>
             <p class="outcome-description" data-lang="hu">
               Kész webes alkalmazás 7–14 nap alatt. Modern UI template, saját backend logika és azonnali deploy.
             </p>
@@ -1146,8 +1251,6 @@
           </div>
 
           <div class="offer-card featured">
-            <div class="offer-badge" data-lang="hu">NÉPSZERŰ</div>
-            <div class="offer-badge" data-lang="en">POPULAR</div>
             <h3 class="offer-title" data-lang="hu">MVP Build</h3>
             <h3 class="offer-title" data-lang="en">MVP Build</h3>
             <div class="offer-price" data-eur-min="1500" data-eur-max="3000" data-lang="hu"></div>
@@ -1276,25 +1379,48 @@
         const eurMax = element.getAttribute('data-eur-max');
         const eur = element.getAttribute('data-eur');
         
-        // Check if this is a monthly subscription (has price-amount span)
+        // Check if this is a Christmas gift card (has discount)
+        const isChristmasGift = element.closest('.christmas-gift');
+        const discountPercent = isChristmasGift ? 0.8 : 0; // 80% discount for Christmas gift
+        
+        const originalSpan = element.querySelector('.offer-price-original');
+        const discountedSpan = element.querySelector('.offer-price-discounted');
         const priceAmountSpan = element.querySelector('.price-amount');
 
         if (eur) {
           // Single price
-          const hufAmount = roundToThousands(Math.round(parseFloat(eur) * eurToHufRate));
+          const originalEur = parseFloat(eur);
+          const discountedEur = originalEur * (1 - discountPercent);
+          const originalHuf = roundToThousands(Math.round(originalEur * eurToHufRate));
+          const discountedHuf = roundToThousands(Math.round(discountedEur * eurToHufRate));
+          
           if (priceAmountSpan) {
-            priceAmountSpan.textContent = formatHUF(hufAmount);
+            priceAmountSpan.textContent = formatHUF(discountedHuf);
+          } else if (originalSpan && discountedSpan) {
+            originalSpan.textContent = formatHUF(originalHuf);
+            discountedSpan.textContent = formatHUF(discountedHuf);
           } else {
-          element.textContent = formatHUF(hufAmount);
+            element.textContent = formatHUF(discountedHuf);
           }
         } else if (eurMin && eurMax) {
           // Price range
-          const hufMin = roundToThousands(Math.round(parseFloat(eurMin) * eurToHufRate));
-          const hufMax = roundToThousands(Math.round(parseFloat(eurMax) * eurToHufRate));
+          const originalEurMin = parseFloat(eurMin);
+          const originalEurMax = parseFloat(eurMax);
+          const discountedEurMin = originalEurMin * (1 - discountPercent);
+          const discountedEurMax = originalEurMax * (1 - discountPercent);
+          
+          const originalHufMin = roundToThousands(Math.round(originalEurMin * eurToHufRate));
+          const originalHufMax = roundToThousands(Math.round(originalEurMax * eurToHufRate));
+          const discountedHufMin = roundToThousands(Math.round(discountedEurMin * eurToHufRate));
+          const discountedHufMax = roundToThousands(Math.round(discountedEurMax * eurToHufRate));
+          
           if (priceAmountSpan) {
-            priceAmountSpan.textContent = formatHUF(hufMin) + '–' + formatHUF(hufMax);
+            priceAmountSpan.textContent = formatHUF(discountedHufMin) + '–' + formatHUF(discountedHufMax);
+          } else if (originalSpan && discountedSpan) {
+            originalSpan.textContent = formatHUF(originalHufMin) + '–' + formatHUF(originalHufMax);
+            discountedSpan.textContent = formatHUF(discountedHufMin) + '–' + formatHUF(discountedHufMax);
           } else {
-          element.textContent = formatHUF(hufMin) + '–' + formatHUF(hufMax);
+            element.textContent = formatHUF(discountedHufMin) + '–' + formatHUF(discountedHufMax);
           }
         }
       });
