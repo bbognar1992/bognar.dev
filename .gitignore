@@ -29,3 +29,26 @@ build/
 # Vercel
 .vercel
 
+# Python
+# Virtual environments (works for root and subdirectories)
+venv/
+**/venv/
+env/
+**/env/
+ENV/
+**/ENV/
+.venv
+**/.venv
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
