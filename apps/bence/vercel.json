@@ -34,7 +34,7 @@
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/"
+      "destination": "/api/index"
     }
   ]
 }
