@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from mangum import Mangum
 from pathlib import Path
 
+# Create FastAPI app
 app = FastAPI()
 
 # Get the directory where the HTML/CSS files are located (parent directory of api/)
@@ -30,9 +31,7 @@ async def read_root():
 
 
 # Vercel serverless function handler
-# Mangum needs to handle the ASGI app for Vercel's serverless environment
+# Mangum wraps the FastAPI ASGI app for Vercel's serverless environment
+# This must be named 'handler' for Vercel to detect it correctly
 handler = Mangum(app, lifespan="off")
-
-# Export handler for Vercel
-__all__ = ["handler"]
 
