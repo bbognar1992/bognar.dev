@@ -15,6 +15,7 @@ async def health_check():
     return JSONResponse(
         content={
             "status": "healthy",
+            "service": "bence.bognar.dev",
         },
         status_code=200
     )
@@ -29,5 +30,9 @@ async def read_root():
 
 
 # Vercel serverless function handler
-handler = Mangum(app)
+# Mangum needs to handle the ASGI app for Vercel's serverless environment
+handler = Mangum(app, lifespan="off")
+
+# Export handler for Vercel
+__all__ = ["handler"]
 
