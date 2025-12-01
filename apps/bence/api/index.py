@@ -1,11 +1,33 @@
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse, JSONResponse
+from mangum import Mangum
 from pathlib import Path
-import sys
 
-# Add parent directory to path so we can import app
-sys.path.insert(0, str(Path(__file__).parent.parent))
+app = FastAPI()
 
-from app import handler
+# Get the directory where the HTML/CSS files are located (parent directory of api/)
+BASE_DIR = Path(__file__).parent.parent
 
-# Export the handler for Vercel
-__all__ = ["handler"]
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for monitoring and load balancers"""
+    return JSONResponse(
+        content={
+            "status": "healthy",
+        },
+        status_code=200
+    )
+
+
+@app.get("/", response_class=HTMLResponse)
+async def read_root():
+    """Serve the main index.html page"""
+    html_path = BASE_DIR / "index.html"
+    with open(html_path, "r", encoding="utf-8") as f:
+        return HTMLResponse(content=f.read())
+
+
+# Vercel serverless function handler
+handler = Mangum(app)
 
