@@ -22,18 +22,6 @@ async def read_root():
     with open(html_path, "r", encoding="utf-8") as f:
         return HTMLResponse(content=f.read())
 
-
-# Serve CSS files from assets directory
-@app.get("/assets/landing.css")
-async def landing_css():
-    return FileResponse(BASE_DIR / "assets" / "landing.css", media_type="text/css")
-
-
-@app.get("/assets/styles.css")
-async def styles_css():
-    return FileResponse(BASE_DIR / "assets" / "styles.css", media_type="text/css")
-
-
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", reload=True)
